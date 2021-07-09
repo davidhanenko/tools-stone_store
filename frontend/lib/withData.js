@@ -5,7 +5,6 @@ import { createUploadLink } from 'apollo-upload-client';
 import withApollo from 'next-with-apollo';
 import { endpoint, prodEndpoint } from '../config';
 
-
 function createClient({ headers, initialState }) {
   return new ApolloClient({
     link: ApolloLink.from([
@@ -34,9 +33,7 @@ function createClient({ headers, initialState }) {
     cache: new InMemoryCache({
       typePolicies: {
         Query: {
-          fields: {
-           
-          },
+          fields: {},
         },
       },
     }).restore(initialState || {}),

@@ -1,10 +1,24 @@
 import Link from 'next/link';
 import styled from 'styled-components';
-// import Nav from './Nav';
+import Nav from './Nav';
+
+const HeaderStyles = styled.header`
+  margin: 0;
+  padding: 0;
+  .navbar {
+    display: grid;
+    grid-template-columns: min-content auto;
+    grid-template-areas: 'logo navbar';
+  }
+`;
 
 const Logo = styled.h1`
+  grid-area: logo;
+  display: grid;
+  grid-auto-columns: min-content;
+  place-self: start;
   font-size: 5rem;
-  position: relative;
+  line-height: 1rem;
   margin-left: 2rem;
   z-index: 2;
   transform: skew(-7deg);
@@ -16,29 +30,14 @@ const Logo = styled.h1`
   }
 `;
 
-const HeaderStyles = styled.header`
-  .bar {
-    border-bottom: 5px solid var(--black, black);
-    display: grid;
-    grid-template-columns: auto 1fr;
-    justify-content: space-between;
-    align-items: stretch;
-  }
-  .sub-bar {
-    border-bottom: 1px solid var(--black, black);
-    display: grid;
-    grid-template-columns: 1fr auto;
-  }
-`;
-
 export default function Header() {
   return (
     <HeaderStyles>
-      <div className="bar">
+      <div className="navbar">
         <Logo>
-          <Link href="/">A2Z</Link>
+          <Link href="/">a2z</Link>
         </Logo>
-        {/* <Nav /> */}
+        <Nav />
       </div>
       {/* <div className="sub-bar">
         <Search />

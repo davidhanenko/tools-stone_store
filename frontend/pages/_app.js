@@ -1,5 +1,4 @@
 import { ApolloProvider } from '@apollo/client';
-
 import Router from 'next/router';
 import Page from '../components/Page';
 import withData from '../lib/withData';
@@ -7,11 +6,9 @@ import withData from '../lib/withData';
 function MyApp({ Component, pageProps, apollo }) {
   return (
     <ApolloProvider client={apollo}>
-
-        <Page>
-          <Component {...pageProps} />
-        </Page>
-  
+      <Page>
+        <Component {...pageProps} />
+      </Page>
     </ApolloProvider>
   );
 }
