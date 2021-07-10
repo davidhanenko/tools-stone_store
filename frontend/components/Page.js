@@ -32,6 +32,7 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     font-size: 1.5rem;
     line-height: 2;
+    scroll-behavior: smooth;
   }
   a {
     text-decoration: none;
@@ -46,7 +47,7 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const InnerStyles = styled.div`
-  max-width: var(--maxWidth);
+  /* max-width: var(--maxWidth); */
   margin: 0 auto;
   padding: 2rem;
 `;
