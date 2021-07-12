@@ -20,7 +20,7 @@ export default function Nav() {
         <Link href="/">Home</Link>
         <Link href="/about">About</Link>
         <Link href="/products" passHref>
-          <NavDropdown>Products</NavDropdown>
+          <NavDropdown title="products" />
         </Link>
         <Link href="/tools">Tools</Link>
         <Link href="/contacts">Contact</Link>

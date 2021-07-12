@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styled from 'styled-components';
+import { NavStateProvider } from '../lib/navState';
 import Nav from './Nav';
 
 const HeaderStyles = styled.header`
@@ -7,6 +8,9 @@ const HeaderStyles = styled.header`
   margin: 0;
   padding: 0;
   max-height: var(--navHeight);
+  position: fixed;
+  top: 0;
+  width: 100%;
   .navbar {
     display: grid;
     grid-template-columns: min-content auto;
@@ -37,16 +41,18 @@ const Logo = styled.h1`
 
 export default function Header() {
   return (
-    <HeaderStyles>
-      <div className="navbar">
-        <Logo>
-          <Link href="/">a2z</Link>
-        </Logo>
-        <Nav />
-      </div>
-      {/* <div className="sub-bar">
+    <NavStateProvider>
+      <HeaderStyles>
+        <div className="navbar">
+          <Logo>
+            <Link href="/">a2z</Link>
+          </Logo>
+          <Nav />
+        </div>
+        {/* <div className="sub-bar">
         <Search />
       </div> */}
-    </HeaderStyles>
+      </HeaderStyles>
+    </NavStateProvider>
   );
 }

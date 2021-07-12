@@ -16,6 +16,7 @@ const NavStyles = styled.div`
     place-self: center end;
     @media (max-width: 700px) {
       position: fixed;
+      gap: 0;
       top: 0;
       right: 0;
       width: 40%;
@@ -36,17 +37,6 @@ const NavStyles = styled.div`
     text-transform: uppercase;
     color: grey;
     position: relative;
-    &:after {
-      content: '';
-      height: 80%;
-      width: 1px;
-      background: var(--lightGrey);
-      position: absolute;
-      right: -0.25rem;
-      @media (max-width: 701px) {
-        content: none;
-      }
-    }
     &:hover,
     &:focus {
       text-decoration: none;
@@ -57,7 +47,6 @@ const NavStyles = styled.div`
       padding-left: 3rem;
       width: 200px;
       border-bottom: 1px solid var(--lightGrey);
-      padding-bottom: 1rem;
     }
   }
 `;
