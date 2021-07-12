@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const NavStyles = styled.div`
   grid-area: navbar;
-  overflow: hidden;
+  overflow-x: hidden;
   place-self: center end;
   .nav-links {
     margin: 0;
@@ -15,16 +15,20 @@ const NavStyles = styled.div`
     gap: 0.5rem;
     place-self: center end;
     @media (max-width: 700px) {
-      padding-top: 24rem;
-      min-width: 300px;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 40%;
+      min-width: 250px;
       background: var(--offWhite);
-      transform: translatex(100%);
+      transform: translateX(100%);
+
       ${(props) =>
         props.open &&
-        `grid-auto-flow: row; transform: translateX(0);transition:all 0.3s;`};
-      ${(props) =>
+        `grid-auto-flow: row; transform: translate(0, var(--navHeight)); transition: all 0.3s;`};
+      /* ${(props) =>
         !props.open &&
-        `grid-auto-flow: row; transform: translateX(100%);transition:all 0.3s;`};
+        `grid-auto-flow: row; transform: translateX(100%); transition: 0.35s;`}; */
     }
   }
   a {
@@ -48,6 +52,12 @@ const NavStyles = styled.div`
       text-decoration: none;
       color: var(--black);
       transition: 250ms;
+    }
+    @media (max-width: 701px) {
+      padding-left: 3rem;
+      width: 200px;
+      border-bottom: 1px solid var(--lightGrey);
+      padding-bottom: 1rem;
     }
   }
 `;

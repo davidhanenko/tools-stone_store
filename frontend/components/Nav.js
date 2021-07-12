@@ -1,21 +1,27 @@
 import Link from 'next/link';
-import { useState } from 'react';
 import Hamburger from 'hamburger-react';
+import { useNav } from '../lib/navState';
 import NavButtonStyles from './styles/NavButtonStyles';
-
+import NavDropdown from './NavDropdown';
 import NavStyles from './styles/NavStyles';
 
 export default function Nav() {
-  const [navOpen, setNavOpen] = useState(false);
-  function onClick() {
-    setNavOpen(!navOpen);
-  }
+  const {
+    navOpen,
+    setNavOpen,
+    toggleNav,
+    openSideNav,
+    closeSideNav,
+  } = useNav();
+
   return (
     <NavStyles open={navOpen}>
       <div className="nav-links">
         <Link href="/">Home</Link>
         <Link href="/about">About</Link>
-        <Link href="/products">Products</Link>
+        <Link href="/products" passHref>
+          <NavDropdown>Products</NavDropdown>
+        </Link>
         <Link href="/tools">Tools</Link>
         <Link href="/contacts">Contact</Link>
         <Link href="/gallery">Gallery</Link>
@@ -25,7 +31,7 @@ export default function Nav() {
           hideOutline={false}
           label="Show menu"
           toggled={navOpen}
-          toggle={setNavOpen}
+          toggle={toggleNav}
         />
       </NavButtonStyles>
     </NavStyles>

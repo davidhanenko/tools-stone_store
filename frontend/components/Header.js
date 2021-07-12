@@ -6,13 +6,13 @@ const HeaderStyles = styled.header`
   background: var(--offWhite);
   margin: 0;
   padding: 0;
-  max-height: 9rem;
+  max-height: var(--navHeight);
   .navbar {
     display: grid;
     grid-template-columns: min-content auto;
     grid-template-areas: 'logo navbar';
     @media (max-width: 700px) {
-      grid-template-rows: 9rem;
+      grid-template-rows: var(--navHeight);
     }
   }
 `;

@@ -18,6 +18,7 @@ const GlobalStyles = createGlobalStyle`
     --lightGray: var(--lightGrey);
     --offWhite: #ededed;
     --maxWidth: 1000px;
+    --navHeight: 90px;
     --bs: 0 12px 24px 0 rgba(0,0,0,0.09);
     box-sizing: border-box;
     font-size: 62.5%;
