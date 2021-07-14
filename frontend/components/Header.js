@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import { NavStateProvider } from '../lib/navState';
-import Nav from './Nav';
+import Nav from './Navbar/Nav';
 
 const HeaderStyles = styled.header`
   background: var(--offWhite);
@@ -15,7 +15,7 @@ const HeaderStyles = styled.header`
     display: grid;
     grid-template-columns: min-content auto;
     grid-template-areas: 'logo navbar';
-    @media (max-width: 700px) {
+    @media (max-width: 850px) {
       grid-template-rows: var(--navHeight);
     }
   }
