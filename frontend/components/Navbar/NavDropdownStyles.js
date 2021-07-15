@@ -34,7 +34,7 @@ const DropdownMenuStyles = styled.div`
     border: 1px solid var(--lightGrey);
     position: fixed;
     top: 6rem;
-    width: 30rem;
+    width: 33rem;
     margin-left: -5rem;
     padding: 1rem;
     display: grid;
@@ -48,7 +48,7 @@ const DropdownItemStyles = styled.li`
   a {
     text-decoration: none;
     color: grey;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     &:hover {
       text-decoration: none;
       color: var(--black);

@@ -2,15 +2,16 @@ import Link from 'next/link';
 import Hamburger from 'hamburger-react';
 import { useNav } from '../../lib/navState';
 
-import NavButtonStyles from './NavButtonStyles';
 import NavDropdown from './NavDropdown';
-import NavStyles from './NavStyles';
+import { NavStyles, NavButtonStyles } from './NavStyles';
+import useWindowDimensions from '../../lib/windowDimensions';
 
 export default function Nav() {
   const { navOpen, toggleNav } = useNav();
+  const { width } = useWindowDimensions();
 
   return (
-    <NavStyles open={navOpen}>
+    <NavStyles open={navOpen} width={width}>
       <div className="nav-links">
         <Link href="/">Home</Link>
         <Link href="/about">About</Link>

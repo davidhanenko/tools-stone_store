@@ -25,12 +25,13 @@ const NavStyles = styled.div`
       background: var(--offWhite);
       transform: translateX(100%);
 
-      ${props =>
+      ${(props) =>
         props.open &&
         `grid-auto-flow: row; transform: translate(0, var(--navHeight)); transition: all 0.3s;`};
-      /* ${props =>
+      ${(props) =>
         !props.open &&
-        `grid-auto-flow: row; transform: translateX(100%); transition: 0.35s;`}; */
+        props.width <= 850 &&
+        `grid-auto-flow: row; transform: translateX(100%); transition: 0.35s;`};
     }
   }
   a {
@@ -52,4 +53,14 @@ const NavStyles = styled.div`
   }
 `;
 
-export default NavStyles;
+const NavButtonStyles = styled.div`
+  display: none;
+  @media (max-width: 850px) {
+    display: block;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+  }
+`;
+
+export { NavStyles, NavButtonStyles };
