@@ -2,7 +2,6 @@ import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import T from './T';
 
-
 export const TEST = gql`
   query TEST {
     tests {

@@ -5,6 +5,7 @@ const NavStyles = styled.div`
   overflow-x: hidden;
   place-self: center end;
   text-transform: uppercase;
+
   .nav-links {
     margin: 0;
     padding: 0;

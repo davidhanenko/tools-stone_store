@@ -9,7 +9,6 @@ import useWindowDimensions from '../../lib/windowDimensions';
 export default function Nav() {
   const { navOpen, toggleNav } = useNav();
   const { width } = useWindowDimensions();
-
   return (
     <NavStyles open={navOpen} width={width}>
       <div className="nav-links">

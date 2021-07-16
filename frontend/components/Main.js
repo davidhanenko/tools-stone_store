@@ -1,7 +1,9 @@
+import EmblaCarousel from './Carousel/Carousel';
+
 export default function Main() {
   return (
     <div>
-      {/* <h1>Main Page</h1> */}
+      <EmblaCarousel slides={slides} />
     </div>
-  )
+  );
 }
