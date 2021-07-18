@@ -51,6 +51,8 @@ type MPage {
   published_at: DateTime
   image_1(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   image_2(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  subimage_1_1(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  subimage_1_2(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 input MPageInput {
@@ -59,6 +61,8 @@ input MPageInput {
   image_1: [ID]
   image_2: [ID]
   link: String
+  subimage_1_1: [ID]
+  subimage_1_2: [ID]
   published_at: DateTime
   created_by: ID
   updated_by: ID
@@ -70,6 +74,8 @@ input editMPageInput {
   image_1: [ID]
   image_2: [ID]
   link: String
+  subimage_1_1: [ID]
+  subimage_1_2: [ID]
   published_at: DateTime
   created_by: ID
   updated_by: ID
@@ -85,6 +91,133 @@ type updateMPagePayload {
 
 type deleteMPagePayload {
   mPage: MPage
+}
+
+type MainPageSlide {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  slogan: String
+  description: String
+  bg_image: UploadFile
+  image_1: UploadFile
+  image_2: UploadFile
+  published_at: DateTime
+}
+
+type MainPageSlideConnection {
+  values: [MainPageSlide]
+  groupBy: MainPageSlideGroupBy
+  aggregate: MainPageSlideAggregator
+}
+
+type MainPageSlideAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type MainPageSlideGroupBy {
+  id: [MainPageSlideConnectionId]
+  created_at: [MainPageSlideConnectionCreated_at]
+  updated_at: [MainPageSlideConnectionUpdated_at]
+  slogan: [MainPageSlideConnectionSlogan]
+  description: [MainPageSlideConnectionDescription]
+  bg_image: [MainPageSlideConnectionBg_image]
+  image_1: [MainPageSlideConnectionImage_1]
+  image_2: [MainPageSlideConnectionImage_2]
+  published_at: [MainPageSlideConnectionPublished_at]
+}
+
+type MainPageSlideConnectionId {
+  key: ID
+  connection: MainPageSlideConnection
+}
+
+type MainPageSlideConnectionCreated_at {
+  key: DateTime
+  connection: MainPageSlideConnection
+}
+
+type MainPageSlideConnectionUpdated_at {
+  key: DateTime
+  connection: MainPageSlideConnection
+}
+
+type MainPageSlideConnectionSlogan {
+  key: String
+  connection: MainPageSlideConnection
+}
+
+type MainPageSlideConnectionDescription {
+  key: String
+  connection: MainPageSlideConnection
+}
+
+type MainPageSlideConnectionBg_image {
+  key: ID
+  connection: MainPageSlideConnection
+}
+
+type MainPageSlideConnectionImage_1 {
+  key: ID
+  connection: MainPageSlideConnection
+}
+
+type MainPageSlideConnectionImage_2 {
+  key: ID
+  connection: MainPageSlideConnection
+}
+
+type MainPageSlideConnectionPublished_at {
+  key: DateTime
+  connection: MainPageSlideConnection
+}
+
+input MainPageSlideInput {
+  slogan: String
+  description: String
+  bg_image: ID
+  image_1: ID
+  image_2: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editMainPageSlideInput {
+  slogan: String
+  description: String
+  bg_image: ID
+  image_1: ID
+  image_2: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createMainPageSlideInput {
+  data: MainPageSlideInput
+}
+
+type createMainPageSlidePayload {
+  mainPageSlide: MainPageSlide
+}
+
+input updateMainPageSlideInput {
+  where: InputID
+  data: editMainPageSlideInput
+}
+
+type updateMainPageSlidePayload {
+  mainPageSlide: MainPageSlide
+}
+
+input deleteMainPageSlideInput {
+  where: InputID
+}
+
+type deleteMainPageSlidePayload {
+  mainPageSlide: MainPageSlide
 }
 
 type Test {
@@ -666,7 +799,7 @@ type deleteUserPayload {
   user: UsersPermissionsUser
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | MPage | updateMPagePayload | deleteMPagePayload | Test | TestConnection | TestAggregator | TestGroupBy | TestConnectionId | TestConnectionCreated_at | TestConnectionUpdated_at | TestConnectionMessage | TestConnectionImage | TestConnectionPhoto | TestConnectionPublished_at | createTestPayload | updateTestPayload | deleteTestPayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | MPage | updateMPagePayload | deleteMPagePayload | MainPageSlide | MainPageSlideConnection | MainPageSlideAggregator | MainPageSlideGroupBy | MainPageSlideConnectionId | MainPageSlideConnectionCreated_at | MainPageSlideConnectionUpdated_at | MainPageSlideConnectionSlogan | MainPageSlideConnectionDescription | MainPageSlideConnectionBg_image | MainPageSlideConnectionImage_1 | MainPageSlideConnectionImage_2 | MainPageSlideConnectionPublished_at | createMainPageSlidePayload | updateMainPageSlidePayload | deleteMainPageSlidePayload | Test | TestConnection | TestAggregator | TestGroupBy | TestConnectionId | TestConnectionCreated_at | TestConnectionUpdated_at | TestConnectionMessage | TestConnectionImage | TestConnectionPhoto | TestConnectionPublished_at | createTestPayload | updateTestPayload | deleteTestPayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload
 
 input InputID {
   id: ID!
@@ -686,6 +819,9 @@ type AdminUser {
 
 type Query {
   mPage(publicationState: PublicationState): MPage
+  mainPageSlide(id: ID!, publicationState: PublicationState): MainPageSlide
+  mainPageSlides(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [MainPageSlide]
+  mainPageSlidesConnection(sort: String, limit: Int, start: Int, where: JSON): MainPageSlideConnection
   test(id: ID!, publicationState: PublicationState): Test
   tests(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Test]
   testsConnection(sort: String, limit: Int, start: Int, where: JSON): TestConnection
@@ -707,6 +843,9 @@ type Query {
 type Mutation {
   updateMPage(input: updateMPageInput): updateMPagePayload
   deleteMPage: deleteMPagePayload
+  createMainPageSlide(input: createMainPageSlideInput): createMainPageSlidePayload
+  updateMainPageSlide(input: updateMainPageSlideInput): updateMainPageSlidePayload
+  deleteMainPageSlide(input: deleteMainPageSlideInput): deleteMainPageSlidePayload
   createTest(input: createTestInput): createTestPayload
   updateTest(input: updateTestInput): updateTestPayload
   deleteTest(input: deleteTestInput): deleteTestPayload

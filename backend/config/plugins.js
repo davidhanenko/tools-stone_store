@@ -14,11 +14,6 @@ module.exports = ({ env }) => ({
     },
     actionOptions: {
       upload: {
-        transformation: {
-            "width": 1920,
-            "dpr": "auto",
-            "crop": "fill"
-          },
         fetch_format: 'auto',
         quality: 'auto:good',
         resource_type: 'auto',

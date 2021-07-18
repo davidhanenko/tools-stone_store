@@ -5,6 +5,7 @@ import { PrevButton, NextButton } from './CarouselButtons';
 import { useRecursiveTimeout } from '../../lib/useRecursiveTimeout';
 import CarouselStyles from './CarouselStyles';
 // import { mediaByIndex } from './media';
+import Slide from './Slide';
 
 const AUTOPLAY_INTERVAL = 3000;
 
@@ -70,6 +71,7 @@ const EmblaCarousel = ({ slides, mediaByIndex }) => {
                   layout='fill'
                   alt=''
                 />
+                < Slide index={index} />
               </div>
             </div>
           ))}

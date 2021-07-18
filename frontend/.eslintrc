@@ -1,5 +1,4 @@
+{ "allowShortCircuit": true }
 {
   "extends": ["wesbos"]
 }
-
-{ "allowShortCircuit": true }
