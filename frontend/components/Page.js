@@ -17,7 +17,7 @@ const GlobalStyles = createGlobalStyle`
     --lightGrey: #e1e1e1;
     --lightGray: var(--lightGrey);
     --offWhite: #ededed;
-    --maxWidth: 1000px;
+    --maxWidth: 1920px;
     --midWidth: 850px;
     --navHeight: 90px;
     --bs: 0 12px 24px 0 rgba(0,0,0,0.09);
@@ -52,7 +52,7 @@ const GlobalStyles = createGlobalStyle`
 const InnerStyles = styled.div`
   /* max-width: var(--maxWidth); */
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
 `;
 
 export default function Page({ children }) {

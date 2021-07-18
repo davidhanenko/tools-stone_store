@@ -26,13 +26,12 @@ const NavDropdown = React.forwardRef(function NavDropdown(props, ref) {
   const { width } = useWindowDimensions();
   const showDropdown = () => setDropdownOpen(!dropdownOpen);
 
-
   const mouseEnter = () => {
-    width > 850 && setDropdownOpen(true);
+    !navOpen && setDropdownOpen(true);
   };
 
   const mouseLeave = () => {
-    width > 850 && setDropdownOpen(false);
+    !navOpen && setDropdownOpen(false);
   };
 
   return (

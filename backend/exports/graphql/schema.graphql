@@ -41,119 +41,50 @@ type UserPermissionsPasswordPayload {
   ok: Boolean!
 }
 
-type MainPage {
+type MPage {
   id: ID!
   created_at: DateTime!
   updated_at: DateTime!
-  Slogan: String
-  Presentation: String
-  Link: String
+  slogan: String
+  description: String
+  link: String
   published_at: DateTime
-  bg_image_1(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
-  bg_image_2(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  image_1(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  image_2(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
-type MainPageConnection {
-  values: [MainPage]
-  groupBy: MainPageGroupBy
-  aggregate: MainPageAggregator
-}
-
-type MainPageAggregator {
-  count: Int
-  totalCount: Int
-}
-
-type MainPageGroupBy {
-  id: [MainPageConnectionId]
-  created_at: [MainPageConnectionCreated_at]
-  updated_at: [MainPageConnectionUpdated_at]
-  Slogan: [MainPageConnectionSlogan]
-  Presentation: [MainPageConnectionPresentation]
-  Link: [MainPageConnectionLink]
-  published_at: [MainPageConnectionPublished_at]
-}
-
-type MainPageConnectionId {
-  key: ID
-  connection: MainPageConnection
-}
-
-type MainPageConnectionCreated_at {
-  key: DateTime
-  connection: MainPageConnection
-}
-
-type MainPageConnectionUpdated_at {
-  key: DateTime
-  connection: MainPageConnection
-}
-
-type MainPageConnectionSlogan {
-  key: String
-  connection: MainPageConnection
-}
-
-type MainPageConnectionPresentation {
-  key: String
-  connection: MainPageConnection
-}
-
-type MainPageConnectionLink {
-  key: String
-  connection: MainPageConnection
-}
-
-type MainPageConnectionPublished_at {
-  key: DateTime
-  connection: MainPageConnection
-}
-
-input MainPageInput {
-  Slogan: String
-  Presentation: String
-  Link: String
-  bg_image_1: [ID]
-  bg_image_2: [ID]
+input MPageInput {
+  slogan: String
+  description: String
+  image_1: [ID]
+  image_2: [ID]
+  link: String
   published_at: DateTime
   created_by: ID
   updated_by: ID
 }
 
-input editMainPageInput {
-  Slogan: String
-  Presentation: String
-  Link: String
-  bg_image_1: [ID]
-  bg_image_2: [ID]
+input editMPageInput {
+  slogan: String
+  description: String
+  image_1: [ID]
+  image_2: [ID]
+  link: String
   published_at: DateTime
   created_by: ID
   updated_by: ID
 }
 
-input createMainPageInput {
-  data: MainPageInput
+input updateMPageInput {
+  data: editMPageInput
 }
 
-type createMainPagePayload {
-  mainPage: MainPage
+type updateMPagePayload {
+  mPage: MPage
 }
 
-input updateMainPageInput {
-  where: InputID
-  data: editMainPageInput
-}
-
-type updateMainPagePayload {
-  mainPage: MainPage
-}
-
-input deleteMainPageInput {
-  where: InputID
-}
-
-type deleteMainPagePayload {
-  mainPage: MainPage
+type deleteMPagePayload {
+  mPage: MPage
 }
 
 type Test {
@@ -735,7 +666,7 @@ type deleteUserPayload {
   user: UsersPermissionsUser
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | MainPage | MainPageConnection | MainPageAggregator | MainPageGroupBy | MainPageConnectionId | MainPageConnectionCreated_at | MainPageConnectionUpdated_at | MainPageConnectionSlogan | MainPageConnectionPresentation | MainPageConnectionLink | MainPageConnectionPublished_at | createMainPagePayload | updateMainPagePayload | deleteMainPagePayload | Test | TestConnection | TestAggregator | TestGroupBy | TestConnectionId | TestConnectionCreated_at | TestConnectionUpdated_at | TestConnectionMessage | TestConnectionImage | TestConnectionPhoto | TestConnectionPublished_at | createTestPayload | updateTestPayload | deleteTestPayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | MPage | updateMPagePayload | deleteMPagePayload | Test | TestConnection | TestAggregator | TestGroupBy | TestConnectionId | TestConnectionCreated_at | TestConnectionUpdated_at | TestConnectionMessage | TestConnectionImage | TestConnectionPhoto | TestConnectionPublished_at | createTestPayload | updateTestPayload | deleteTestPayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload
 
 input InputID {
   id: ID!
@@ -754,9 +685,7 @@ type AdminUser {
 }
 
 type Query {
-  mainPage(id: ID!, publicationState: PublicationState): MainPage
-  mainPages(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [MainPage]
-  mainPagesConnection(sort: String, limit: Int, start: Int, where: JSON): MainPageConnection
+  mPage(publicationState: PublicationState): MPage
   test(id: ID!, publicationState: PublicationState): Test
   tests(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Test]
   testsConnection(sort: String, limit: Int, start: Int, where: JSON): TestConnection
@@ -776,9 +705,8 @@ type Query {
 }
 
 type Mutation {
-  createMainPage(input: createMainPageInput): createMainPagePayload
-  updateMainPage(input: updateMainPageInput): updateMainPagePayload
-  deleteMainPage(input: deleteMainPageInput): deleteMainPagePayload
+  updateMPage(input: updateMPageInput): updateMPagePayload
+  deleteMPage: deleteMPagePayload
   createTest(input: createTestInput): createTestPayload
   updateTest(input: updateTestInput): updateTestPayload
   deleteTest(input: deleteTestInput): deleteTestPayload

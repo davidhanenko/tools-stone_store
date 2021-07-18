@@ -11,8 +11,9 @@ const HeaderStyles = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 999;
+  z-index: 2;
   .navbar {
+    height: var(--navHeight);
     display: grid;
     grid-template-columns: min-content auto;
     grid-template-areas: 'logo navbar';

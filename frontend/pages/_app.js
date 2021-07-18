@@ -2,7 +2,6 @@ import { ApolloProvider } from '@apollo/client';
 import Router from 'next/router';
 import Page from '../components/Page';
 import withData from '../lib/withData';
-import '../components/Carousel/css/embla.css';
 
 function MyApp({ Component, pageProps, apollo }) {
   return (

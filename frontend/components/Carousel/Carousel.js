@@ -1,13 +1,18 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useEmblaCarousel } from 'embla-carousel/react';
+import Image from 'next/image';
 import { PrevButton, NextButton } from './CarouselButtons';
 import { useRecursiveTimeout } from '../../lib/useRecursiveTimeout';
-import { mediaByIndex } from './media';
+import CarouselStyles from './CarouselStyles';
+// import { mediaByIndex } from './media';
 
-const AUTOPLAY_INTERVAL = 2000;
+const AUTOPLAY_INTERVAL = 3000;
 
-const EmblaCarousel = ({ slides }) => {
-  const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false });
+const EmblaCarousel = ({ slides, mediaByIndex }) => {
+  const [viewportRef, embla] = useEmblaCarousel({
+    loop: true,
+    skipSnaps: false,
+  });
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
 
@@ -52,16 +57,18 @@ const EmblaCarousel = ({ slides }) => {
   }, [play]);
 
   return (
-    <div className="embla">
-      <div className="embla__viewport" ref={viewportRef}>
-        <div className="embla__container">
-          {slides.map((index) => (
-            <div className="embla__slide" key={index}>
-              <div className="embla__slide__inner">
-                <img
-                  className="embla__slide__img"
+    <CarouselStyles>
+      <div className='embla__viewport' ref={viewportRef}>
+        <div className='embla__container'>
+          {slides.map(index => (
+            <div className='embla__slide' key={index}>
+              <div className='embla__slide__inner'>
+                <Image
+                  className='embla__slide__img'
                   src={mediaByIndex(index)}
-                  alt="A cool cat."
+                  objectFit='cover'
+                  layout='fill'
+                  alt=''
                 />
               </div>
             </div>
@@ -70,7 +77,7 @@ const EmblaCarousel = ({ slides }) => {
       </div>
       <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
       <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
-    </div>
+    </CarouselStyles>
   );
 };
 

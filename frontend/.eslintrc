@@ -1,3 +1,5 @@
 {
   "extends": ["wesbos"]
 }
+
+{ "allowShortCircuit": true }
