@@ -10,6 +10,7 @@ import Slide from './Slide';
 const AUTOPLAY_INTERVAL = 3000;
 
 const EmblaCarousel = ({ slides, mediaByIndex }) => {
+  
   const [viewportRef, embla] = useEmblaCarousel({
     loop: true,
     skipSnaps: false,
@@ -71,7 +72,7 @@ const EmblaCarousel = ({ slides, mediaByIndex }) => {
                   layout='fill'
                   alt=''
                 />
-                < Slide index={index} />
+                < Slide index={index}  />
               </div>
             </div>
           ))}

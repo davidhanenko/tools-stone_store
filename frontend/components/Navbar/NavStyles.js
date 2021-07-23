@@ -28,7 +28,7 @@ const NavStyles = styled.div`
 
       ${(props) =>
         props.open &&
-        `grid-auto-flow: row; transform: translate(0, var(--navHeight)); transition: all 0.3s;`};
+        `grid-auto-flow: row; transform: translate(0, var(--navHeight)); transition: all 0.35s;`};
       ${(props) =>
         !props.open &&
         props.width <= 850 &&
