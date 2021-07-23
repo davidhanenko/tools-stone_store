@@ -1,4 +1,5 @@
 import { useQuery } from '@apollo/client';
+import { Parallax } from 'react-scroll-parallax';
 import gql from 'graphql-tag';
 
 import EmblaCarousel from './Carousel/Carousel';
@@ -38,7 +39,12 @@ export default function Main() {
 
   return (
     <div>
-      <EmblaCarousel slides={slides} mediaByIndex={mediaByIndex} />
+      <Parallax y={[-80, 60]}>
+        <EmblaCarousel slides={slides} mediaByIndex={mediaByIndex} />
+      </Parallax>
+      <Parallax y={[-20, 20]}>
+        <EmblaCarousel slides={slides} mediaByIndex={mediaByIndex} />
+      </Parallax>
     </div>
   );
 }

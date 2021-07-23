@@ -7,7 +7,7 @@ import CarouselStyles from './CarouselStyles';
 // import { mediaByIndex } from './media';
 import Slide from './Slide';
 
-const AUTOPLAY_INTERVAL = 3000;
+const AUTOPLAY_INTERVAL = 300000;
 
 const EmblaCarousel = ({ slides, mediaByIndex }) => {
   

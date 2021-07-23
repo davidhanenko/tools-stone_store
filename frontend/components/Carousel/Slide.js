@@ -67,7 +67,7 @@ const SlideStyles = styled.div`
 `;
  
 
-export default function Silde({ index, a }) {
+export default function Silde({ index }) {
 
 const [animation, setAnimation] = useState(false);
 
@@ -86,7 +86,7 @@ const [animation, setAnimation] = useState(false);
     // router.reload(window.location.pathname);
       // router.reload();
       setAnimation(true);
-  }, [{a}]);
+  }, [index]);
   
   // console.log('render');
 
