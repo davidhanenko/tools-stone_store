@@ -13,7 +13,7 @@ export default function Nav() {
     <NavStyles open={navOpen} width={width}>
       <div className="nav-links">
         <Link href="/">Home</Link>
-        <Link href="/about">About</Link>
+        <Link href="/test">About</Link>
         <Link href="/products" passHref>
           <NavDropdown title="products" />
         </Link>

@@ -4,10 +4,9 @@ import Image from 'next/image';
 import { PrevButton, NextButton } from './CarouselButtons';
 import { useRecursiveTimeout } from '../../lib/useRecursiveTimeout';
 import CarouselStyles from './CarouselStyles';
-// import { mediaByIndex } from './media';
 import Slide from './Slide';
 
-const AUTOPLAY_INTERVAL = 300000;
+const AUTOPLAY_INTERVAL = 4000;
 
 const EmblaCarousel = ({ slides, mediaByIndex }) => {
   
@@ -17,6 +16,7 @@ const EmblaCarousel = ({ slides, mediaByIndex }) => {
   });
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
+
 
   const autoplay = useCallback(() => {
     if (!embla) return;
@@ -65,14 +65,7 @@ const EmblaCarousel = ({ slides, mediaByIndex }) => {
           {slides.map(index => (
             <div className='embla__slide' key={index}>
               <div className='embla__slide__inner'>
-                <Image
-                  className='embla__slide__img'
-                  src={mediaByIndex(index)}
-                  objectFit='cover'
-                  layout='fill'
-                  alt=''
-                />
-                < Slide index={index}  />
+               <Slide mediaByIndex={mediaByIndex} index={index} />
               </div>
             </div>
           ))}

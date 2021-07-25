@@ -1,23 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import styled, { keyframes, css } from 'styled-components';
-import { gql, useQuery } from '@apollo/client';
-import { MAIN_PAGE_QUERY } from '../Main';
+import Image from 'next/image';
 import image1 from '../../public/img/pngegg.png'
 
-
-// export const MAIN_PAGE_SLIDE_QUERY = gql`
-//   query MAIN_PAGE_SLIDE_QUERY($id: ID!) {
-//     mainPageSlide(id: $id) {
-//       image_1 {
-//         url
-//       }
-//       image_2 {
-//         url
-//       }
-//     }
-//   }
-// `;
 
 const fadeInR = keyframes`
     0% {
@@ -49,7 +34,8 @@ const animationR = (props) => css`
 
 const SlideStyles = styled.div`
   position: relative;
-
+  z-index: 1;
+  height: 100%;
   img {
     position: absolute;
     width: 20rem;
@@ -65,39 +51,27 @@ const SlideStyles = styled.div`
     animation: ${animationR} 1s;
   }
 `;
+
+
+export default function Silde({mediaByIndex, index}) { 
+
+const [animation, setAnimation] = useState(true);
  
-
-export default function Silde({ index }) {
-
-const [animation, setAnimation] = useState(false);
-
-  // const { data, loading, error } = useQuery(MAIN_PAGE_SLIDE_QUERY, {
-  //   variables: {
-  //     id: index+1
-  //   }
-  // });
-  // if (loading) return <p>Loading...</p>;
-  // if (error) return <p>{error.message}</p>;
-
-  // const {mainPageSlide} = data
-  const router = useRouter();
-
   useEffect(()=> {
-    // router.reload(window.location.pathname);
-      // router.reload();
-      setAnimation(true);
-  }, [index]);
-  
-  // console.log('render');
-
-  
+        setAnimation(true);
+  }, []);
 
   return (
     <SlideStyles a={animation}>
-      {/* <img className='image-1' src={mainPageSlide?.image_1?.url} />
-      <img className='image-2' src={mainPageSlide?.image_2?.url} />  */}
+      <Image
+        className='embla__slide__img'
+        src={mediaByIndex(index)}
+        objectFit='cover'
+        layout='fill'
+        alt=''
+      />
       <img className='image-1' src={image1} />
-      <img className='image-2' src={image1} /> 
+      <img className='image-2' src={image1} />
     </SlideStyles>
   );
 }

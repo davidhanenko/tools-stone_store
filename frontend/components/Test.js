@@ -1,6 +1,7 @@
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import T from './T';
+import Slide from './Carousel/Slide';
 
 export const TEST = gql`
   query TEST {
@@ -29,6 +30,7 @@ export default function Test() {
       {data?.tests.map((t) => (
         <T key={t.id} test={t} />
       ))}
+      <Slide />
     </div>
   );
 }

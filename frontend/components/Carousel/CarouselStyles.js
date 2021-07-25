@@ -38,7 +38,7 @@ const CarouselStyles = styled.div`
   .embla__slide__inner {
     position: relative;
     overflow: hidden;
-   height: 50rem;
+    height: 50rem;
   }
 
   .embla__slide__img {
