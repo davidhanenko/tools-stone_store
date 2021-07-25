@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import styled, { keyframes, css } from 'styled-components';
 import Image from 'next/image';
-import image1 from '../../public/img/pngegg.png'
+
 
 
 const fadeInR = keyframes`
     0% {
-      transform: translate(150%);
+      transform: translate(50%);
       opacity: 0;
     }
     100% {
@@ -36,37 +36,40 @@ const SlideStyles = styled.div`
   position: relative;
   height: 100%;
 
-  .main-images {
+  .image-1 {
     display: inline-block;
+    position: absolute;
+    animation: ${animationL} 1s;
+    left: 20%;
+    top: 10em;
+
     max-width: 300px;
     max-height: 300px;
     @media (max-width: 601px) {
       max-width: 40%;
       max-height: 40%;
     }
-  
-
-  .image-1 {
-    /* position: absolute; */
-    width: 100%;
-    height: 100%;
-    left: 30%;
-    top: 8em;
-    animation: ${animationL} 1s;
   }
   .image-2 {
+    display: inline-block;
     position: absolute;
-    right: 30%;
-    top: 5em;
+    right: 20%;
+    top: 4em;
     animation: ${animationR} 1s;
+
+    max-width: 300px;
+    max-height: 300px;
+    @media (max-width: 601px) {
+      max-width: 40%;
+      max-height: 40%;
+    }
   }
-}
 `;
 
 
 export default function Silde({mediaByIndex, index}) { 
 
-const [animation, setAnimation] = useState(true);
+const [animation, setAnimation] = useState(false);
  
   useEffect(()=> {
         setAnimation(true);
@@ -76,26 +79,16 @@ const [animation, setAnimation] = useState(true);
     <SlideStyles a={animation}>
       <Image
         className='embla__slide__img'
-        src={mediaByIndex(index)}
+        src={mediaByIndex(index)[0]}
         objectFit='cover'
         layout='fill'
         alt=''
       />
-      <div className='main-images'>
-        <Image
-          width={300}
-          height={300}
-          className='image-1'
-          src={image1}
-        />
+      <div className='image-1'>
+        <Image width={300} height={300} src={mediaByIndex(index)[1]} />
       </div>
-      <div className='main-images'>
-        <Image
-          width={300}
-          height={300}
-          className='image-2'
-          src={image1}
-        />
+      <div className='image-2'>
+        <Image width={300} height={300} src={mediaByIndex(index)[2]} />
       </div>
     </SlideStyles>
   );

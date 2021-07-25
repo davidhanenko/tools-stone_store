@@ -6,7 +6,7 @@ import { useRecursiveTimeout } from '../../lib/useRecursiveTimeout';
 import CarouselStyles from './CarouselStyles';
 import Slide from './Slide';
 
-const AUTOPLAY_INTERVAL = 40000;
+const AUTOPLAY_INTERVAL = 5000;
 
 const EmblaCarousel = ({ slides, mediaByIndex }) => {
   
