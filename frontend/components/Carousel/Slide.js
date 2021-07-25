@@ -34,22 +34,33 @@ const animationR = (props) => css`
 
 const SlideStyles = styled.div`
   position: relative;
-  z-index: 1;
   height: 100%;
-  img {
-    position: absolute;
-    width: 20rem;
-  }
+
+  .main-images {
+    display: inline-block;
+    max-width: 300px;
+    max-height: 300px;
+    @media (max-width: 601px) {
+      max-width: 40%;
+      max-height: 40%;
+    }
+  
+
   .image-1 {
+    /* position: absolute; */
+    width: 100%;
+    height: 100%;
     left: 30%;
     top: 8em;
     animation: ${animationL} 1s;
   }
   .image-2 {
+    position: absolute;
     right: 30%;
     top: 5em;
     animation: ${animationR} 1s;
   }
+}
 `;
 
 
@@ -70,8 +81,22 @@ const [animation, setAnimation] = useState(true);
         layout='fill'
         alt=''
       />
-      <img className='image-1' src={image1} />
-      <img className='image-2' src={image1} />
+      <div className='main-images'>
+        <Image
+          width={300}
+          height={300}
+          className='image-1'
+          src={image1}
+        />
+      </div>
+      <div className='main-images'>
+        <Image
+          width={300}
+          height={300}
+          className='image-2'
+          src={image1}
+        />
+      </div>
     </SlideStyles>
   );
 }

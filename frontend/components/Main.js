@@ -4,6 +4,7 @@ import { Parallax } from 'react-scroll-parallax';
 import gql from 'graphql-tag';
 import bg_1 from '../public/img/bg_1.jpg';
 import bg_2 from '../public/img/bg_2.jpg';
+import bg_3 from '../public/img/bg_3.jpg';
 
 import EmblaCarousel from './Carousel/Carousel';
 
@@ -13,7 +14,7 @@ const slides = Array.from(Array(SLIDE_COUNT).keys());
 
 export default function Main() {
   
-const media = [bg_1, bg_2];
+const media = [bg_1, bg_3];
 
   // BG images for main page carousel
   // const media = data?.mainPageSlides.map((el)=> el.bg_image.url);

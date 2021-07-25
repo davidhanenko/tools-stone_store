@@ -7,15 +7,15 @@ module.exports = ({ env }) => ({
       api_secret: env('CLOUDINARY_SECRET'),
     },
     breakpoints: {
-      large: 1000,
-      medium: 750,
-      small: 500,
       xsmall: 320,
     },
     actionOptions: {
       upload: {
+         transformation: {
+             "width": 1920
+          },
         fetch_format: 'auto',
-        quality: 'auto:good',
+        quality: 'auto',
         resource_type: 'auto',
         folder: 'A2Z',
       },
