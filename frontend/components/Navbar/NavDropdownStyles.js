@@ -29,6 +29,9 @@ const DropdownBtnStyles = styled.button`
 const DropdownMenuStyles = styled.div`
   background: var(--lightGrey);
   padding-left: 2rem;
+  transition: opacity 2s;
+  opacity: 1;
+  z-index: 2;
   @media (min-width: 850px) {
     background: var(--offWhite);
     border: 1px solid var(--lightGrey);

@@ -27,7 +27,7 @@ export default function Test() {
   if (error) return <p>Error: {error.message}</p>;
   return (
     <div>
-      {data?.tests.map((t) => (
+      {data?.tests.map(t => (
         <T key={t.id} test={t} />
       ))}
       <Slide />

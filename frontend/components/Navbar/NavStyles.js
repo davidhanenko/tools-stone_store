@@ -19,17 +19,17 @@ const NavStyles = styled.div`
     @media (max-width: 850px) {
       position: fixed;
       gap: 0;
-      top: 0;
+      top: var(--searchHeight);
       right: 0;
       width: 40%;
       min-width: 250px;
       background: var(--offWhite);
       transform: translateX(100%);
-
-      ${(props) =>
+      z-index: 2;
+      ${props =>
         props.open &&
         `grid-auto-flow: row; transform: translate(0, var(--navHeight)); transition: all 0.35s;`};
-      ${(props) =>
+      ${props =>
         !props.open &&
         props.width <= 850 &&
         `grid-auto-flow: row; transform: translateX(100%); transition: 0.35s;`};

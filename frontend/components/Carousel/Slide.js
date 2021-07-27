@@ -16,8 +16,8 @@ const fadeInR = keyframes`
   `;
   const fadeInL = keyframes`
     0% {
-      transform: translate(-150%);
       opacity: 0;
+      transform: translate(-50%);
     }
     100% {
         transform: translate(0%);
@@ -39,9 +39,9 @@ const SlideStyles = styled.div`
   .image-1 {
     display: inline-block;
     position: absolute;
-    animation: ${animationL} 1s;
+    animation: ${animationL} 1.3s;
     left: 20%;
-    top: 10em;
+    top: 10rem;
 
     max-width: 300px;
     max-height: 300px;
@@ -55,7 +55,7 @@ const SlideStyles = styled.div`
     position: absolute;
     right: 20%;
     top: 4em;
-    animation: ${animationR} 1s;
+    animation: ${animationR} 1.3s;
 
     max-width: 300px;
     max-height: 300px;

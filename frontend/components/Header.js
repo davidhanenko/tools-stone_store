@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { NavStateProvider } from '../lib/navState';
@@ -21,6 +22,10 @@ const HeaderStyles = styled.header`
       grid-template-rows: var(--navHeight);
     }
   }
+  .search-scrolled {
+    transition: 2s;
+    display: none;
+  }
 `;
 
 const Logo = styled.h1`
@@ -42,18 +47,23 @@ const Logo = styled.h1`
 `;
 
 export default function Header() {
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    window.onscroll = () => {
+      setOffset(window.pageYOffset);
+    };
+  }, []);
+
   return (
     <NavStateProvider>
       <HeaderStyles>
-        <div className="navbar">
+        <div className='navbar'>
           <Logo>
-            <Link href="/">a2z</Link>
+            <Link href='/'>a2z</Link>
           </Logo>
-          <Nav />
+          <Nav offset={offset} />
         </div>
-        {/* <div className="sub-bar">
-        <Search />
-      </div> */}
       </HeaderStyles>
     </NavStateProvider>
   );

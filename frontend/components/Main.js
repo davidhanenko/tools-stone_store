@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { Parallax } from 'react-scroll-parallax';
 import gql from 'graphql-tag';
-import bg_1 from '../public/img/bg_1.jpg';
+import bg_1 from '../public/img/bg_3.jpg';
 import bg_2 from '../public/img/bg_2.jpg';
 import img_1 from '../public/img/img_1.png';
 import img_2 from '../public/img/img_2.png';
@@ -17,8 +17,6 @@ export default function Main() {
   
 const media = [[bg_1, img_1, img_2 ],[bg_2, img_2, img_3]];
 
-  // BG images for main page carousel
-  // const media = data?.mainPageSlides.map((el)=> el.bg_image.url);
 
   // func from Embla Carousel docs
     const mediaByIndex = index => media[index % media.length];
@@ -32,10 +30,10 @@ const media = [[bg_1, img_1, img_2 ],[bg_2, img_2, img_3]];
       {/* <Parallax y={[-20, 20]}>
        
       </Parallax> */}
-      {/* 
+      
       <Parallax y={[0, 0]}>
         <EmblaCarousel slides={slides} mediaByIndex={mediaByIndex} />
-      </Parallax> */}
+      </Parallax>
     </div>
   );
 }

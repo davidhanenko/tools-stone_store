@@ -11,11 +11,12 @@ import {
 } from './NavDropdownStyles';
 import { useNav } from '../../lib/navState';
 import useWindowDimensions from '../../lib/windowDimensions';
+import { useEffect } from 'react/cjs/react.development';
 
 function DropdownItem({ item }) {
   return (
     <DropdownItemStyles>
-      <a href="#">{item} </a>
+      <a href='#'>{item} </a>
     </DropdownItemStyles>
   );
 }
@@ -24,6 +25,7 @@ const NavDropdown = React.forwardRef(function NavDropdown(props, ref) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { navOpen } = useNav();
   const { width } = useWindowDimensions();
+
   const showDropdown = () => setDropdownOpen(!dropdownOpen);
 
   const mouseEnter = () => {
@@ -34,14 +36,20 @@ const NavDropdown = React.forwardRef(function NavDropdown(props, ref) {
     !navOpen && setDropdownOpen(false);
   };
 
+  useEffect(() => {
+    if (width >= 850) {
+      setDropdownOpen(false);
+    }
+  }, [width]);
+
   return (
     <NavDropdownStyles onMouseOver={mouseEnter} onMouseLeave={mouseLeave}>
-      <div className="dropdown-btns-group">
+      <div className='dropdown-btns-group'>
         <a href={props.href} ref={ref}>
           {props.title}
         </a>
         <DropdownBtnStyles
-          type="button"
+          type='button'
           onClick={showDropdown}
           disabled={!navOpen || width > 850}
         >
@@ -51,14 +59,14 @@ const NavDropdown = React.forwardRef(function NavDropdown(props, ref) {
 
       {dropdownOpen && (
         <DropdownMenuStyles>
-          <DropdownItem item="First link" />
-          <DropdownItem item="Second link" />
-          <DropdownItem item="First link" />
-          <DropdownItem item="Second link" />
-          <DropdownItem item="First link" />
-          <DropdownItem item="Second link" />
-          <DropdownItem item="First link" />
-          <DropdownItem item="Second link" />
+          <DropdownItem item='First link' />
+          <DropdownItem item='Second link' />
+          <DropdownItem item='First link' />
+          <DropdownItem item='Second link' />
+          <DropdownItem item='First link' />
+          <DropdownItem item='Second link' />
+          <DropdownItem item='First link' />
+          <DropdownItem item='Second link' />
         </DropdownMenuStyles>
       )}
     </NavDropdownStyles>
