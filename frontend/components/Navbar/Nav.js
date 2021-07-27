@@ -1,3 +1,4 @@
+import { useEffect } from 'react/cjs/react.development';
 import Link from 'next/link';
 import Hamburger from 'hamburger-react';
 import { useNav } from '../../lib/navState';
@@ -6,9 +7,8 @@ import NavDropdown from './NavDropdown';
 import { NavStyles, NavButtonStyles } from './NavStyles';
 import useWindowDimensions from '../../lib/windowDimensions';
 import Search from './Search';
-import { useEffect } from 'react/cjs/react.development';
 
-export default function Nav({offset}) {
+export default function Nav({ offset }) {
   const { navOpen, toggleNav, closeSideNav } = useNav();
   const { width } = useWindowDimensions();
 
@@ -42,7 +42,7 @@ export default function Nav({offset}) {
           />
         </NavButtonStyles>
       </NavStyles>
-     {<Search offset={offset}/>}
+      {<Search offset={offset} />}
     </>
   );
 }

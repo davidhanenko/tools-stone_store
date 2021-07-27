@@ -23,8 +23,9 @@ const HeaderStyles = styled.header`
     }
   }
   .search-scrolled {
-    transition: 2s;
-    display: none;
+    transition: all 0.5s;
+    opacity: 0;
+    height: 0;
   }
 `;
 

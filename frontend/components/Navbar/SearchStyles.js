@@ -4,8 +4,16 @@ const SearchStyles = styled.div`
   position: absolute;
   display: flex;
   width: 100%;
+  height: var(--searchHeight);
+  opacity: 1;
+  transition: all 0.5s;
   top: var(--navHeight);
-  transition: all 2s;
+  ${props =>
+    props.scroll &&
+    `transition: all 0.5s;
+    opacity: 0;
+    height: 0;`};
+
   .search-icon {
     position: fixed;
     font-size: 3rem;
@@ -14,7 +22,7 @@ const SearchStyles = styled.div`
   }
   input {
     border: 1px solid var(--lightGray);
-    height: var(--searchHeight);
+    height: 100%;
     width: 100%;
     outline: 0;
     padding-left: 3rem;

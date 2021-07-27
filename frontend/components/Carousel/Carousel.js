@@ -9,14 +9,14 @@ import Slide from './Slide';
 const AUTOPLAY_INTERVAL = 5000;
 
 const EmblaCarousel = ({ slides, mediaByIndex }) => {
-  
+  const [animation, setAnimation] = useState(true);
+
   const [viewportRef, embla] = useEmblaCarousel({
     loop: true,
     skipSnaps: false,
   });
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
-
 
   const autoplay = useCallback(() => {
     if (!embla) return;
@@ -58,6 +58,11 @@ const EmblaCarousel = ({ slides, mediaByIndex }) => {
     play();
   }, [play]);
 
+  useEffect(() => {
+    setAnimation(true);
+  }, []);
+
+
   return (
     <CarouselStyles>
       <div className='embla__viewport' ref={viewportRef}>
@@ -65,7 +70,11 @@ const EmblaCarousel = ({ slides, mediaByIndex }) => {
           {slides.map(index => (
             <div className='embla__slide' key={index}>
               <div className='embla__slide__inner'>
-               <Slide mediaByIndex={mediaByIndex} index={index} />
+                <Slide
+                  mediaByIndex={mediaByIndex}
+                  index={index}
+                  a={animation}
+                />
               </div>
             </div>
           ))}

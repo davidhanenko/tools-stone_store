@@ -22,6 +22,7 @@ const fadeInR = keyframes`
     100% {
         transform: translate(0%);
         opacity: 1;
+        left: 20%;
     }
   `;
 
@@ -54,7 +55,7 @@ const SlideStyles = styled.div`
     display: inline-block;
     position: absolute;
     right: 20%;
-    top: 4em;
+    top: 5em;
     animation: ${animationR} 1.3s;
 
     max-width: 300px;
@@ -67,16 +68,17 @@ const SlideStyles = styled.div`
 `;
 
 
-export default function Silde({mediaByIndex, index}) { 
+export default function Silde({mediaByIndex, index, a}) { 
 
-const [animation, setAnimation] = useState(false);
+// const [animation, setAnimation] = useState(true);
  
-  useEffect(()=> {
-        setAnimation(true);
-  }, []);
+  // useEffect(()=> {
+  //       setAnimation(true);
+  // }, []);
+
 
   return (
-    <SlideStyles a={animation}>
+    <SlideStyles a={a}>
       <Image
         className='embla__slide__img'
         src={mediaByIndex(index)[0]}

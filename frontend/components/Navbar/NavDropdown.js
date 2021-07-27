@@ -53,7 +53,7 @@ const NavDropdown = React.forwardRef(function NavDropdown(props, ref) {
           onClick={showDropdown}
           disabled={!navOpen || width > 850}
         >
-          {dropdownOpen && width <= 850 ? <MdExpandLess /> : <MdExpandMore />}
+          {dropdownOpen && navOpen ? <MdExpandLess /> : <MdExpandMore />}
         </DropdownBtnStyles>
       </div>
 
