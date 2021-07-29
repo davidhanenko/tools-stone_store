@@ -1,6 +1,7 @@
 import { ApolloProvider } from '@apollo/client';
 import Router from 'next/router';
 import NProgress from 'nprogress';
+import { ScrollProvider } from '../lib/useScroll';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import '../components/styles/nprogress.css';
 import Page from '../components/Page';
@@ -10,14 +11,15 @@ Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
-
 function MyApp({ Component, pageProps, apollo }) {
   return (
     <ApolloProvider client={apollo}>
       <ParallaxProvider>
-        <Page>
-          <Component {...pageProps} />
-        </Page>
+        <ScrollProvider>
+          <Page>
+            <Component {...pageProps} />
+          </Page>
+        </ScrollProvider>
       </ParallaxProvider>
     </ApolloProvider>
   );

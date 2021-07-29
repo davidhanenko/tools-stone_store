@@ -48,14 +48,6 @@ const Logo = styled.h1`
 `;
 
 export default function Header() {
-  const [offset, setOffset] = useState(0);
-
-  useEffect(() => {
-    window.onscroll = () => {
-      setOffset(window.pageYOffset);
-    };
-  }, []);
-
   return (
     <NavStateProvider>
       <HeaderStyles>
@@ -63,7 +55,7 @@ export default function Header() {
           <Logo>
             <Link href='/'>a2z</Link>
           </Logo>
-          <Nav offset={offset} />
+          <Nav />
         </div>
       </HeaderStyles>
     </NavStateProvider>

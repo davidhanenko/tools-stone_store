@@ -6,11 +6,11 @@ const SearchStyles = styled.div`
   width: 100%;
   height: var(--searchHeight);
   opacity: 1;
-  transition: all 0.5s;
+  transition: all 0.25s;
   top: var(--navHeight);
   ${props =>
     props.scroll &&
-    `transition: all 0.5s;
+    `-webkit-animation:transition: all 0.25s;;
     opacity: 0;
     height: 0;`};
 

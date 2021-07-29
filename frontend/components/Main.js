@@ -8,6 +8,12 @@ import img_1 from '../public/img/img_1.png';
 import img_2 from '../public/img/img_2.png';
 import img_3 from '../public/img/img_3.png';
 import EmblaCarousel from './Carousel/Carousel';
+import styled from 'styled-components';
+
+const MainStyles = styled.div`
+  /* overflow-y: hidden;
+  height: 100%; */
+`;
 
 const SLIDE_COUNT = 2;
 
@@ -21,9 +27,8 @@ const media = [[bg_1, img_1, img_2 ],[bg_2, img_2, img_3]];
   // func from Embla Carousel docs
     const mediaByIndex = index => media[index % media.length];
   
-
   return (
-    <div>
+    <MainStyles>
       <Parallax y={[-80, 50]}>
         <EmblaCarousel slides={slides} mediaByIndex={mediaByIndex} />
       </Parallax>
@@ -34,6 +39,6 @@ const media = [[bg_1, img_1, img_2 ],[bg_2, img_2, img_3]];
       <Parallax y={[0, 0]}>
         <EmblaCarousel slides={slides} mediaByIndex={mediaByIndex} />
       </Parallax>
-    </div>
+    </MainStyles>
   );
 }

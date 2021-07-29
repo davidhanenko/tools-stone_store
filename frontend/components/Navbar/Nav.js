@@ -8,7 +8,7 @@ import { NavStyles, NavButtonStyles } from './NavStyles';
 import useWindowDimensions from '../../lib/windowDimensions';
 import Search from './Search';
 
-export default function Nav({ offset }) {
+export default function Nav() {
   const { navOpen, toggleNav, closeSideNav } = useNav();
   const { width } = useWindowDimensions();
 
@@ -42,7 +42,7 @@ export default function Nav({ offset }) {
           />
         </NavButtonStyles>
       </NavStyles>
-      {<Search offset={offset} />}
+      <Search />
     </>
   );
 }

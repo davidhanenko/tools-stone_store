@@ -1,1 +1,0 @@
-{"ast":null,"code":"import { jsx as _jsx } from \"react/jsx-runtime\";\nimport Test from '../components/Test';\nexport default function TestPage() {\n  return /*#__PURE__*/_jsx(Test, {});\n}","map":null,"metadata":{},"sourceType":"module"}
