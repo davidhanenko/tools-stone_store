@@ -9,7 +9,7 @@ export default function Search({ offset }) {
   const { scrollRef } = useScroll();
 
   const handleScrollPos = () => {
-    if (window.pageYOffset > 100 && window.innerHeight) {
+    if (window.pageYOffset > 10 && window.pageYOffset < window.innerHeight) {
       window.pageYOffset !== scrollRef.current.scrollPos && setIsScroll(true);
 
       setTimeout(() => {
@@ -17,8 +17,6 @@ export default function Search({ offset }) {
         scrollRef.current.scrollPos = window.pageYOffset;
       }, 300);
     }
-
-    console.log(scrollRef.current.scrollPos, window.pageYOffset);
   };
 
   useEffect(() => {

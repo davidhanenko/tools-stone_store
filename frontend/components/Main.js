@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useQuery } from '@apollo/client';
 import { Parallax } from 'react-scroll-parallax';
 import gql from 'graphql-tag';
@@ -24,9 +24,11 @@ export default function Main() {
 const media = [[bg_1, img_1, img_2 ],[bg_2, img_2, img_3]];
 
 
+
   // func from Embla Carousel docs
     const mediaByIndex = index => media[index % media.length];
   
+
   return (
     <MainStyles>
       <Parallax y={[-80, 50]}>

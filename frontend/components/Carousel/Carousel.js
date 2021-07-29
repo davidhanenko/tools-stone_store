@@ -6,10 +6,12 @@ import { useRecursiveTimeout } from '../../lib/useRecursiveTimeout';
 import CarouselStyles from './CarouselStyles';
 import Slide from './Slide';
 
-const AUTOPLAY_INTERVAL = 5000;
+const AUTOPLAY_INTERVAL = 3000;
 
 const EmblaCarousel = ({ slides, mediaByIndex }) => {
   const [animation, setAnimation] = useState(true);
+
+ 
 
   const [viewportRef, embla] = useEmblaCarousel({
     loop: true,
@@ -22,6 +24,7 @@ const EmblaCarousel = ({ slides, mediaByIndex }) => {
     if (!embla) return;
     if (embla.canScrollNext()) {
       embla.scrollNext();
+      setAnimation(true);
     } else {
       embla.scrollTo(0);
     }
@@ -59,9 +62,8 @@ const EmblaCarousel = ({ slides, mediaByIndex }) => {
   }, [play]);
 
   useEffect(() => {
-    setAnimation(true);
-  }, []);
-
+      setAnimation(false);
+  }, [animation]);
 
   return (
     <CarouselStyles>

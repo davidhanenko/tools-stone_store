@@ -6,6 +6,7 @@ const LocalStateProvider = LocalStateContext.Provider;
 function NavStateProvider({ children }) {
   const [navOpen, setNavOpen] = useState(false);
 
+
   function toggleNav() {
     setNavOpen(!navOpen);
   }

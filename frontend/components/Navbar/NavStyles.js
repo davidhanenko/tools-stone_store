@@ -33,6 +33,11 @@ const NavStyles = styled.div`
         !props.open &&
         props.width <= 850 &&
         `grid-auto-flow: row; transform: translateX(100%); transition: 0.35s;`};
+      @media (pointer: coarse) {
+        ${props =>
+          !props.open &&
+          `grid-auto-flow: row; transform: translateX(100%); transition: 0.35s;`};
+      }
     }
   }
   a {

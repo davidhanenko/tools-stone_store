@@ -1,8 +1,5 @@
-import { useState, useEffect } from 'react';
 import styled, { keyframes, css } from 'styled-components';
 import Image from 'next/image';
-
-
 
 const fadeInR = keyframes`
     0% {
@@ -14,7 +11,7 @@ const fadeInR = keyframes`
         opacity: 1;
     }
   `;
-  const fadeInL = keyframes`
+const fadeInL = keyframes`
     0% {
       opacity: 0;
       transform: translate(-50%);
@@ -26,10 +23,10 @@ const fadeInR = keyframes`
     }
   `;
 
-const animationL = (props) => css`
+const animationL = props => css`
   ${props.a && fadeInL}
 `;
-const animationR = (props) => css`
+const animationR = props => css`
   ${props.a && fadeInR}
 `;
 
@@ -40,10 +37,10 @@ const SlideStyles = styled.div`
   .image-1 {
     display: inline-block;
     position: absolute;
-    animation: ${animationL} 1.3s;
     left: 20%;
     top: 10rem;
 
+    animation: ${fadeInL} 1.3s;
     max-width: 300px;
     max-height: 300px;
     @media (max-width: 601px) {
@@ -56,7 +53,7 @@ const SlideStyles = styled.div`
     position: absolute;
     right: 20%;
     top: 5em;
-    animation: ${animationR} 1.3s;
+    animation: ${fadeInR} 1.3s;
 
     max-width: 300px;
     max-height: 300px;
@@ -67,18 +64,11 @@ const SlideStyles = styled.div`
   }
 `;
 
-
-export default function Silde({mediaByIndex, index, a}) { 
-
-// const [animation, setAnimation] = useState(true);
- 
-  // useEffect(()=> {
-  //       setAnimation(true);
-  // }, []);
-
+export default function Silde({ mediaByIndex, index, a }) {
+  console.log('render');
 
   return (
-    <SlideStyles a={a}>
+    <SlideStyles a>
       <Image
         className='embla__slide__img'
         src={mediaByIndex(index)[0]}
@@ -86,10 +76,10 @@ export default function Silde({mediaByIndex, index, a}) {
         layout='fill'
         alt=''
       />
-      <div className='image-1'>
+      <div key={Math.random()} className='image-1'>
         <Image width={300} height={300} src={mediaByIndex(index)[1]} />
       </div>
-      <div className='image-2'>
+      <div key={Math.random()} className='image-2'>
         <Image width={300} height={300} src={mediaByIndex(index)[2]} />
       </div>
     </SlideStyles>
