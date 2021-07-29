@@ -11,8 +11,6 @@ const AUTOPLAY_INTERVAL = 3000;
 const EmblaCarousel = ({ slides, mediaByIndex }) => {
   const [animation, setAnimation] = useState(true);
 
- 
-
   const [viewportRef, embla] = useEmblaCarousel({
     loop: true,
     skipSnaps: false,
@@ -27,6 +25,7 @@ const EmblaCarousel = ({ slides, mediaByIndex }) => {
       setAnimation(true);
     } else {
       embla.scrollTo(0);
+      setAnimation(true);
     }
   }, [embla]);
 
@@ -35,12 +34,14 @@ const EmblaCarousel = ({ slides, mediaByIndex }) => {
   const scrollNext = useCallback(() => {
     if (!embla) return;
     embla.scrollNext();
+    setAnimation(true);
     stop();
   }, [embla, stop]);
 
   const scrollPrev = useCallback(() => {
     if (!embla) return;
     embla.scrollPrev();
+    setAnimation(true);
     stop();
   }, [embla, stop]);
 
@@ -61,9 +62,12 @@ const EmblaCarousel = ({ slides, mediaByIndex }) => {
     play();
   }, [play]);
 
-  useEffect(() => {
-      setAnimation(false);
-  }, [animation]);
+  // useEffect(() => {
+  //   let mounted = true;
+  //   mounted && setAnimation(false);
+  //   return () => (mounted = false);
+  // }, [animation]);
+
 
   return (
     <CarouselStyles>
@@ -72,11 +76,7 @@ const EmblaCarousel = ({ slides, mediaByIndex }) => {
           {slides.map(index => (
             <div className='embla__slide' key={index}>
               <div className='embla__slide__inner'>
-                <Slide
-                  mediaByIndex={mediaByIndex}
-                  index={index}
-                  a={animation}
-                />
+                <Slide mediaByIndex={mediaByIndex} index={index} a={animation} sa={setAnimation} />
               </div>
             </div>
           ))}

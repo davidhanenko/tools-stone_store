@@ -11,8 +11,7 @@ import EmblaCarousel from './Carousel/Carousel';
 import styled from 'styled-components';
 
 const MainStyles = styled.div`
-  /* overflow-y: hidden;
-  height: 100%; */
+
 `;
 
 const SLIDE_COUNT = 2;

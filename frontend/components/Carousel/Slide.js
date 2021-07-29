@@ -1,5 +1,6 @@
 import styled, { keyframes, css } from 'styled-components';
 import Image from 'next/image';
+import { useEffect } from 'react';
 
 const fadeInR = keyframes`
     0% {
@@ -23,12 +24,6 @@ const fadeInL = keyframes`
     }
   `;
 
-const animationL = props => css`
-  ${props.a && fadeInL}
-`;
-const animationR = props => css`
-  ${props.a && fadeInR}
-`;
 
 const SlideStyles = styled.div`
   position: relative;
@@ -64,8 +59,15 @@ const SlideStyles = styled.div`
   }
 `;
 
-export default function Silde({ mediaByIndex, index, a }) {
-  console.log('render');
+export default function Silde({ mediaByIndex, index, a, sa}) {
+
+  
+  useEffect(() => {
+    let mounted = true;
+    mounted && sa(false);
+    return () => (mounted = false);
+  });
+
 
   return (
     <SlideStyles a>
