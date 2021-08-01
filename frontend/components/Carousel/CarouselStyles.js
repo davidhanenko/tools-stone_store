@@ -4,9 +4,6 @@ const CarouselStyles = styled.div`
   position: relative;
   top: var(--navHeight);
   max-width: 1920px;
-  /* margin-left: auto;
-  margin-right: auto; */
-  
 
   .embla__viewport {
     overflow: hidden;
@@ -52,8 +49,8 @@ const CarouselStyles = styled.div`
     max-width: none;
     /* transform: translate(-50%, -50%); */
   }
-
   .embla__button {
+    height: 0;
     outline: 0;
     cursor: pointer;
     background-color: transparent;
@@ -64,11 +61,17 @@ const CarouselStyles = styled.div`
     transform: translateY(-50%);
     border: 0;
     width: 30px;
-    height: 30px;
     justify-content: center;
     align-items: center;
-    fill: #1bcacd;
+    fill: orange;
     padding: 0;
+  }
+  
+  &&:hover {
+    .embla__button {
+      height: 30px;
+      transition: 0.3s;
+    }
   }
 
   .embla__button:disabled {

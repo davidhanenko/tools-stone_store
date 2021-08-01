@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useEmblaCarousel } from 'embla-carousel/react';
-import Image from 'next/image';
+
 import { PrevButton, NextButton } from './CarouselButtons';
 import { useRecursiveTimeout } from '../../lib/useRecursiveTimeout';
 import CarouselStyles from './CarouselStyles';
 import Slide from './Slide';
 
-const AUTOPLAY_INTERVAL = 3000;
+const AUTOPLAY_INTERVAL = 50000;
 
 const EmblaCarousel = ({ slides, mediaByIndex }) => {
-  const [animation, setAnimation] = useState(true);
+  const [animation, setAnimation] = useState(false);
 
   const [viewportRef, embla] = useEmblaCarousel({
     loop: true,
@@ -62,13 +62,6 @@ const EmblaCarousel = ({ slides, mediaByIndex }) => {
     play();
   }, [play]);
 
-  // useEffect(() => {
-  //   let mounted = true;
-  //   mounted && setAnimation(false);
-  //   return () => (mounted = false);
-  // }, [animation]);
-
-
   return (
     <CarouselStyles>
       <div className='embla__viewport' ref={viewportRef}>
@@ -76,7 +69,12 @@ const EmblaCarousel = ({ slides, mediaByIndex }) => {
           {slides.map(index => (
             <div className='embla__slide' key={index}>
               <div className='embla__slide__inner'>
-                <Slide mediaByIndex={mediaByIndex} index={index} a={animation} sa={setAnimation} />
+                <Slide
+                  key={Math.random()}
+                  mediaByIndex={mediaByIndex}
+                  index={index}
+                  setAnimation={setAnimation}
+                />
               </div>
             </div>
           ))}

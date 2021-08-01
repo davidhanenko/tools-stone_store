@@ -10,23 +10,34 @@ import img_3 from '../public/img/img_3.png';
 import EmblaCarousel from './Carousel/Carousel';
 import styled from 'styled-components';
 
-const MainStyles = styled.div`
-
-`;
+const MainStyles = styled.div``;
 
 const SLIDE_COUNT = 2;
 
 const slides = Array.from(Array(SLIDE_COUNT).keys());
 
 export default function Main() {
-  
-const media = [[bg_1, img_1, img_2 ],[bg_2, img_2, img_3]];
-
-
+  const media = [
+    {
+      bg: bg_1,
+      img1: img_1,
+      img2: img_2,
+      btn: 'see products',
+      text1: 'tools and blades',
+      text2: 'for any situation',
+    },
+    {
+      bg: bg_2,
+      img1: img_2,
+      img2: img_3,
+      btn: 'view more',
+      text1: 'tools and blades',
+      text2: 'for any situation',
+    },
+  ];
 
   // func from Embla Carousel docs
-    const mediaByIndex = index => media[index % media.length];
-  
+  const mediaByIndex = index => media[index % media.length];
 
   return (
     <MainStyles>
@@ -36,10 +47,10 @@ const media = [[bg_1, img_1, img_2 ],[bg_2, img_2, img_3]];
       {/* <Parallax y={[-20, 20]}>
        
       </Parallax> */}
-      
-      <Parallax y={[0, 0]}>
+
+      {/* <Parallax y={[0, 0]}>
         <EmblaCarousel slides={slides} mediaByIndex={mediaByIndex} />
-      </Parallax>
+      </Parallax> */}
     </MainStyles>
   );
 }

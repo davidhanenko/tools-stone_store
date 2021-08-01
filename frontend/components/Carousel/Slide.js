@@ -1,88 +1,38 @@
-import styled, { keyframes, css } from 'styled-components';
-import Image from 'next/image';
 import { useEffect } from 'react';
+import Image from 'next/image';
+import { SlideStyles } from './SlideStyles';
 
-const fadeInR = keyframes`
-    0% {
-      transform: translate(50%);
-      opacity: 0;
-    }
-    100% {
-        transform: translate(0%);
-        opacity: 1;
-    }
-  `;
-const fadeInL = keyframes`
-    0% {
-      opacity: 0;
-      transform: translate(-50%);
-    }
-    100% {
-        transform: translate(0%);
-        opacity: 1;
-        left: 20%;
-    }
-  `;
-
-
-const SlideStyles = styled.div`
-  position: relative;
-  height: 100%;
-
-  .image-1 {
-    display: inline-block;
-    position: absolute;
-    left: 20%;
-    top: 10rem;
-
-    animation: ${fadeInL} 1.3s;
-    max-width: 300px;
-    max-height: 300px;
-    @media (max-width: 601px) {
-      max-width: 40%;
-      max-height: 40%;
-    }
-  }
-  .image-2 {
-    display: inline-block;
-    position: absolute;
-    right: 20%;
-    top: 5em;
-    animation: ${fadeInR} 1.3s;
-
-    max-width: 300px;
-    max-height: 300px;
-    @media (max-width: 601px) {
-      max-width: 40%;
-      max-height: 40%;
-    }
-  }
-`;
-
-export default function Silde({ mediaByIndex, index, a, sa}) {
+export default function Silde({ mediaByIndex, index, setAnimation }) {
 
   
   useEffect(() => {
     let mounted = true;
-    mounted && sa(false);
+    mounted && setAnimation(false);
     return () => (mounted = false);
   });
 
 
   return (
-    <SlideStyles a>
+    <SlideStyles>
       <Image
         className='embla__slide__img'
-        src={mediaByIndex(index)[0]}
+        src={mediaByIndex(index).bg}
         objectFit='cover'
         layout='fill'
         alt=''
       />
-      <div key={Math.random()} className='image-1'>
-        <Image width={300} height={300} src={mediaByIndex(index)[1]} />
+      <div className='image-1'>
+        <Image width={200} height={200} src={mediaByIndex(index).img1} />
       </div>
-      <div key={Math.random()} className='image-2'>
-        <Image width={300} height={300} src={mediaByIndex(index)[2]} />
+      <div className='image-2'>
+        <Image width={200} height={200} src={mediaByIndex(index).img2} />
+      </div>
+      <button className='slide-btn' type='button'>
+        {mediaByIndex(index).btn}
+      </button>
+      <div className='slide-header'>
+        <h2 className='main-text'>{mediaByIndex(index).text1}</h2>
+        <h4 className='text'>{mediaByIndex(index).text2}</h4>
       </div>
     </SlideStyles>
   );
