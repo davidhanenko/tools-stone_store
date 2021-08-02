@@ -22,17 +22,19 @@ export default function Main() {
       bg: bg_1,
       img1: img_1,
       img2: img_2,
-      btn: 'see products',
-      text1: 'tools and blades',
-      text2: 'for any situation',
+      btn: 'view more',
+      text1: 'tools, blades & more',
+      text2: 'to get it done',
+      link: 'tools',
     },
     {
       bg: bg_2,
       img1: img_2,
       img2: img_3,
       btn: 'view more',
-      text1: 'tools and blades',
+      text1: 'stone, tile & sinks',
       text2: 'for any situation',
+      link: '/products',
     },
   ];
 

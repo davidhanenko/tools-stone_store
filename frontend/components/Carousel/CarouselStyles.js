@@ -39,7 +39,7 @@ const CarouselStyles = styled.div`
   }
 
   .embla__slide__img {
-    position: absolute;
+    position: relative;
     display: block;
     top: 50%;
     left: 50%;
@@ -50,7 +50,6 @@ const CarouselStyles = styled.div`
     /* transform: translate(-50%, -50%); */
   }
   .embla__button {
-    height: 0;
     outline: 0;
     cursor: pointer;
     background-color: transparent;
@@ -61,16 +60,20 @@ const CarouselStyles = styled.div`
     transform: translateY(-50%);
     border: 0;
     width: 30px;
+    height: 30px;
+    transition: all 0.3s;
     justify-content: center;
     align-items: center;
-    fill: orange;
+    fill: transparent;
+    transform: scale(0);
     padding: 0;
   }
-  
+
   &&:hover {
     .embla__button {
-      height: 30px;
-      transition: 0.3s;
+      transform: scale(1);
+      transition: all 0.3s;
+      fill: orange;
     }
   }
 
@@ -90,6 +93,42 @@ const CarouselStyles = styled.div`
 
   .embla__button--next {
     right: 27px;
+  }
+
+  .embla__dots {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    position: relative;
+    bottom: 3rem;
+  }
+
+  .embla__dot {
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    width: 30px;
+    height: 30px;
+    margin-right: 7.5px;
+    margin-left: 7.5px;
+    display: flex;
+    align-items: center;
+  }
+
+  .embla__dot:after {
+    background-color: #efefef;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    content: '';
+  }
+
+  .embla__dot.is-selected:after {
+    background-color: orange;
+    opacity: 1;
   }
 `;
 

@@ -11,7 +11,7 @@ import {
 } from './NavDropdownStyles';
 import { useNav } from '../../lib/navState';
 import useWindowDimensions from '../../lib/windowDimensions';
-import { useEffect } from 'react/cjs/react.development';
+import { useEffect } from 'react';
 
 function DropdownItem({ item }) {
   return (

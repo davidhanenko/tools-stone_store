@@ -1,4 +1,4 @@
-import { useEffect } from 'react/cjs/react.development';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import Hamburger from 'hamburger-react';
 import { useNav } from '../../lib/navState';
@@ -18,20 +18,36 @@ export default function Nav() {
     }
   }, [width]);
 
+  const LinkBtn = React.forwardRef(({ onClick, href, title }, ref) => {
+    return (
+      <a href={href} onClick={() => closeSideNav()} ref={ref}>
+        {title}
+      </a>
+    );
+  });
+
   return (
     <>
       <NavStyles open={navOpen} width={width}>
         <div className='nav-links'>
-          <Link href='/'>Home</Link>
-          <Link href='/test'>About</Link>
+          <Link href='/' passHref>
+            <LinkBtn title={'home'} />
+          </Link>
+          <Link href='/test' passHref>
+            <LinkBtn title={'about'} />
+          </Link>
           <Link href='/products' passHref>
             <NavDropdown title='products' />
           </Link>
           <Link href='/tools' passHref>
             <NavDropdown title='tools' />
           </Link>
-          <Link href='/contacts'>Contact</Link>
-          <Link href='/gallery'>Gallery</Link>
+          <Link href='/contacts' passHref>
+            <LinkBtn title={'contact'} />
+          </Link>
+          <Link href='/gallery' passHref>
+            <LinkBtn title={'gallery'} />
+          </Link>
         </div>
         <NavButtonStyles>
           <Hamburger

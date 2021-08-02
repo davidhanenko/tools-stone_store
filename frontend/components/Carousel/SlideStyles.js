@@ -3,7 +3,6 @@ import styled, { keyframes } from 'styled-components';
 const fadeInR = keyframes`
     0% {
       transform: translate(50%);
-      opacity: 0;
     }
     100% {
         transform: translate(0%);
@@ -12,7 +11,6 @@ const fadeInR = keyframes`
   `;
 const fadeInL = keyframes`
     0% {
-      opacity: 0;
       transform: translate(-50%);
     }
     100% {
@@ -24,7 +22,17 @@ const fadeInL = keyframes`
 const btnAnimation = keyframes`
     0% {
       transform: scaleY(0);
-      opacity: 0; 
+    
+    }
+    100% {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+  `;
+
+const slideHeaderAnimation = keyframes`
+    0% {
+      transform: scaleY(0);.
     }
     100% {
       transform: scaleY(1);
@@ -39,12 +47,16 @@ const SlideStyles = styled.div`
   .image-1 {
     display: inline-block;
     position: absolute;
-    left: 30%;
+    left: 25%;
     top: 18em;
-
-    animation: ${fadeInL} 1.3s;
+    opacity: 0;
     max-width: 200px;
     max-height: 200px;
+
+    animation: ${fadeInL} 1.3s;
+    animation-delay: 0.2s;
+    animation-fill-mode: forwards;
+
     @media (max-width: 601px) {
       max-width: 40%;
       max-height: 40%;
@@ -53,12 +65,16 @@ const SlideStyles = styled.div`
   .image-2 {
     display: inline-block;
     position: absolute;
-    right: 30%;
+    right: 25%;
     top: 8em;
-    animation: ${fadeInR} 1.3s;
-
+    opacity: 0;
     max-width: 200px;
     max-height: 200px;
+
+    animation: ${fadeInR} 1.3s;
+    animation-delay: 0.2s;
+    animation-fill-mode: forwards;
+
     @media (max-width: 601px) {
       max-width: 40%;
       max-height: 40%;
@@ -69,19 +85,23 @@ const SlideStyles = styled.div`
     position: absolute;
     bottom: 20%;
     right: 15%;
+    display: block;
+    cursor: pointer;
+    opacity: 0;
     background: orange;
     color: white;
     border-radius: 2rem;
     border: none;
+    z-index: 2;
     text-transform: uppercase;
     padding: 1rem 1.5rem;
     transform-origin: bottom;
-
-    -webkit-animation: ${btnAnimation} 1s;
-    -moz-animation: ${btnAnimation} 1s;
-    -ms-animation: ${btnAnimation} 1s;
-    -o-animation: ${btnAnimation} 1s;
     animation: ${btnAnimation} 1s;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    ${props =>
+      props.h &&
+      `color: red;`};
   }
 
   .slide-header {
@@ -90,18 +110,26 @@ const SlideStyles = styled.div`
     background: #00000050;
     padding: 3rem;
     padding-left: 5rem;
+    height: 18rem;
 
     h2 {
       margin: 0;
       font-size: 3.5rem;
       color: white;
       text-transform: uppercase;
+      transform-origin: top;
+      animation: ${slideHeaderAnimation} 1s;
     }
     h4 {
       font-size: 2rem;
       color: white;
       margin: 0;
       text-transform: uppercase;
+      opacity: 0;
+      transform-origin: top;
+      animation: 1s ${slideHeaderAnimation};
+      animation-delay: 0.6s;
+      animation-fill-mode: forwards;
     }
   }
 `;
