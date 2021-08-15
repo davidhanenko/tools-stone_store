@@ -99,9 +99,9 @@ const SlideStyles = styled.div`
     animation: ${btnAnimation} 1s;
     animation-delay: 0.5s;
     animation-fill-mode: forwards;
-    ${props =>
-      props.h &&
-      `color: red;`};
+    &:hover {
+      color: red;
+    }
   }
 
   .slide-header {

@@ -43,6 +43,9 @@ export default function Nav() {
           <Link href='/tools' passHref>
             <NavDropdown title='tools' />
           </Link>
+          <Link href='/sinks' passHref>
+            <NavDropdown title='sinks' />
+          </Link>
           <Link href='/contacts' passHref>
             <LinkBtn title={'contact'} />
           </Link>
@@ -50,7 +53,7 @@ export default function Nav() {
             <LinkBtn title={'gallery'} />
           </Link>
         </div>
-        <NavButtonStyles onClick={()=> setNavBtnClick(true)}>
+        <NavButtonStyles onClick={() => setNavBtnClick(true)}>
           <Hamburger
             hideOutline={false}
             label='Show menu'

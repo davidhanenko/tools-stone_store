@@ -11,9 +11,7 @@ const EmblaCarousel = ({ slides, mediaByIndex }) => {
   // animation state
   const [animation, setAnimation] = useState(false);
   // key state for slides
-  const [carouselRandomNumber, setCarouselRandomNumber] = useState(
-    Math.random()
-  );
+  const [carouselRandomNumber, setCarouselRandomNumber] = useState();
 
   const [viewportRef, embla] = useEmblaCarousel({
     loop: true,
@@ -42,8 +40,8 @@ const EmblaCarousel = ({ slides, mediaByIndex }) => {
 
   const scrollNext = useCallback(() => {
     if (!embla) return;
-    embla.scrollNext();
     setCarouselRandomNumber(Math.random());
+    embla.scrollNext();
     stop();
   }, [embla, stop]);
 
@@ -54,10 +52,10 @@ const EmblaCarousel = ({ slides, mediaByIndex }) => {
     stop();
   }, [embla, stop]);
 
-  const scrollTo = useCallback(
-    index => embla && embla.scrollTo(index),
-    [embla]
-  );
+  const scrollTo = useCallback(index => {
+    embla && embla.scrollTo(index), [embla];
+    setCarouselRandomNumber(Math.random());
+  });
 
   const onSelect = useCallback(() => {
     if (!embla) return;
@@ -71,13 +69,12 @@ const EmblaCarousel = ({ slides, mediaByIndex }) => {
     onSelect();
     setScrollSnaps(embla.scrollSnapList());
     embla.on('select', onSelect);
-    // embla.on('pointerDown', stop);
+    embla.on('pointerDown', stop);
   }, [embla, onSelect, setScrollSnaps, stop]);
 
   useEffect(() => {
     play();
   }, [play]);
-
 
   return (
     <CarouselStyles>
@@ -91,7 +88,7 @@ const EmblaCarousel = ({ slides, mediaByIndex }) => {
                   mediaByIndex={mediaByIndex}
                   index={index}
                   setAnimation={setAnimation}
-                  a={animation}
+                  animation={animation}
                 />
               </div>
             </div>

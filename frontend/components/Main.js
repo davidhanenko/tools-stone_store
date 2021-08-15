@@ -3,37 +3,51 @@ import { useQuery } from '@apollo/client';
 import { Parallax } from 'react-scroll-parallax';
 import Product from './Product';
 import gql from 'graphql-tag';
-import bg_1 from '../public/img/bg_3.jpg';
+import bg_1 from '../public/img/bg_1.jpg';
 import bg_2 from '../public/img/bg_2.jpg';
+import bg_3 from '../public/img/bg_3.jpg';
 import img_1 from '../public/img/img_1.png';
 import img_2 from '../public/img/img_2.png';
 import img_3 from '../public/img/img_3.png';
+import sink_1 from '../public/img/sink-1.png';
+import sink_2 from '../public/img/sink-2.png';
+import tool_1 from '../public/img/tool-1.png';
+import tool_2 from '../public/img/tool-2.png';
 import EmblaCarousel from './Carousel/Carousel';
 import styled from 'styled-components';
 
 const MainStyles = styled.div``;
 
-const SLIDE_COUNT = 2;
+const SLIDE_COUNT = 3;
 
 const slides = Array.from(Array(SLIDE_COUNT).keys());
 
 export default function Main() {
   const media = [
     {
-      bg: bg_1,
-      img1: img_1,
-      img2: img_2,
+      bg: bg_2,
+      img1: tool_1,
+      img2: tool_2,
       btn: 'view more',
       text1: 'tools, blades & more',
       text2: 'to get it done',
       link: 'tools',
     },
     {
-      bg: bg_2,
+      bg: bg_1,
+      img1: sink_1,
+      img2: sink_2,
+      btn: 'view more',
+      text1: 'sinks',
+      text2: 'all kinds and sizes',
+      link: '/products',
+    },
+    {
+      bg: bg_3,
       img1: img_2,
       img2: img_3,
       btn: 'view more',
-      text1: 'sinks',
+      text1: 'products',
       text2: 'for any situation',
       link: '/products',
     },
