@@ -5,6 +5,7 @@ const LocalStateProvider = LocalStateContext.Provider;
 
 function NavStateProvider({ children }) {
   const [navOpen, setNavOpen] = useState(false);
+  const [navBtnClick, setNavBtnClick] = useState(false);
 
 
   function toggleNav() {
@@ -21,7 +22,15 @@ function NavStateProvider({ children }) {
 
   return (
     <LocalStateProvider
-      value={{ navOpen, setNavOpen, toggleNav, openSideNav, closeSideNav }}
+      value={{
+        navOpen,
+        setNavOpen,
+        toggleNav,
+        openSideNav,
+        closeSideNav,
+        navBtnClick,
+        setNavBtnClick,
+      }}
     >
       {children}
     </LocalStateProvider>

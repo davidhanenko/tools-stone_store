@@ -9,7 +9,8 @@ import useWindowDimensions from '../../lib/windowDimensions';
 import Search from './Search';
 
 export default function Nav() {
-  const { navOpen, toggleNav, closeSideNav } = useNav();
+  const { navOpen, toggleNav, closeSideNav, navBtnClick, setNavBtnClick } =
+    useNav();
   const { width } = useWindowDimensions();
 
   useEffect(() => {
@@ -28,7 +29,7 @@ export default function Nav() {
 
   return (
     <>
-      <NavStyles open={navOpen} width={width}>
+      <NavStyles open={navOpen} btnClick={navBtnClick} width={width}>
         <div className='nav-links'>
           <Link href='/' passHref>
             <LinkBtn title={'home'} />
@@ -49,7 +50,7 @@ export default function Nav() {
             <LinkBtn title={'gallery'} />
           </Link>
         </div>
-        <NavButtonStyles>
+        <NavButtonStyles onClick={()=> setNavBtnClick(true)}>
           <Hamburger
             hideOutline={false}
             label='Show menu'

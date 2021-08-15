@@ -7,7 +7,7 @@ export default function Silde({ mediaByIndex, index, setAnimation, a }) {
 
   const Btn = React.forwardRef(({ onClick, href, title }, ref) => {
     return (
-      <a href={href}  ref={ref}>
+      <a href={href} ref={ref}>
         {title}
       </a>
     );
@@ -51,3 +51,9 @@ export default function Silde({ mediaByIndex, index, setAnimation, a }) {
     </SlideStyles>
   );
 }
+
+
+
+// [ carouselRandomNumber, setCarouselRandomNumber ] = setState(Math.random())
+
+// key = {`${i}_${carouselRandomNumber}`

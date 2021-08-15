@@ -5,10 +5,15 @@ import { useRecursiveTimeout } from '../../lib/useRecursiveTimeout';
 import CarouselStyles from './CarouselStyles';
 import Slide from './Slide';
 
-const AUTOPLAY_INTERVAL = 500000;
+const AUTOPLAY_INTERVAL = 4000;
 
 const EmblaCarousel = ({ slides, mediaByIndex }) => {
+  // animation state
   const [animation, setAnimation] = useState(false);
+  // key state for slides
+  const [carouselRandomNumber, setCarouselRandomNumber] = useState(
+    Math.random()
+  );
 
   const [viewportRef, embla] = useEmblaCarousel({
     loop: true,
@@ -24,9 +29,11 @@ const EmblaCarousel = ({ slides, mediaByIndex }) => {
     if (!embla) return;
     if (embla.canScrollNext()) {
       embla.scrollNext();
+      setCarouselRandomNumber(Math.random());
       setAnimation(true);
     } else {
       embla.scrollTo(0);
+      setCarouselRandomNumber(Math.random());
       setAnimation(true);
     }
   }, [embla]);
@@ -36,14 +43,14 @@ const EmblaCarousel = ({ slides, mediaByIndex }) => {
   const scrollNext = useCallback(() => {
     if (!embla) return;
     embla.scrollNext();
-    // setAnimation(true);
+    setCarouselRandomNumber(Math.random());
     stop();
   }, [embla, stop]);
 
   const scrollPrev = useCallback(() => {
     if (!embla) return;
+    setCarouselRandomNumber(Math.random());
     embla.scrollPrev();
-    // setAnimation(true);
     stop();
   }, [embla, stop]);
 
@@ -64,7 +71,7 @@ const EmblaCarousel = ({ slides, mediaByIndex }) => {
     onSelect();
     setScrollSnaps(embla.scrollSnapList());
     embla.on('select', onSelect);
-    embla.on('pointerDown', stop);
+    // embla.on('pointerDown', stop);
   }, [embla, onSelect, setScrollSnaps, stop]);
 
   useEffect(() => {
@@ -80,7 +87,7 @@ const EmblaCarousel = ({ slides, mediaByIndex }) => {
             <div className='embla__slide' key={index}>
               <div className='embla__slide__inner'>
                 <Slide
-                  key={Math.random()}
+                  key={`${index}_${carouselRandomNumber}`}
                   mediaByIndex={mediaByIndex}
                   index={index}
                   setAnimation={setAnimation}

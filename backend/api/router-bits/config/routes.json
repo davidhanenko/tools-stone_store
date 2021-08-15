@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/router-bits",
+      "handler": "router-bits.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/router-bits/count",
+      "handler": "router-bits.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/router-bits/:id",
+      "handler": "router-bits.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/router-bits",
+      "handler": "router-bits.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/router-bits/:id",
+      "handler": "router-bits.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/router-bits/:id",
+      "handler": "router-bits.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

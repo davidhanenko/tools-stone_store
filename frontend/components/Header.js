@@ -40,7 +40,7 @@ const Logo = styled.h1`
   z-index: 2;
   transform: skew(-7deg);
   a {
-    color: orange;
+    color: blue;
     text-transform: uppercase;
     text-decoration: none;
     padding: 0.5rem 1rem;

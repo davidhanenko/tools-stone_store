@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useQuery } from '@apollo/client';
 import { Parallax } from 'react-scroll-parallax';
+import Product from './Product';
 import gql from 'graphql-tag';
 import bg_1 from '../public/img/bg_3.jpg';
 import bg_2 from '../public/img/bg_2.jpg';
@@ -32,7 +33,7 @@ export default function Main() {
       img1: img_2,
       img2: img_3,
       btn: 'view more',
-      text1: 'stone, tile & sinks',
+      text1: 'sinks',
       text2: 'for any situation',
       link: '/products',
     },
@@ -46,11 +47,15 @@ export default function Main() {
       <Parallax y={[-80, 50]}>
         <EmblaCarousel slides={slides} mediaByIndex={mediaByIndex} />
       </Parallax>
-      {/* <Parallax y={[-20, 20]}>
-       
-      </Parallax> */}
+      <Parallax y={[-20, 20]}>
+        <Product />
+      </Parallax>
 
       {/* <Parallax y={[0, 0]}>
+        <EmblaCarousel slides={slides} mediaByIndex={mediaByIndex} />
+      </Parallax>
+
+      <Parallax y={[0, 0]}>
         <EmblaCarousel slides={slides} mediaByIndex={mediaByIndex} />
       </Parallax> */}
     </MainStyles>
