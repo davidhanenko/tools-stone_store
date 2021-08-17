@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_single_categories",
+  "info": {
+    "name": "Product single category"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "d": {
+      "type": "string"
+    }
+  }
+}

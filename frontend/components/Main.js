@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useQuery } from '@apollo/client';
 import { Parallax } from 'react-scroll-parallax';
-import Product from './Product';
+import Product from './Products/Product';
 import gql from 'graphql-tag';
 import bg_1 from '../public/img/bg_1.jpg';
 import bg_2 from '../public/img/bg_2.jpg';

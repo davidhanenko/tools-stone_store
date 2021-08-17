@@ -1,4 +1,3 @@
-import { useRef, useContext } from 'react/';
 import { useEffect, useState } from 'react';
 import { SearchStyles } from './SearchStyles';
 import { MdSearch } from 'react-icons/md';
@@ -10,7 +9,9 @@ export default function Search({ offset }) {
 
   const handleScrollPos = () => {
     if (window.pageYOffset > 10 && window.pageYOffset < window.innerHeight) {
-      window.pageYOffset !== scrollRef.current.scrollPos && setIsScroll(true);
+      window.pageYOffset !== scrollRef.current.scrollPos &&
+        window.pageYOffset - scrollRef.current.scrollPos > 100 &&
+        setIsScroll(true);
 
       setTimeout(() => {
         setIsScroll(false);

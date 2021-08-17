@@ -41,58 +41,6 @@ type UserPermissionsPasswordPayload {
   ok: Boolean!
 }
 
-type MPage {
-  id: ID!
-  created_at: DateTime!
-  updated_at: DateTime!
-  slogan: String
-  description: String
-  link: String
-  published_at: DateTime
-  image_1(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
-  image_2(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
-  subimage_1_1(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
-  subimage_1_2(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
-}
-
-input MPageInput {
-  slogan: String
-  description: String
-  image_1: [ID]
-  image_2: [ID]
-  link: String
-  subimage_1_1: [ID]
-  subimage_1_2: [ID]
-  published_at: DateTime
-  created_by: ID
-  updated_by: ID
-}
-
-input editMPageInput {
-  slogan: String
-  description: String
-  image_1: [ID]
-  image_2: [ID]
-  link: String
-  subimage_1_1: [ID]
-  subimage_1_2: [ID]
-  published_at: DateTime
-  created_by: ID
-  updated_by: ID
-}
-
-input updateMPageInput {
-  data: editMPageInput
-}
-
-type updateMPagePayload {
-  mPage: MPage
-}
-
-type deleteMPagePayload {
-  mPage: MPage
-}
-
 type MainPageSlide {
   id: ID!
   created_at: DateTime!
@@ -220,131 +168,317 @@ type deleteMainPageSlidePayload {
   mainPageSlide: MainPageSlide
 }
 
-enum ENUM_ROUTERBITS_SIZES {
-  s1
-  s2
-  s3
-}
-
-type RouterBits {
+type ProductCategory {
   id: ID!
   created_at: DateTime!
   updated_at: DateTime!
-  Price: String
-  sizes: ENUM_ROUTERBITS_SIZES
-  Description: String
-  name: String
+  d: String
   published_at: DateTime
-  image(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
-type RouterBitsConnection {
-  values: [RouterBits]
-  groupBy: RouterBitsGroupBy
-  aggregate: RouterBitsAggregator
+type ProductCategoryConnection {
+  values: [ProductCategory]
+  groupBy: ProductCategoryGroupBy
+  aggregate: ProductCategoryAggregator
 }
 
-type RouterBitsAggregator {
+type ProductCategoryAggregator {
   count: Int
   totalCount: Int
 }
 
-type RouterBitsGroupBy {
-  id: [RouterBitsConnectionId]
-  created_at: [RouterBitsConnectionCreated_at]
-  updated_at: [RouterBitsConnectionUpdated_at]
-  Price: [RouterBitsConnectionPrice]
-  sizes: [RouterBitsConnectionSizes]
-  Description: [RouterBitsConnectionDescription]
-  name: [RouterBitsConnectionName]
-  published_at: [RouterBitsConnectionPublished_at]
+type ProductCategoryGroupBy {
+  id: [ProductCategoryConnectionId]
+  created_at: [ProductCategoryConnectionCreated_at]
+  updated_at: [ProductCategoryConnectionUpdated_at]
+  d: [ProductCategoryConnectionD]
+  published_at: [ProductCategoryConnectionPublished_at]
 }
 
-type RouterBitsConnectionId {
+type ProductCategoryConnectionId {
   key: ID
-  connection: RouterBitsConnection
+  connection: ProductCategoryConnection
 }
 
-type RouterBitsConnectionCreated_at {
+type ProductCategoryConnectionCreated_at {
   key: DateTime
-  connection: RouterBitsConnection
+  connection: ProductCategoryConnection
 }
 
-type RouterBitsConnectionUpdated_at {
+type ProductCategoryConnectionUpdated_at {
   key: DateTime
-  connection: RouterBitsConnection
+  connection: ProductCategoryConnection
 }
 
-type RouterBitsConnectionPrice {
+type ProductCategoryConnectionD {
   key: String
-  connection: RouterBitsConnection
+  connection: ProductCategoryConnection
 }
 
-type RouterBitsConnectionSizes {
-  key: String
-  connection: RouterBitsConnection
-}
-
-type RouterBitsConnectionDescription {
-  key: String
-  connection: RouterBitsConnection
-}
-
-type RouterBitsConnectionName {
-  key: String
-  connection: RouterBitsConnection
-}
-
-type RouterBitsConnectionPublished_at {
+type ProductCategoryConnectionPublished_at {
   key: DateTime
-  connection: RouterBitsConnection
+  connection: ProductCategoryConnection
 }
 
-input RouterBitInput {
-  Price: String
-  sizes: ENUM_ROUTERBITS_SIZES
-  Description: String
-  image: [ID]
-  name: String
+input ProductCategoryInput {
+  d: String
   published_at: DateTime
   created_by: ID
   updated_by: ID
 }
 
-input editRouterBitInput {
-  Price: String
-  sizes: ENUM_ROUTERBITS_SIZES
-  Description: String
-  image: [ID]
-  name: String
+input editProductCategoryInput {
+  d: String
   published_at: DateTime
   created_by: ID
   updated_by: ID
 }
 
-input createRouterBitInput {
-  data: RouterBitInput
+input createProductCategoryInput {
+  data: ProductCategoryInput
 }
 
-type createRouterBitPayload {
-  routerBit: RouterBits
+type createProductCategoryPayload {
+  productCategory: ProductCategory
 }
 
-input updateRouterBitInput {
+input updateProductCategoryInput {
   where: InputID
-  data: editRouterBitInput
+  data: editProductCategoryInput
 }
 
-type updateRouterBitPayload {
-  routerBit: RouterBits
+type updateProductCategoryPayload {
+  productCategory: ProductCategory
 }
 
-input deleteRouterBitInput {
+input deleteProductCategoryInput {
   where: InputID
 }
 
-type deleteRouterBitPayload {
-  routerBit: RouterBits
+type deleteProductCategoryPayload {
+  productCategory: ProductCategory
+}
+
+type ProductSingleCategory {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  d: String
+  published_at: DateTime
+}
+
+type ProductSingleCategoryConnection {
+  values: [ProductSingleCategory]
+  groupBy: ProductSingleCategoryGroupBy
+  aggregate: ProductSingleCategoryAggregator
+}
+
+type ProductSingleCategoryAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ProductSingleCategoryGroupBy {
+  id: [ProductSingleCategoryConnectionId]
+  created_at: [ProductSingleCategoryConnectionCreated_at]
+  updated_at: [ProductSingleCategoryConnectionUpdated_at]
+  d: [ProductSingleCategoryConnectionD]
+  published_at: [ProductSingleCategoryConnectionPublished_at]
+}
+
+type ProductSingleCategoryConnectionId {
+  key: ID
+  connection: ProductSingleCategoryConnection
+}
+
+type ProductSingleCategoryConnectionCreated_at {
+  key: DateTime
+  connection: ProductSingleCategoryConnection
+}
+
+type ProductSingleCategoryConnectionUpdated_at {
+  key: DateTime
+  connection: ProductSingleCategoryConnection
+}
+
+type ProductSingleCategoryConnectionD {
+  key: String
+  connection: ProductSingleCategoryConnection
+}
+
+type ProductSingleCategoryConnectionPublished_at {
+  key: DateTime
+  connection: ProductSingleCategoryConnection
+}
+
+input ProductSingleCategoryInput {
+  d: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editProductSingleCategoryInput {
+  d: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createProductSingleCategoryInput {
+  data: ProductSingleCategoryInput
+}
+
+type createProductSingleCategoryPayload {
+  productSingleCategory: ProductSingleCategory
+}
+
+input updateProductSingleCategoryInput {
+  where: InputID
+  data: editProductSingleCategoryInput
+}
+
+type updateProductSingleCategoryPayload {
+  productSingleCategory: ProductSingleCategory
+}
+
+input deleteProductSingleCategoryInput {
+  where: InputID
+}
+
+type deleteProductSingleCategoryPayload {
+  productSingleCategory: ProductSingleCategory
+}
+
+type Products {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  d: String
+  published_at: DateTime
+}
+
+type ProductsConnection {
+  values: [Products]
+  groupBy: ProductsGroupBy
+  aggregate: ProductsAggregator
+}
+
+type ProductsAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ProductsGroupBy {
+  id: [ProductsConnectionId]
+  created_at: [ProductsConnectionCreated_at]
+  updated_at: [ProductsConnectionUpdated_at]
+  d: [ProductsConnectionD]
+  published_at: [ProductsConnectionPublished_at]
+}
+
+type ProductsConnectionId {
+  key: ID
+  connection: ProductsConnection
+}
+
+type ProductsConnectionCreated_at {
+  key: DateTime
+  connection: ProductsConnection
+}
+
+type ProductsConnectionUpdated_at {
+  key: DateTime
+  connection: ProductsConnection
+}
+
+type ProductsConnectionD {
+  key: String
+  connection: ProductsConnection
+}
+
+type ProductsConnectionPublished_at {
+  key: DateTime
+  connection: ProductsConnection
+}
+
+input ProductInput {
+  d: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editProductInput {
+  d: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createProductInput {
+  data: ProductInput
+}
+
+type createProductPayload {
+  product: Products
+}
+
+input updateProductInput {
+  where: InputID
+  data: editProductInput
+}
+
+type updateProductPayload {
+  product: Products
+}
+
+input deleteProductInput {
+  where: InputID
+}
+
+type deleteProductPayload {
+  product: Products
+}
+
+type SingleProduct {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String
+  price: Int
+  image: UploadFile
+  published_at: DateTime
+}
+
+input SingleProductInput {
+  name: String
+  price: Int
+  image: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editSingleProductInput {
+  name: String
+  price: Int
+  image: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input updateSingleProductInput {
+  data: editSingleProductInput
+}
+
+type updateSingleProductPayload {
+  singleProduct: SingleProduct
+}
+
+type deleteSingleProductPayload {
+  singleProduct: SingleProduct
 }
 
 type Test {
@@ -926,7 +1060,7 @@ type deleteUserPayload {
   user: UsersPermissionsUser
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | MPage | updateMPagePayload | deleteMPagePayload | MainPageSlide | MainPageSlideConnection | MainPageSlideAggregator | MainPageSlideGroupBy | MainPageSlideConnectionId | MainPageSlideConnectionCreated_at | MainPageSlideConnectionUpdated_at | MainPageSlideConnectionSlogan | MainPageSlideConnectionDescription | MainPageSlideConnectionBg_image | MainPageSlideConnectionImage_1 | MainPageSlideConnectionImage_2 | MainPageSlideConnectionPublished_at | createMainPageSlidePayload | updateMainPageSlidePayload | deleteMainPageSlidePayload | RouterBits | RouterBitsConnection | RouterBitsAggregator | RouterBitsGroupBy | RouterBitsConnectionId | RouterBitsConnectionCreated_at | RouterBitsConnectionUpdated_at | RouterBitsConnectionPrice | RouterBitsConnectionSizes | RouterBitsConnectionDescription | RouterBitsConnectionName | RouterBitsConnectionPublished_at | createRouterBitPayload | updateRouterBitPayload | deleteRouterBitPayload | Test | TestConnection | TestAggregator | TestGroupBy | TestConnectionId | TestConnectionCreated_at | TestConnectionUpdated_at | TestConnectionMessage | TestConnectionImage | TestConnectionPhoto | TestConnectionPublished_at | createTestPayload | updateTestPayload | deleteTestPayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | MainPageSlide | MainPageSlideConnection | MainPageSlideAggregator | MainPageSlideGroupBy | MainPageSlideConnectionId | MainPageSlideConnectionCreated_at | MainPageSlideConnectionUpdated_at | MainPageSlideConnectionSlogan | MainPageSlideConnectionDescription | MainPageSlideConnectionBg_image | MainPageSlideConnectionImage_1 | MainPageSlideConnectionImage_2 | MainPageSlideConnectionPublished_at | createMainPageSlidePayload | updateMainPageSlidePayload | deleteMainPageSlidePayload | ProductCategory | ProductCategoryConnection | ProductCategoryAggregator | ProductCategoryGroupBy | ProductCategoryConnectionId | ProductCategoryConnectionCreated_at | ProductCategoryConnectionUpdated_at | ProductCategoryConnectionD | ProductCategoryConnectionPublished_at | createProductCategoryPayload | updateProductCategoryPayload | deleteProductCategoryPayload | ProductSingleCategory | ProductSingleCategoryConnection | ProductSingleCategoryAggregator | ProductSingleCategoryGroupBy | ProductSingleCategoryConnectionId | ProductSingleCategoryConnectionCreated_at | ProductSingleCategoryConnectionUpdated_at | ProductSingleCategoryConnectionD | ProductSingleCategoryConnectionPublished_at | createProductSingleCategoryPayload | updateProductSingleCategoryPayload | deleteProductSingleCategoryPayload | Products | ProductsConnection | ProductsAggregator | ProductsGroupBy | ProductsConnectionId | ProductsConnectionCreated_at | ProductsConnectionUpdated_at | ProductsConnectionD | ProductsConnectionPublished_at | createProductPayload | updateProductPayload | deleteProductPayload | SingleProduct | updateSingleProductPayload | deleteSingleProductPayload | Test | TestConnection | TestAggregator | TestGroupBy | TestConnectionId | TestConnectionCreated_at | TestConnectionUpdated_at | TestConnectionMessage | TestConnectionImage | TestConnectionPhoto | TestConnectionPublished_at | createTestPayload | updateTestPayload | deleteTestPayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload
 
 input InputID {
   id: ID!
@@ -945,13 +1079,19 @@ type AdminUser {
 }
 
 type Query {
-  mPage(publicationState: PublicationState): MPage
   mainPageSlide(id: ID!, publicationState: PublicationState): MainPageSlide
   mainPageSlides(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [MainPageSlide]
   mainPageSlidesConnection(sort: String, limit: Int, start: Int, where: JSON): MainPageSlideConnection
-  routerBit(id: ID!, publicationState: PublicationState): RouterBits
-  routerBits(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [RouterBits]
-  routerBitsConnection(sort: String, limit: Int, start: Int, where: JSON): RouterBitsConnection
+  productCategory(id: ID!, publicationState: PublicationState): ProductCategory
+  productCategories(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [ProductCategory]
+  productCategoriesConnection(sort: String, limit: Int, start: Int, where: JSON): ProductCategoryConnection
+  productSingleCategory(id: ID!, publicationState: PublicationState): ProductSingleCategory
+  productSingleCategories(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [ProductSingleCategory]
+  productSingleCategoriesConnection(sort: String, limit: Int, start: Int, where: JSON): ProductSingleCategoryConnection
+  product(id: ID!, publicationState: PublicationState): Products
+  products(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Products]
+  productsConnection(sort: String, limit: Int, start: Int, where: JSON): ProductsConnection
+  singleProduct(publicationState: PublicationState): SingleProduct
   test(id: ID!, publicationState: PublicationState): Test
   tests(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Test]
   testsConnection(sort: String, limit: Int, start: Int, where: JSON): TestConnection
@@ -971,14 +1111,20 @@ type Query {
 }
 
 type Mutation {
-  updateMPage(input: updateMPageInput): updateMPagePayload
-  deleteMPage: deleteMPagePayload
   createMainPageSlide(input: createMainPageSlideInput): createMainPageSlidePayload
   updateMainPageSlide(input: updateMainPageSlideInput): updateMainPageSlidePayload
   deleteMainPageSlide(input: deleteMainPageSlideInput): deleteMainPageSlidePayload
-  createRouterBit(input: createRouterBitInput): createRouterBitPayload
-  updateRouterBit(input: updateRouterBitInput): updateRouterBitPayload
-  deleteRouterBit(input: deleteRouterBitInput): deleteRouterBitPayload
+  createProductCategory(input: createProductCategoryInput): createProductCategoryPayload
+  updateProductCategory(input: updateProductCategoryInput): updateProductCategoryPayload
+  deleteProductCategory(input: deleteProductCategoryInput): deleteProductCategoryPayload
+  createProductSingleCategory(input: createProductSingleCategoryInput): createProductSingleCategoryPayload
+  updateProductSingleCategory(input: updateProductSingleCategoryInput): updateProductSingleCategoryPayload
+  deleteProductSingleCategory(input: deleteProductSingleCategoryInput): deleteProductSingleCategoryPayload
+  createProduct(input: createProductInput): createProductPayload
+  updateProduct(input: updateProductInput): updateProductPayload
+  deleteProduct(input: deleteProductInput): deleteProductPayload
+  updateSingleProduct(input: updateSingleProductInput): updateSingleProductPayload
+  deleteSingleProduct: deleteSingleProductPayload
   createTest(input: createTestInput): createTestPayload
   updateTest(input: updateTestInput): updateTestPayload
   deleteTest(input: deleteTestInput): deleteTestPayload

@@ -22,6 +22,8 @@ export default function Silde({
     return () => (mounted = false);
   }, [animation]);
 
+  console.log('render');
+
   return (
     <SlideStyles>
       <Image
@@ -50,3 +52,5 @@ export default function Silde({
     </SlideStyles>
   );
 }
+
+// https://stackoverflow.com/questions/62257837/how-can-i-disable-cache-on-a-specific-page-only-in-next-js

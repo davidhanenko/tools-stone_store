@@ -70,6 +70,8 @@ const EmblaCarousel = ({ slides, mediaByIndex }) => {
     setScrollSnaps(embla.scrollSnapList());
     embla.on('select', onSelect);
     embla.on('pointerDown', stop);
+
+    // try to return if Embla don't
   }, [embla, onSelect, setScrollSnaps, stop]);
 
   useEffect(() => {
@@ -84,7 +86,9 @@ const EmblaCarousel = ({ slides, mediaByIndex }) => {
             <div className='embla__slide' key={index}>
               <div className='embla__slide__inner'>
                 <Slide
-                  key={`${index}_${carouselRandomNumber}`}
+                  key={`${index}+${
+                    selectedIndex === index ? carouselRandomNumber : index
+                  }`}
                   mediaByIndex={mediaByIndex}
                   index={index}
                   setAnimation={setAnimation}
@@ -109,5 +113,7 @@ const EmblaCarousel = ({ slides, mediaByIndex }) => {
     </CarouselStyles>
   );
 };
+
+// `${index}+${selectedIndex === index ? carouselRandomNumber : index}`;
 
 export default EmblaCarousel;
