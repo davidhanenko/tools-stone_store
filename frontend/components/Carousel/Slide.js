@@ -22,7 +22,6 @@ export default function Silde({
     return () => (mounted = false);
   }, [animation]);
 
-  console.log('render');
 
   return (
     <SlideStyles>

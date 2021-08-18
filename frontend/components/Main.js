@@ -15,6 +15,7 @@ import tool_1 from '../public/img/tool-1.png';
 import tool_2 from '../public/img/tool-2.png';
 import EmblaCarousel from './Carousel/Carousel';
 import styled from 'styled-components';
+import ProductsCategories from './Products/ProductCategories';
 
 const MainStyles = styled.div``;
 
@@ -64,7 +65,7 @@ export default function Main() {
       <Parallax y={[-20, 20]}>
         <Product />
       </Parallax>
-
+      <ProductsCategories />
       {/* <Parallax y={[0, 0]}>
         <EmblaCarousel slides={slides} mediaByIndex={mediaByIndex} />
       </Parallax>

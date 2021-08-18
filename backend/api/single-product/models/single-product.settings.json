@@ -1,8 +1,9 @@
 {
-  "kind": "singleType",
+  "kind": "collectionType",
   "collectionName": "single_products",
   "info": {
-    "name": "single product"
+    "name": "Single Product",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -11,14 +12,14 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "Name": {
       "type": "string"
     },
     "price": {
       "type": "integer"
     },
     "image": {
-      "model": "file",
+      "collection": "file",
       "via": "related",
       "allowedTypes": [
         "images",
