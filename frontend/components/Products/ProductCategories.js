@@ -7,27 +7,28 @@ import img from '../../public/img/img_2.png';
 import styled from 'styled-components';
 
 const PRODUCT_CATEGORY = gql`
-  query PRODUCT_CATEGORY($start: Int = 0, $limit: Int = 1) {
+  query PRODUCT_CATEGORY {
     products {
       id
       category
-      single_products(start: $start, limit: $limit) {
-        id
-        Name
-        image {
-          url
+      products_sub_categories {
+        single_products {
+          id
+          name
+          image {
+            url
+          }
         }
       }
     }
   }
 `;
 
-console.log();
-
 export default function ProductsCategories({}) {
   const { data, error, loading } = useQuery(PRODUCT_CATEGORY);
 
   console.log(data);
+
   return (
     <>
       <h1>Products</h1>
@@ -35,11 +36,20 @@ export default function ProductsCategories({}) {
         <div key={c.id}>
           <h2>{c.category}</h2>
 
-          <Image
+          <img
+            src={
+              c?.products_sub_categories[0]?.single_products[0]?.image[0]?.url
+            }
+            alt=''
+          />
+
+          {/* <Image
             width={300}
             height={300}
-            src={c?.single_products[0].image[0].url}
-          />
+            src={
+              c?.products_sub_categories[1]?.single_products[1]?.image[0]?.url
+            }
+          /> */}
         </div>
       ))}
     </>

@@ -62,9 +62,9 @@ export default function Main() {
       <Parallax y={[-80, 50]}>
         <EmblaCarousel slides={slides} mediaByIndex={mediaByIndex} />
       </Parallax>
-      <Parallax y={[-20, 20]}>
+      {/* <Parallax y={[-20, 20]}>
         <Product />
-      </Parallax>
+      </Parallax> */}
       <ProductsCategories />
       {/* <Parallax y={[0, 0]}>
         <EmblaCarousel slides={slides} mediaByIndex={mediaByIndex} />

@@ -5,10 +5,12 @@ import { useScroll } from '../../lib/useScroll';
 
 export default function Search({ offset }) {
   const [isScroll, setIsScroll] = useState(false);
+
   const { scrollRef } = useScroll();
 
   const handleScrollPos = () => {
     if (window.pageYOffset > 10 && window.pageYOffset < window.innerHeight) {
+      
       window.pageYOffset !== scrollRef.current.scrollPos &&
         window.pageYOffset - scrollRef.current.scrollPos > 100 &&
         setIsScroll(true);

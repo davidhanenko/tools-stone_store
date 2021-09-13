@@ -168,13 +168,125 @@ type deleteMainPageSlidePayload {
   mainPageSlide: MainPageSlide
 }
 
+type ProductsSubCategory {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  subcategory: String
+  product: Products
+  single_product: SingleProduct
+  published_at: DateTime
+  single_products(sort: String, limit: Int, start: Int, where: JSON): [SingleProduct]
+}
+
+type ProductsSubCategoryConnection {
+  values: [ProductsSubCategory]
+  groupBy: ProductsSubCategoryGroupBy
+  aggregate: ProductsSubCategoryAggregator
+}
+
+type ProductsSubCategoryAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ProductsSubCategoryGroupBy {
+  id: [ProductsSubCategoryConnectionId]
+  created_at: [ProductsSubCategoryConnectionCreated_at]
+  updated_at: [ProductsSubCategoryConnectionUpdated_at]
+  subcategory: [ProductsSubCategoryConnectionSubcategory]
+  product: [ProductsSubCategoryConnectionProduct]
+  single_product: [ProductsSubCategoryConnectionSingle_product]
+  published_at: [ProductsSubCategoryConnectionPublished_at]
+}
+
+type ProductsSubCategoryConnectionId {
+  key: ID
+  connection: ProductsSubCategoryConnection
+}
+
+type ProductsSubCategoryConnectionCreated_at {
+  key: DateTime
+  connection: ProductsSubCategoryConnection
+}
+
+type ProductsSubCategoryConnectionUpdated_at {
+  key: DateTime
+  connection: ProductsSubCategoryConnection
+}
+
+type ProductsSubCategoryConnectionSubcategory {
+  key: String
+  connection: ProductsSubCategoryConnection
+}
+
+type ProductsSubCategoryConnectionProduct {
+  key: ID
+  connection: ProductsSubCategoryConnection
+}
+
+type ProductsSubCategoryConnectionSingle_product {
+  key: ID
+  connection: ProductsSubCategoryConnection
+}
+
+type ProductsSubCategoryConnectionPublished_at {
+  key: DateTime
+  connection: ProductsSubCategoryConnection
+}
+
+input ProductsSubCategoryInput {
+  subcategory: String
+  single_products: [ID]
+  product: ID
+  single_product: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editProductsSubCategoryInput {
+  subcategory: String
+  single_products: [ID]
+  product: ID
+  single_product: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createProductsSubCategoryInput {
+  data: ProductsSubCategoryInput
+}
+
+type createProductsSubCategoryPayload {
+  productsSubCategory: ProductsSubCategory
+}
+
+input updateProductsSubCategoryInput {
+  where: InputID
+  data: editProductsSubCategoryInput
+}
+
+type updateProductsSubCategoryPayload {
+  productsSubCategory: ProductsSubCategory
+}
+
+input deleteProductsSubCategoryInput {
+  where: InputID
+}
+
+type deleteProductsSubCategoryPayload {
+  productsSubCategory: ProductsSubCategory
+}
+
 type Products {
   id: ID!
   created_at: DateTime!
   updated_at: DateTime!
   category: String
   published_at: DateTime
-  single_products(sort: String, limit: Int, start: Int, where: JSON): [SingleProduct]
+  products_sub_categories(sort: String, limit: Int, start: Int, where: JSON): [ProductsSubCategory]
 }
 
 type ProductsConnection {
@@ -223,7 +335,7 @@ type ProductsConnectionPublished_at {
 
 input ProductInput {
   category: String
-  single_products: [ID]
+  products_sub_categories: [ID]
   published_at: DateTime
   created_by: ID
   updated_by: ID
@@ -231,7 +343,7 @@ input ProductInput {
 
 input editProductInput {
   category: String
-  single_products: [ID]
+  products_sub_categories: [ID]
   published_at: DateTime
   created_by: ID
   updated_by: ID
@@ -266,8 +378,9 @@ type SingleProduct {
   id: ID!
   created_at: DateTime!
   updated_at: DateTime!
-  Name: String
+  name: String
   price: Int
+  products_sub_category: ProductsSubCategory
   published_at: DateTime
   image(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
@@ -307,8 +420,9 @@ type SingleProductGroupBy {
   id: [SingleProductConnectionId]
   created_at: [SingleProductConnectionCreated_at]
   updated_at: [SingleProductConnectionUpdated_at]
-  Name: [SingleProductConnectionName]
+  name: [SingleProductConnectionName]
   price: [SingleProductConnectionPrice]
+  products_sub_category: [SingleProductConnectionProducts_sub_category]
   published_at: [SingleProductConnectionPublished_at]
 }
 
@@ -337,24 +451,31 @@ type SingleProductConnectionPrice {
   connection: SingleProductConnection
 }
 
+type SingleProductConnectionProducts_sub_category {
+  key: ID
+  connection: SingleProductConnection
+}
+
 type SingleProductConnectionPublished_at {
   key: DateTime
   connection: SingleProductConnection
 }
 
 input SingleProductInput {
-  Name: String
+  name: String
   price: Int
   image: [ID]
+  products_sub_category: ID
   published_at: DateTime
   created_by: ID
   updated_by: ID
 }
 
 input editSingleProductInput {
-  Name: String
+  name: String
   price: Int
   image: [ID]
+  products_sub_category: ID
   published_at: DateTime
   created_by: ID
   updated_by: ID
@@ -964,7 +1085,7 @@ type deleteUserPayload {
   user: UsersPermissionsUser
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | MainPageSlide | MainPageSlideConnection | MainPageSlideAggregator | MainPageSlideGroupBy | MainPageSlideConnectionId | MainPageSlideConnectionCreated_at | MainPageSlideConnectionUpdated_at | MainPageSlideConnectionSlogan | MainPageSlideConnectionDescription | MainPageSlideConnectionBg_image | MainPageSlideConnectionImage_1 | MainPageSlideConnectionImage_2 | MainPageSlideConnectionPublished_at | createMainPageSlidePayload | updateMainPageSlidePayload | deleteMainPageSlidePayload | Products | ProductsConnection | ProductsAggregator | ProductsGroupBy | ProductsConnectionId | ProductsConnectionCreated_at | ProductsConnectionUpdated_at | ProductsConnectionCategory | ProductsConnectionPublished_at | createProductPayload | updateProductPayload | deleteProductPayload | SingleProduct | SingleProductConnection | SingleProductAggregator | SingleProductAggregatorSum | SingleProductAggregatorAvg | SingleProductAggregatorMin | SingleProductAggregatorMax | SingleProductGroupBy | SingleProductConnectionId | SingleProductConnectionCreated_at | SingleProductConnectionUpdated_at | SingleProductConnectionName | SingleProductConnectionPrice | SingleProductConnectionPublished_at | createSingleProductPayload | updateSingleProductPayload | deleteSingleProductPayload | Test | TestConnection | TestAggregator | TestGroupBy | TestConnectionId | TestConnectionCreated_at | TestConnectionUpdated_at | TestConnectionMessage | TestConnectionImage | TestConnectionPhoto | TestConnectionPublished_at | createTestPayload | updateTestPayload | deleteTestPayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | MainPageSlide | MainPageSlideConnection | MainPageSlideAggregator | MainPageSlideGroupBy | MainPageSlideConnectionId | MainPageSlideConnectionCreated_at | MainPageSlideConnectionUpdated_at | MainPageSlideConnectionSlogan | MainPageSlideConnectionDescription | MainPageSlideConnectionBg_image | MainPageSlideConnectionImage_1 | MainPageSlideConnectionImage_2 | MainPageSlideConnectionPublished_at | createMainPageSlidePayload | updateMainPageSlidePayload | deleteMainPageSlidePayload | ProductsSubCategory | ProductsSubCategoryConnection | ProductsSubCategoryAggregator | ProductsSubCategoryGroupBy | ProductsSubCategoryConnectionId | ProductsSubCategoryConnectionCreated_at | ProductsSubCategoryConnectionUpdated_at | ProductsSubCategoryConnectionSubcategory | ProductsSubCategoryConnectionProduct | ProductsSubCategoryConnectionSingle_product | ProductsSubCategoryConnectionPublished_at | createProductsSubCategoryPayload | updateProductsSubCategoryPayload | deleteProductsSubCategoryPayload | Products | ProductsConnection | ProductsAggregator | ProductsGroupBy | ProductsConnectionId | ProductsConnectionCreated_at | ProductsConnectionUpdated_at | ProductsConnectionCategory | ProductsConnectionPublished_at | createProductPayload | updateProductPayload | deleteProductPayload | SingleProduct | SingleProductConnection | SingleProductAggregator | SingleProductAggregatorSum | SingleProductAggregatorAvg | SingleProductAggregatorMin | SingleProductAggregatorMax | SingleProductGroupBy | SingleProductConnectionId | SingleProductConnectionCreated_at | SingleProductConnectionUpdated_at | SingleProductConnectionName | SingleProductConnectionPrice | SingleProductConnectionProducts_sub_category | SingleProductConnectionPublished_at | createSingleProductPayload | updateSingleProductPayload | deleteSingleProductPayload | Test | TestConnection | TestAggregator | TestGroupBy | TestConnectionId | TestConnectionCreated_at | TestConnectionUpdated_at | TestConnectionMessage | TestConnectionImage | TestConnectionPhoto | TestConnectionPublished_at | createTestPayload | updateTestPayload | deleteTestPayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload
 
 input InputID {
   id: ID!
@@ -986,6 +1107,9 @@ type Query {
   mainPageSlide(id: ID!, publicationState: PublicationState): MainPageSlide
   mainPageSlides(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [MainPageSlide]
   mainPageSlidesConnection(sort: String, limit: Int, start: Int, where: JSON): MainPageSlideConnection
+  productsSubCategory(id: ID!, publicationState: PublicationState): ProductsSubCategory
+  productsSubCategories(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [ProductsSubCategory]
+  productsSubCategoriesConnection(sort: String, limit: Int, start: Int, where: JSON): ProductsSubCategoryConnection
   product(id: ID!, publicationState: PublicationState): Products
   products(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Products]
   productsConnection(sort: String, limit: Int, start: Int, where: JSON): ProductsConnection
@@ -1014,6 +1138,9 @@ type Mutation {
   createMainPageSlide(input: createMainPageSlideInput): createMainPageSlidePayload
   updateMainPageSlide(input: updateMainPageSlideInput): updateMainPageSlidePayload
   deleteMainPageSlide(input: deleteMainPageSlideInput): deleteMainPageSlidePayload
+  createProductsSubCategory(input: createProductsSubCategoryInput): createProductsSubCategoryPayload
+  updateProductsSubCategory(input: updateProductsSubCategoryInput): updateProductsSubCategoryPayload
+  deleteProductsSubCategory(input: deleteProductsSubCategoryInput): deleteProductsSubCategoryPayload
   createProduct(input: createProductInput): createProductPayload
   updateProduct(input: updateProductInput): updateProductPayload
   deleteProduct(input: deleteProductInput): deleteProductPayload

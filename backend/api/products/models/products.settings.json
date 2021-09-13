@@ -15,8 +15,8 @@
     "category": {
       "type": "string"
     },
-    "single_products": {
-      "collection": "single-product"
+    "products_sub_categories": {
+      "collection": "products-sub-category"
     }
   }
 }
