@@ -12,11 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "category": {
+    "product_title": {
       "type": "string"
     },
-    "products_sub_categories": {
-      "collection": "products-sub-category"
+    "product_categories": {
+      "collection": "product-category"
     }
   }
 }

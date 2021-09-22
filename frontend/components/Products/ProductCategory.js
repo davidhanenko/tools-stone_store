@@ -16,7 +16,7 @@ const ProductStyles = styled.div`
 export default function ProductsCategory({}) {
   return (
     <ProductStyles>
-      <Image className='img' src={img} width={400} height={400} alt='' />
+      {/* <Image className='img' src={img} width={400} height={400} alt='' /> */}
       <h3>Category</h3>
     </ProductStyles>
   );
