@@ -29,6 +29,9 @@ const ProductsMainPageStyles = styled.section`
     background: none;
     font-size: 4rem;
     color: blue;
+    &:hover {
+      color: lightblue;
+    }
   }
 
   .icon-arrow-right {
@@ -40,19 +43,34 @@ const ProductsMainPageStyles = styled.section`
     background: none;
     font-size: 4rem;
     color: blue;
+    &:hover {
+      color: lightblue;
+    }
   }
 `;
 
 const ProductMainPageStyles = styled.div`
-  .flex-item {
+position: relative;
+
+h3 {
+  position: absolute;
+  top: 40%;
+  z-index: 2;
+  font-size: 3rem;
+  font-weight: 400;
+  color: blue;
+}
+
+  .product-item {
     flex: 0 0 auto;
     overflow: auto;
     white-space: nowrap;
+    padding: 2rem;
   }
-  img {
-    max-width: 300px;
-    max-height: 300px;
-  }
+  /* .product-image {
+    max-width: 250px;
+    max-height: 250px;
+  } */
 `;
 
 export { ProductsMainPageStyles, ProductMainPageStyles };

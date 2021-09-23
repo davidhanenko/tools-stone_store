@@ -35,10 +35,13 @@ function ProductMainPage({ product }) {
   return (
     <ProductMainPageStyles>
       <h3>{product.product_title}</h3>
-      <div className='flex-item'>
-        <img
+      <div className='product-item'>
+        <Image
+          className='product-image'
           src={product.product_categories[0]?.single_products[0]?.image?.url}
-          alt=''
+          width={300}
+          height={300}
+          layout='fixed'
         />
       </div>
     </ProductMainPageStyles>
@@ -52,7 +55,6 @@ export default function ProductsMainPage({}) {
 
   // horizontal scroll for products
   const scrollRef = useRef();
-
 
   const handleHorizontalScroll = direction => {
     if (direction === 'left') {
