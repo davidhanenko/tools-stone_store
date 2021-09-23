@@ -53,7 +53,6 @@ export default function ProductsMainPage({}) {
   // horizontal scroll for products
   const scrollRef = useRef();
 
-  console.log(scrollRef);
 
   const handleHorizontalScroll = direction => {
     if (direction === 'left') {
