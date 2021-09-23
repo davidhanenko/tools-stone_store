@@ -13,7 +13,7 @@ const ProductStyles = styled.div`
   }
 `;
 
-export default function products({}) {
+export default function Products({}) {
   return (
     <ProductStyles>
       <Image
