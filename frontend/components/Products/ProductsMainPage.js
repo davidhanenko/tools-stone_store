@@ -1,16 +1,11 @@
 import gql from 'graphql-tag';
 
 import { useQuery } from '@apollo/client';
-import { useRef } from 'react';
-
-import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
-
 import Image from 'next/image';
 
-import {
-  ProductMainPageStyles,
-  ProductsMainPageStyles,
-} from './ProductsMainPageStyles';
+import ServicesSlider from '../sliders/services-slider/ServicesSlider';
+
+import { ProductsMainPageStyles } from './ProductsMainPageStyles';
 
 const PRODUCTS = gql`
   query PRODUCTS {
@@ -31,61 +26,51 @@ const PRODUCTS = gql`
   }
 `;
 
-function ProductMainPage({ product }) {
-  return (
-    <ProductMainPageStyles>
-      <h3>{product.product_title}</h3>
-      <div className='product-item'>
-        <Image
-          className='product-image'
-          src={product.product_categories[0]?.single_products[0]?.image?.url}
-          width={300}
-          height={300}
-          layout='fixed'
-        />
-      </div>
-    </ProductMainPageStyles>
-  );
-}
+// function ProductMainPage({ product, r }) {
+
+//   return (
+//     <ProductMainPageStyles ref={r}>
+//       <h3>{product.product_title}</h3>
+
+//       {/* <div className='product-item'>
+//         <Image
+//           className='product-image'
+//           src={product.product_categories[0]?.single_products[0]?.image?.url}
+//           width={300}
+//           height={300}
+//           layout='responsive'
+//           // objectFit='cover'
+//         />
+//       </div> */}
+//     </ProductMainPageStyles>
+//   );
+// }
 
 export default function ProductsMainPage({}) {
   const { data, error, loading } = useQuery(PRODUCTS);
 
-  // console.log(data);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
-  // horizontal scroll for products
-  const scrollRef = useRef();
+  const SLIDE_COUNT = data?.products?.length;
 
-  const handleHorizontalScroll = direction => {
-    if (direction === 'left') {
-      scrollRef ? (scrollRef.current.scrollLeft -= 300) : null;
-    } else {
-      scrollRef ? (scrollRef.current.scrollLeft += 300) : null;
-    }
-  };
+  const slides = Array.from(Array(SLIDE_COUNT).keys());
+
+  // func from Embla Carousel docs
+  const mediaByIndex = index => data?.products[index % data?.products.length];
+
 
   return (
     <ProductsMainPageStyles>
       <h2>Products</h2>
-      <button
-        className='icon-arrow-left'
-        onClick={() => handleHorizontalScroll('left')}
-      >
-        <MdKeyboardArrowLeft />
-      </button>
 
-      <div className='products_main-page' ref={scrollRef}>
+      <ServicesSlider slides={slides} mediaByIndex={mediaByIndex} />
+
+      {/* <div className='products_main-page'>
         {data?.products.map(product => (
-          <ProductMainPage key={product.id} product={product} />
+          <ProductMainPage r={scrollRef} key={product.id} product={product} />
         ))}
-      </div>
-
-      <button
-        className='icon-arrow-right'
-        onClick={() => handleHorizontalScroll('right')}
-      >
-        <MdKeyboardArrowRight />
-      </button>
+      </div> */}
     </ProductsMainPageStyles>
   );
 }
