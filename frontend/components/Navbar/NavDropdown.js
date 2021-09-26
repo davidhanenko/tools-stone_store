@@ -59,14 +59,7 @@ const NavDropdown = React.forwardRef(function NavDropdown(props, ref) {
 
       {dropdownOpen && (
         <DropdownMenuStyles>
-          <DropdownItem item='First link' />
-          <DropdownItem item='Second link' />
-          <DropdownItem item='First link' />
-          <DropdownItem item='Second link' />
-          <DropdownItem item='First link' />
-          <DropdownItem item='Second link' />
-          <DropdownItem item='First link' />
-          <DropdownItem item='Second link' />
+          <DropdownItem item='123'></DropdownItem>
         </DropdownMenuStyles>
       )}
     </NavDropdownStyles>

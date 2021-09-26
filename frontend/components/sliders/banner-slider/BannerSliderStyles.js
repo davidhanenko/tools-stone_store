@@ -64,16 +64,17 @@ const BannerSliderStyles = styled.div`
     transition: all 0.3s;
     justify-content: center;
     align-items: center;
-    fill: transparent;
     transform: scale(0);
+    fill: transparent;
+    transition: all 0.3s;
     padding: 0;
   }
 
-  &&:hover {
+  &:hover {
     .embla__button {
       transform: scale(1);
       transition: all 0.3s;
-      fill: orange;
+      fill: blue;
     }
   }
 
@@ -89,10 +90,16 @@ const BannerSliderStyles = styled.div`
 
   .embla__button--prev {
     left: 27px;
+    &:hover {
+      fill: lightblue;
+    }
   }
 
   .embla__button--next {
     right: 27px;
+    &:hover {
+      fill: lightblue;
+    }
   }
 
   .embla__dots {
@@ -127,7 +134,7 @@ const BannerSliderStyles = styled.div`
   }
 
   .embla__dot.is-selected:after {
-    background-color: orange;
+    background-color: lightblue;
     opacity: 1;
   }
 `;

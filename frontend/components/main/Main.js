@@ -4,6 +4,7 @@ import { Parallax } from 'react-scroll-parallax';
 import Product from '../products/Product';
 import gql from 'graphql-tag';
 import Head from 'next/head';
+
 import bg_1 from '../../public/img/bg_1.jpg';
 import bg_2 from '../../public/img/bg_2.jpg';
 import bg_3 from '../../public/img/bg_3.jpg';
@@ -14,6 +15,7 @@ import sink_1 from '../../public/img/sink-1.png';
 import sink_2 from '../../public/img/sink-2.png';
 import tool_1 from '../../public/img/tool-1.png';
 import tool_2 from '../../public/img/tool-2.png';
+
 import BannerSlider from '../sliders/banner-slider/BannerSlider';
 import styled from 'styled-components';
 
@@ -65,12 +67,13 @@ export default function Main() {
         <title>A2Z</title>
       </Head>
       {/* <Parallax y={[-80, 50]}> */}
-        <BannerSlider slides={slides} mediaByIndex={mediaByIndex} />
+      <BannerSlider slides={slides} mediaByIndex={mediaByIndex} />
       {/* </Parallax> */}
       {/* <Parallax y={[-20, 20]}> */}
-        <ProductsMainPage />
-      {/* </Parallax> */}
+      <ProductsMainPage />
 
+
+      {/* </Parallax> */}
       {/* <Parallax y={[0, 0]}>
         <EmblaCarousel slides={slides} mediaByIndex={mediaByIndex} />
       </Parallax>

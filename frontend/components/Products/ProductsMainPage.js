@@ -37,7 +37,6 @@ export default function ProductsMainPage({}) {
   return (
     <ProductsMainPageStyles>
       <h2>Products</h2>
-
       <ServicesSlider slides={slides} mediaByIndex={mediaByIndex} />
     </ProductsMainPageStyles>
   );

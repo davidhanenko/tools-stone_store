@@ -34,7 +34,7 @@ const SlideStyles = styled.div`
     color: rgb(6, 6, 192);
     z-index: 3;
     transition: transform 0.3s;
-    @media(max-width: 500px) {
+    @media (max-width: 500px) {
       font-size: 2.8rem;
     }
   }
@@ -45,7 +45,7 @@ const SlideStyles = styled.div`
 
   &:hover {
     .item-title {
-      transform: translate(-10%, -10%);
+      transform: translate(-45%, -45%);
     }
     .item-image {
       transform: scale(1.05);

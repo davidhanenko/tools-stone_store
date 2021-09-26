@@ -16,10 +16,6 @@ export default function Products() {
       <p>Products</p>
       <p>Products</p>
       <p>Products</p>
-      <p>Products</p>
-      <p>Products</p>
-      <p>Products</p>
-      <p>Products</p>
     </div>
   );
 }

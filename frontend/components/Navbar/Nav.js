@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import gql from 'graphql-tag';
+import { useQuery } from '@apollo/client';
 import Link from 'next/link';
 import Hamburger from 'hamburger-react';
 import { useNav } from '../../lib/navState';
@@ -8,7 +10,18 @@ import { NavStyles, NavButtonStyles } from './NavStyles';
 import useWindowDimensions from '../../lib/windowDimensions';
 import Search from './Search';
 
+// const PRODUCTS1 = gql`
+//   query PRODUCTS1 {
+//     products {
+//       id
+//       product_title
+//     }
+//   }
+// `;
+
 export default function Nav() {
+  // const { data, error, loading } = useQuery(PRODUCTS1);
+
   const { navOpen, toggleNav, closeSideNav, navBtnClick, setNavBtnClick } =
     useNav();
   const { width } = useWindowDimensions();
@@ -26,7 +39,7 @@ export default function Nav() {
       </a>
     );
   });
-
+ 
   return (
     <>
       <NavStyles open={navOpen} btnClick={navBtnClick} width={width}>

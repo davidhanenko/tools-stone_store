@@ -4,7 +4,6 @@ import { useEmblaCarousel } from 'embla-carousel/react';
 import ServicesSliderStyles from './ServiceSliderStyles';
 import Slide from './Slide';
 
-
 const ServicesSlider = ({ slides, mediaByIndex }) => {
   const [viewportRef, embla] = useEmblaCarousel({
     slidesToScroll: 1,
@@ -15,6 +14,7 @@ const ServicesSlider = ({ slides, mediaByIndex }) => {
   });
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
+  const [emblaRef, emblaApi] = useEmblaCarousel();
 
   const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla]);
   const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla]);
@@ -30,8 +30,14 @@ const ServicesSlider = ({ slides, mediaByIndex }) => {
     onSelect();
   }, [embla, onSelect]);
 
+  useEffect(() => {
+    if (emblaApi && emblaApi.slideNodes().length !== slides.length) {
+      emblaApi.reInit();
+    }
+  }, [emblaApi, slides]);
+
   return (
-    <ServicesSliderStyles>
+    <ServicesSliderStyles ref={emblaRef}>
       <div className='embla__viewport' ref={viewportRef}>
         <div className='embla__container'>
           {slides.map(index => (

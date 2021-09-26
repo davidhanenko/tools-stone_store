@@ -69,8 +69,11 @@ const ServicesSliderStyles = styled.div`
     height: 30px;
     justify-content: center;
     align-items: center;
-    fill: #1bcacd;
+    fill: blue;
     padding: 0;
+    &:hover {
+      fill: lightblue;
+    }
   }
 
   .embla__button:disabled {
