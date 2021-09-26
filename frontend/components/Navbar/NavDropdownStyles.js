@@ -48,6 +48,7 @@ const DropdownMenuStyles = styled.div`
 const DropdownItemStyles = styled.li`
   list-style: none;
   text-transform: capitalize;
+  cursor: pointer;
   a {
     text-decoration: none;
     color: grey;

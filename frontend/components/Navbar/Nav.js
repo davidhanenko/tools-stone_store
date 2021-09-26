@@ -22,6 +22,9 @@ const PRODUCTS = gql`
 export default function Nav() {
   const { data, error, loading } = useQuery(PRODUCTS);
 
+   if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
   const { navOpen, toggleNav, closeSideNav, navBtnClick, setNavBtnClick } =
     useNav();
   const { width } = useWindowDimensions();

@@ -14,10 +14,11 @@ import { useNav } from '../../lib/navState';
 import useWindowDimensions from '../../lib/windowDimensions';
 import { useEffect } from 'react';
 
-const DropdownItem = React.forwardRef(({ href, item }, ref) => {
+const DropdownItem = React.forwardRef(({ href, onClick, item }, ref) => {
+  const { closeSideNav } = useNav();
   return (
     <DropdownItemStyles>
-      <a href={href} ref={ref}>
+      <a href={href} onClick={() => closeSideNav()} ref={ref}>
         {item}
       </a>
     </DropdownItemStyles>
@@ -64,11 +65,17 @@ const NavDropdown = React.forwardRef(function NavDropdown(props, ref) {
         <DropdownMenuStyles>
           {props?.products?.map(product => (
             <Link
-              href={product.product_title.toLowerCase()}
+              href={{
+                pathname: '/products/[product]',
+                query: { product: `${product.product_title.toLowerCase()}` },
+              }}
               key={product.id}
               passHref
             >
-              <DropdownItem item={product.product_title} />
+              {/* <DropdownItemStyles>
+              <a>{product.product_title.toLowerCase()}</a>
+              </DropdownItemStyles> */}
+              <DropdownItem item={product?.product_title} />
             </Link>
           ))}
         </DropdownMenuStyles>
