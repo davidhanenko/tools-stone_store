@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { NavStateProvider } from '../lib/navState';
-import Nav from './Navbar/Nav';
+import Nav from './navbar/Nav';
 
 const HeaderStyles = styled.header`
   background: var(--offWhite);

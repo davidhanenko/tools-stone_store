@@ -2,6 +2,7 @@
 // import { useQuery } from '@apollo/client';
 // import gql from 'graphql-tag';
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { MdExpandMore, MdExpandLess } from 'react-icons/md';
 import {
   DropdownBtnStyles,
@@ -13,13 +14,15 @@ import { useNav } from '../../lib/navState';
 import useWindowDimensions from '../../lib/windowDimensions';
 import { useEffect } from 'react';
 
-function DropdownItem({ item }) {
+const DropdownItem = React.forwardRef(({ href, item }, ref) => {
   return (
     <DropdownItemStyles>
-      <a href='#'>{item} </a>
+      <a href={href} ref={ref}>
+        {item}
+      </a>
     </DropdownItemStyles>
   );
-}
+});
 
 const NavDropdown = React.forwardRef(function NavDropdown(props, ref) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -59,7 +62,15 @@ const NavDropdown = React.forwardRef(function NavDropdown(props, ref) {
 
       {dropdownOpen && (
         <DropdownMenuStyles>
-          <DropdownItem item='123'></DropdownItem>
+          {props?.products?.map(product => (
+            <Link
+              href={product.product_title.toLowerCase()}
+              key={product.id}
+              passHref
+            >
+              <DropdownItem item={product.product_title} />
+            </Link>
+          ))}
         </DropdownMenuStyles>
       )}
     </NavDropdownStyles>

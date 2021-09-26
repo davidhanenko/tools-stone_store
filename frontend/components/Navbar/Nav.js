@@ -10,17 +10,17 @@ import { NavStyles, NavButtonStyles } from './NavStyles';
 import useWindowDimensions from '../../lib/windowDimensions';
 import Search from './Search';
 
-// const PRODUCTS1 = gql`
-//   query PRODUCTS1 {
-//     products {
-//       id
-//       product_title
-//     }
-//   }
-// `;
+const PRODUCTS = gql`
+  query PRODUCTS1 {
+    products {
+      id
+      product_title
+    }
+  }
+`;
 
 export default function Nav() {
-  // const { data, error, loading } = useQuery(PRODUCTS1);
+  const { data, error, loading } = useQuery(PRODUCTS);
 
   const { navOpen, toggleNav, closeSideNav, navBtnClick, setNavBtnClick } =
     useNav();
@@ -51,7 +51,7 @@ export default function Nav() {
             <LinkBtn title={'about'} />
           </Link>
           <Link href='/products' passHref>
-            <NavDropdown title='products' />
+            <NavDropdown title='products' products={data?.products} />
           </Link>
           <Link href='/tools' passHref>
             <NavDropdown title='tools' />
