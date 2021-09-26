@@ -1,23 +1,59 @@
 import styled from 'styled-components';
 
+const ImageOverlay = styled.div`
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  display: block;
+  background: linear-gradient(transparent 0%, rgba(184, 183, 183, 0.3) 100%)
+    repeat-x rgba(233, 232, 232, 0.3);
+  transition-property: opacity;
+  transition: opacity 0.3s;
+`;
+
 const SlideStyles = styled.div`
-  background: white;
+  background: rgb(240, 240, 240);
+  cursor: pointer;
   margin: 0 1rem 1rem 1rem;
+  position: relative;
+  padding: 1rem;
+  overflow: none;
 
-  h3 {
+  .item-title {
     position: absolute;
-    top: 40%;
-    z-index: 2;
-    font-size: 3rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3.5rem;
+    text-transform: uppercase;
     font-weight: 400;
-    color: blue;
+    color: rgb(6, 6, 192);
+    z-index: 3;
+    transition: transform 0.3s;
+    @media(max-width: 500px) {
+      font-size: 2.8rem;
+    }
   }
 
-  .product-item {
-    
+  .item-image {
+    transition: transform 0.3s;
   }
-  .product-image {
+
+  &:hover {
+    .item-title {
+      transform: translate(-10%, -10%);
+    }
+    .item-image {
+      transform: scale(1.05);
+    }
+    ${ImageOverlay} {
+      opacity: 0.3;
+    }
   }
 `;
 
-export { SlideStyles };
+export { SlideStyles, ImageOverlay };

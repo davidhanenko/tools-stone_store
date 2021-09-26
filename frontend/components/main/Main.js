@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client';
 import { Parallax } from 'react-scroll-parallax';
 import Product from '../products/Product';
 import gql from 'graphql-tag';
+import Head from 'next/head';
 import bg_1 from '../../public/img/bg_1.jpg';
 import bg_2 from '../../public/img/bg_2.jpg';
 import bg_3 from '../../public/img/bg_3.jpg';
@@ -60,6 +61,9 @@ export default function Main() {
 
   return (
     <MainStyles>
+      <Head>
+        <title>A2Z</title>
+      </Head>
       {/* <Parallax y={[-80, 50]}> */}
         <BannerSlider slides={slides} mediaByIndex={mediaByIndex} />
       {/* </Parallax> */}
