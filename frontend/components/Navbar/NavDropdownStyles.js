@@ -49,6 +49,8 @@ const DropdownItemStyles = styled.li`
   list-style: none;
   text-transform: capitalize;
   cursor: pointer;
+  line-height: 1.5rem;
+  padding: 0.5rem;
   a {
     text-decoration: none;
     color: grey;
