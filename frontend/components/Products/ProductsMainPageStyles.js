@@ -4,8 +4,6 @@ const ProductsMainPageStyles = styled.section`
   position: relative;
 
   margin-top: 8rem;
-  /* padding-left: 5rem;
-  padding-right: 5rem; */
 
   background: lightgray;
 
@@ -16,9 +14,6 @@ const ProductsMainPageStyles = styled.section`
     font-weight: 400;
   }
 
-  .products_main-page {
-  
-  }
 
 `;
 

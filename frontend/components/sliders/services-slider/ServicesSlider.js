@@ -3,13 +3,12 @@ import { PrevButton, NextButton } from '../SliderButtons';
 import { useEmblaCarousel } from 'embla-carousel/react';
 import ServicesSliderStyles from './ServiceSliderStyles';
 import Slide from './Slide';
-import { start } from 'nprogress';
 
 
 const ServicesSlider = ({ slides, mediaByIndex }) => {
   const [viewportRef, embla] = useEmblaCarousel({
     slidesToScroll: 1,
-     containScroll: 'keepSnaps',
+    containScroll: 'keepSnaps',
     skipSnaps: false,
     align: 0,
     loop: true,
@@ -38,7 +37,7 @@ const ServicesSlider = ({ slides, mediaByIndex }) => {
           {slides.map(index => (
             <div className='embla__slide' key={index}>
               <div className='embla__slide__inner'>
-               <Slide mediaByIndex={mediaByIndex} index={index}/>
+                <Slide mediaByIndex={mediaByIndex} index={index} />
               </div>
             </div>
           ))}

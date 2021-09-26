@@ -1,13 +1,8 @@
 import styled from 'styled-components';
 
 const SlideStyles = styled.div`
-  position: relative;
   background: white;
-
-  /* width: 300px;
-  height: 300px; */
   margin: 0 1rem 1rem 1rem;
-
 
   h3 {
     position: absolute;
@@ -20,10 +15,6 @@ const SlideStyles = styled.div`
 
   .product-item {
     
-    /* @media (max-width: 500px) {
-      width: 250px;
-      height: 250px;
-    } */
   }
   .product-image {
   }
