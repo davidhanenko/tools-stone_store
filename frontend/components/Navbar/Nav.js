@@ -62,11 +62,11 @@ export default function Nav() {
           <Link href='/sinks' passHref>
             <NavDropdown title='sinks' />
           </Link>
-          <Link href='/contacts' passHref>
-            <LinkBtn title={'contact'} />
-          </Link>
           <Link href='/gallery' passHref>
             <LinkBtn title={'gallery'} />
+          </Link>
+          <Link href='/contacts' passHref>
+            <LinkBtn title={'contacts'} />
           </Link>
         </div>
         <NavButtonStyles onClick={() => setNavBtnClick(true)}>

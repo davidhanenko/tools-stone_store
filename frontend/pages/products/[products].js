@@ -1,12 +1,5 @@
-export default function ProductsCategoryPage({query}) {
-  return (
-    <>
-      <h1>products={query.products}</h1>
-      <h1>products={query.products}</h1>
-      <h1>products={query.products}</h1>
-      <h1>products={query.products}</h1>
-      <h1>products={query.products}</h1>
-      <h1>products={query.products}</h1>
-    </>
-  );
+import Products from '../../components/products/Products';
+
+export default function ProductsCategoryPage({ query }) {
+  return <Products productsCategory={query.products}/>;
 }

@@ -1,12 +1,13 @@
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
+import { useState } from 'react';
 
 import ServicesSlider from '../sliders/services-slider/ServicesSlider';
 
-import { ProductsStyles } from './ProductsStyles';
+import { ProductsStyles, ProductItemStyles } from './ProductsStyles';
 
-const PRODUCTS = gql`
-  query PRODUCTS {
+const ALL_PRODUCTS = gql`
+  query ALL_PRODUCTS {
     products {
       id
       title: product_title
@@ -21,23 +22,59 @@ const PRODUCTS = gql`
   }
 `;
 
-export default function Products({}) {
-  const { data, error, loading } = useQuery(PRODUCTS);
+const PRODUCTS_CATEGORY = gql`
+  query PRODUCTS_CATEGORY($productsCategory: String!) {
+    products(where: { product_title: $productsCategory }) {
+      product_title
+      category: product_categories {
+        product_category
+        single: single_products(limit: 1) {
+          image {
+            url
+          }
+        }
+      }
+    }
+  }
+`;
+
+function ProductItem({ productsCategory }) {
+  const { data, error, loading } = useQuery(PRODUCTS_CATEGORY, {
+    variables: {
+      productsCategory,
+    },
+  });
+
+if (loading) return <p>Loading...</p>;
+if (error) return <p>Error: {error.message}</p>;
+
+
+  return (
+    <ProductItemStyles>
+      <h3>{productsCategory}</h3>
+      {data.products[0].category.map(p => (
+        <h2>{p.product_category}</h2>
+      ))}
+    </ProductItemStyles>
+  );
+}
+
+export default function Products({ productsCategory }) {
+  const { data, error, loading } = useQuery(ALL_PRODUCTS);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
   const SLIDE_COUNT = data?.products?.length;
-
   const slides = Array.from(Array(SLIDE_COUNT).keys());
-
   // func from Embla Carousel docs
   const mediaByIndex = index => data?.products[index % data?.products.length];
 
   return (
     <ProductsStyles>
-      <h2 className="main-tile">Products</h2>
+      <h2 className='main-title'>Products</h2>
       <ServicesSlider slides={slides} mediaByIndex={mediaByIndex} />
+      <ProductItem key={productsCategory} productsCategory={productsCategory} />
     </ProductsStyles>
   );
 }

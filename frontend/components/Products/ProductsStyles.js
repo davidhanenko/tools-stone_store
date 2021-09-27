@@ -6,7 +6,7 @@ const ProductsStyles = styled.section`
   background: lightgray;
   margin-bottom: 10rem;
 
-  .main-tile {
+  .main-title {
     font-size: 4.5rem;
     text-transform: uppercase;
     font-weight: 400;
@@ -40,4 +40,9 @@ const ProductsStyles = styled.section`
   }
 `;
 
-export { ProductsStyles };
+
+const ProductItemStyles = styled.div`
+  background: var(--offWhite);
+`;
+
+export { ProductsStyles, ProductItemStyles };
