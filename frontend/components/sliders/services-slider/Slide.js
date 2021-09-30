@@ -3,8 +3,6 @@ import Link from 'next/link';
 import { SlideStyles, ImageOverlay } from './SlideStyles';
 
 export default function Slide({ mediaByIndex, index }) {
-
-
   return (
     <SlideStyles>
       <Link

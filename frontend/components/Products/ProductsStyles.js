@@ -25,14 +25,17 @@ const ProductsStyles = styled.section`
   .item-title {
     bottom: 0%;
     left: 50%;
-    transform: translate(-50%, 0%);
+    transform: translate(-70%, -80%);
     font-size: 2.2rem;
     text-transform: uppercase;
     font-weight: 400;
     color: rgb(10, 10, 192);
 
-    @media (max-width: 828px) {
+    @media (max-width: 1100px) {
       font-size: 1.9rem;
+    }
+    @media (max-width: 828px) {
+      font-size: 2.8rem;
     }
     @media (max-width: 500px) {
       font-size: 1.5rem;

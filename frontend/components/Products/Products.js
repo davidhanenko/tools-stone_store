@@ -28,6 +28,7 @@ const PRODUCTS_CATEGORY = gql`
       product_title
       category: product_categories {
         product_category
+        id
         single: single_products(limit: 1) {
           image {
             url
@@ -45,15 +46,15 @@ function ProductItem({ productsCategory }) {
     },
   });
 
-if (loading) return <p>Loading...</p>;
-if (error) return <p>Error: {error.message}</p>;
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
 
   return (
     <ProductItemStyles>
       <h3>{productsCategory}</h3>
       {data.products[0].category.map(p => (
-        <h2>{p.product_category}</h2>
+        <h2 key={p.id}>{p.product_category}</h2>
       ))}
     </ProductItemStyles>
   );
@@ -74,7 +75,7 @@ export default function Products({ productsCategory }) {
     <ProductsStyles>
       <h2 className='main-title'>Products</h2>
       <ServicesSlider slides={slides} mediaByIndex={mediaByIndex} />
-      <ProductItem key={productsCategory} productsCategory={productsCategory} />
+      {productsCategory && <ProductItem productsCategory={productsCategory} />}
     </ProductsStyles>
   );
 }
