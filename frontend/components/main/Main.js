@@ -19,7 +19,7 @@ import tool_2 from '../../public/img/tool-2.png';
 import BannerSlider from '../sliders/banner-slider/BannerSlider';
 import styled from 'styled-components';
 
-import ProductsMainPage from '../products/ProductsMainPage';
+import ProductsMainPage from '../products/main-page/products.main';
 
 const MainStyles = styled.div``;
 
