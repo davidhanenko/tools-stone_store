@@ -3,8 +3,8 @@ import { useQuery } from '@apollo/client';
 
 import ServicesSlider from '../../sliders/services-slider/ServicesSlider';
 
-import ProductsCategory from './category.products';
-import { ProductsStyles} from './products.styles';
+import ProductsCategory from './Category';
+import { ProductsStyles} from './ProductsStyles';
 
 const ALL_PRODUCTS = gql`
   query ALL_PRODUCTS {
