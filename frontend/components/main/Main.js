@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useQuery } from '@apollo/client';
 import { Parallax } from 'react-scroll-parallax';
-import Product from '../products/Product';
+import Product from '../items/Product';
 import gql from 'graphql-tag';
 import Head from 'next/head';
 
@@ -19,7 +19,7 @@ import tool_2 from '../../public/img/tool-2.png';
 import BannerSlider from '../sliders/banner-slider/BannerSlider';
 import styled from 'styled-components';
 
-import ProductsMainPage from '../products/main-page/products.main';
+import ProductsMainPage from '../items/main-page/Products';
 
 const MainStyles = styled.div``;
 
