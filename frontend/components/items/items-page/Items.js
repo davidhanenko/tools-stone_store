@@ -7,7 +7,7 @@ export default function Products({ itemsCategory, itemsByIndex, slides }) {
     <ItemsStyles>
       <h2 className='main-title'>Products</h2>
       <ItemsSlider slides={slides} itemsByIndex={itemsByIndex} />
-      {itemsCategory && <ItemsCategory itemsCategory={itemsCategory} />}
+      {itemsCategory && <ItemsCategory itemsCategory={itemsCategory.split('-').join(' ')} />}
     </ItemsStyles>
   );
 }

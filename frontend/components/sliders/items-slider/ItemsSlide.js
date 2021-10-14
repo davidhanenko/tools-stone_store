@@ -3,12 +3,13 @@ import Link from 'next/link';
 import { ItemsSlideStyles, ImageOverlay } from './ItemsSlideStyles';
 
 export default function Slide({ itemsByIndex, index }) {
+  
   return (
     <ItemsSlideStyles>
       <Link
         href={{
           pathname: '/products/[products]',
-          query: { products: `${itemsByIndex(index).title.toLowerCase()}` },
+          query: { products: `${itemsByIndex(index).title.toLowerCase().split(' ').join('-')}`},
         }}
         key={itemsByIndex(index).id}
       >

@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 
-import ServicesSlider from '../../sliders/items-slider/ItemsSlider';
+import ItemsSlider from '../../sliders/items-slider/ItemsSlider';
 
 import { ProductsMainPageStyles } from './ProductsStyles';
 
@@ -11,7 +11,7 @@ const PRODUCTS = gql`
       id
       title: product_title
       category: product_categories(limit: 1) {
-        single: single_products(limit: 1) {
+        single_item: single_products(limit: 1) {
           image {
             url
           }
@@ -32,12 +32,12 @@ export default function ProductsMainPage({}) {
   const slides = Array.from(Array(SLIDE_COUNT).keys());
 
   // func from Embla Carousel docs
-  const mediaByIndex = index => data?.products[index % data?.products.length];
+  const itemsByIndex = index => data?.products[index % data?.products.length];
 
   return (
     <ProductsMainPageStyles>
       <h2>Products</h2>
-      <ServicesSlider slides={slides} mediaByIndex={mediaByIndex} />
+      <ItemsSlider slides={slides} itemsByIndex={itemsByIndex} />
     </ProductsMainPageStyles>
   );
 }

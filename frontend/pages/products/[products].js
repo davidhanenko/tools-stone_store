@@ -20,6 +20,7 @@ const ALL_PRODUCTS = gql`
 `;
 
 export default function ProductsCategoryPage({ query }) {
+  
   const { data, error, loading } = useQuery(ALL_PRODUCTS);
 
   if (loading) return <p>Loading...</p>;
