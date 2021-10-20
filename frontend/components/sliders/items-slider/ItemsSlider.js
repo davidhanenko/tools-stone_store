@@ -4,20 +4,26 @@ import { useEmblaCarousel } from 'embla-carousel/react';
 import ItemsSliderStyles from './ItemsSliderStyles';
 import ItemsSlide from './ItemsSlide';
 
+import useWindowDimensions from '../../../lib/windowDimensions';
+
 const ItemsSlider = ({ slides, itemsByIndex }) => {
   const [viewportRef, embla] = useEmblaCarousel({
     slidesToScroll: 1,
-    containScroll: 'keepSnaps',
+    containScroll: 'keepSnap',
     skipSnaps: false,
     align: 0,
     loop: true,
   });
+
+  const { width } = useWindowDimensions();
+
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
-  const [emblaRef, emblaApi] = useEmblaCarousel();
+  // const [emblaRef, emblaApi] = useEmblaCarousel();
 
   const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla]);
   const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla]);
+
   const onSelect = useCallback(() => {
     if (!embla) return;
     setPrevBtnEnabled(embla.canScrollPrev());
@@ -31,13 +37,20 @@ const ItemsSlider = ({ slides, itemsByIndex }) => {
   }, [embla, onSelect]);
 
   useEffect(() => {
-    if (emblaApi && emblaApi.slideNodes().length !== slides.length) {
-      emblaApi.reInit();
+    if (width <= 850) {
+      setPrevBtnEnabled(true);
+      setNextBtnEnabled(true);
     }
-  }, [emblaApi, slides]);
+  }, [width]);
+
+  // useEffect(() => {
+  //   if (emblaApi && emblaApi.slideNodes().length !== slides.length) {
+  //     emblaApi.reInit();
+  //   }
+  // }, [emblaApi, slides]);
 
   return (
-    <ItemsSliderStyles ref={emblaRef}>
+    <ItemsSliderStyles className='embla'>
       <div className='embla__viewport' ref={viewportRef}>
         <div className='embla__container'>
           {slides.map(index => (

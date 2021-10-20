@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
+    "item_title": {
       "type": "string"
     },
     "price": {

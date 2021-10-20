@@ -12,6 +12,7 @@ const ITEMS_CATEGORY = gql`
        category_title: product_category
         id
         single_item: single_products(limit: 1) {
+          item_title
           image {
             url
           }
@@ -23,7 +24,7 @@ const ITEMS_CATEGORY = gql`
 
 export default function ItemsCategory({ itemsCategory }) {
 
-console.log(itemsCategory);
+
   const { data, error, loading } = useQuery(ITEMS_CATEGORY, {
     variables: {
       itemsCategory,

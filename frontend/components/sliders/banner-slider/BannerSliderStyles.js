@@ -47,8 +47,8 @@ const BannerSliderStyles = styled.div`
     min-height: 100%;
     min-width: 100%;
     max-width: none;
-    /* transform: translate(-50%, -50%); */
   }
+  
   .embla__button {
     outline: 0;
     cursor: pointer;

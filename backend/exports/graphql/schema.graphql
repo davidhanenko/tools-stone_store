@@ -50,6 +50,7 @@ type MainPageSlide {
   bg_image: UploadFile
   image_1: UploadFile
   image_2: UploadFile
+  item_title: String
   published_at: DateTime
 }
 
@@ -73,6 +74,7 @@ type MainPageSlideGroupBy {
   bg_image: [MainPageSlideConnectionBg_image]
   image_1: [MainPageSlideConnectionImage_1]
   image_2: [MainPageSlideConnectionImage_2]
+  item_title: [MainPageSlideConnectionItem_title]
   published_at: [MainPageSlideConnectionPublished_at]
 }
 
@@ -116,6 +118,11 @@ type MainPageSlideConnectionImage_2 {
   connection: MainPageSlideConnection
 }
 
+type MainPageSlideConnectionItem_title {
+  key: String
+  connection: MainPageSlideConnection
+}
+
 type MainPageSlideConnectionPublished_at {
   key: DateTime
   connection: MainPageSlideConnection
@@ -127,6 +134,7 @@ input MainPageSlideInput {
   bg_image: ID
   image_1: ID
   image_2: ID
+  item_title: String
   published_at: DateTime
   created_by: ID
   updated_by: ID
@@ -138,6 +146,7 @@ input editMainPageSlideInput {
   bg_image: ID
   image_1: ID
   image_2: ID
+  item_title: String
   published_at: DateTime
   created_by: ID
   updated_by: ID
@@ -366,7 +375,7 @@ type SingleProduct {
   id: ID!
   created_at: DateTime!
   updated_at: DateTime!
-  title: String
+  item_title: String
   price: Float
   sizes: ENUM_SINGLEPRODUCT_SIZES
   image: UploadFile
@@ -410,7 +419,7 @@ type SingleProductGroupBy {
   id: [SingleProductConnectionId]
   created_at: [SingleProductConnectionCreated_at]
   updated_at: [SingleProductConnectionUpdated_at]
-  title: [SingleProductConnectionTitle]
+  item_title: [SingleProductConnectionItem_title]
   price: [SingleProductConnectionPrice]
   sizes: [SingleProductConnectionSizes]
   image: [SingleProductConnectionImage]
@@ -434,7 +443,7 @@ type SingleProductConnectionUpdated_at {
   connection: SingleProductConnection
 }
 
-type SingleProductConnectionTitle {
+type SingleProductConnectionItem_title {
   key: String
   connection: SingleProductConnection
 }
@@ -470,7 +479,7 @@ type SingleProductConnectionPublished_at {
 }
 
 input SingleProductInput {
-  title: String
+  item_title: String
   price: Float
   sizes: ENUM_SINGLEPRODUCT_SIZES
   image: ID
@@ -482,7 +491,7 @@ input SingleProductInput {
 }
 
 input editSingleProductInput {
-  title: String
+  item_title: String
   price: Float
   sizes: ENUM_SINGLEPRODUCT_SIZES
   image: ID
@@ -988,7 +997,7 @@ type deleteUserPayload {
   user: UsersPermissionsUser
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | MainPageSlide | MainPageSlideConnection | MainPageSlideAggregator | MainPageSlideGroupBy | MainPageSlideConnectionId | MainPageSlideConnectionCreated_at | MainPageSlideConnectionUpdated_at | MainPageSlideConnectionSlogan | MainPageSlideConnectionDescription | MainPageSlideConnectionBg_image | MainPageSlideConnectionImage_1 | MainPageSlideConnectionImage_2 | MainPageSlideConnectionPublished_at | createMainPageSlidePayload | updateMainPageSlidePayload | deleteMainPageSlidePayload | ProductCategory | ProductCategoryConnection | ProductCategoryAggregator | ProductCategoryGroupBy | ProductCategoryConnectionId | ProductCategoryConnectionCreated_at | ProductCategoryConnectionUpdated_at | ProductCategoryConnectionProduct_category | ProductCategoryConnectionPublished_at | createProductCategoryPayload | updateProductCategoryPayload | deleteProductCategoryPayload | Products | ProductsConnection | ProductsAggregator | ProductsGroupBy | ProductsConnectionId | ProductsConnectionCreated_at | ProductsConnectionUpdated_at | ProductsConnectionProduct_title | ProductsConnectionPublished_at | createProductPayload | updateProductPayload | deleteProductPayload | SingleProduct | SingleProductConnection | SingleProductAggregator | SingleProductAggregatorSum | SingleProductAggregatorAvg | SingleProductAggregatorMin | SingleProductAggregatorMax | SingleProductGroupBy | SingleProductConnectionId | SingleProductConnectionCreated_at | SingleProductConnectionUpdated_at | SingleProductConnectionTitle | SingleProductConnectionPrice | SingleProductConnectionSizes | SingleProductConnectionImage | SingleProductConnectionDescription | SingleProductConnectionProduct_category | SingleProductConnectionPublished_at | createSingleProductPayload | updateSingleProductPayload | deleteSingleProductPayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | MainPageSlide | MainPageSlideConnection | MainPageSlideAggregator | MainPageSlideGroupBy | MainPageSlideConnectionId | MainPageSlideConnectionCreated_at | MainPageSlideConnectionUpdated_at | MainPageSlideConnectionSlogan | MainPageSlideConnectionDescription | MainPageSlideConnectionBg_image | MainPageSlideConnectionImage_1 | MainPageSlideConnectionImage_2 | MainPageSlideConnectionItem_title | MainPageSlideConnectionPublished_at | createMainPageSlidePayload | updateMainPageSlidePayload | deleteMainPageSlidePayload | ProductCategory | ProductCategoryConnection | ProductCategoryAggregator | ProductCategoryGroupBy | ProductCategoryConnectionId | ProductCategoryConnectionCreated_at | ProductCategoryConnectionUpdated_at | ProductCategoryConnectionProduct_category | ProductCategoryConnectionPublished_at | createProductCategoryPayload | updateProductCategoryPayload | deleteProductCategoryPayload | Products | ProductsConnection | ProductsAggregator | ProductsGroupBy | ProductsConnectionId | ProductsConnectionCreated_at | ProductsConnectionUpdated_at | ProductsConnectionProduct_title | ProductsConnectionPublished_at | createProductPayload | updateProductPayload | deleteProductPayload | SingleProduct | SingleProductConnection | SingleProductAggregator | SingleProductAggregatorSum | SingleProductAggregatorAvg | SingleProductAggregatorMin | SingleProductAggregatorMax | SingleProductGroupBy | SingleProductConnectionId | SingleProductConnectionCreated_at | SingleProductConnectionUpdated_at | SingleProductConnectionItem_title | SingleProductConnectionPrice | SingleProductConnectionSizes | SingleProductConnectionImage | SingleProductConnectionDescription | SingleProductConnectionProduct_category | SingleProductConnectionPublished_at | createSingleProductPayload | updateSingleProductPayload | deleteSingleProductPayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload
 
 input InputID {
   id: ID!

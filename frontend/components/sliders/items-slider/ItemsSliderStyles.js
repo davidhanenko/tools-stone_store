@@ -52,7 +52,6 @@ const ItemsSliderStyles = styled.div`
     min-height: 100%;
     min-width: 100%;
     max-width: none;
-    /* transform: translate(-50%, -50%); */
   }
 
   .embla__button {
@@ -61,7 +60,7 @@ const ItemsSliderStyles = styled.div`
     background-color: transparent;
     touch-action: manipulation;
     position: absolute;
-    z-index: 1;
+    z-index: 2;
     top: 50%;
     transform: translateY(-50%);
     border: 0;
