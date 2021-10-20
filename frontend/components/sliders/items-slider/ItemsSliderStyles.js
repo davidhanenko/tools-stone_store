@@ -6,10 +6,11 @@ const ItemsSliderStyles = styled.div`
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-
+  
   .embla__viewport {
     overflow: hidden;
     width: 100%;
+   
   }
 
   .embla__viewport.is-draggable {

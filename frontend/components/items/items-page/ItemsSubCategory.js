@@ -3,19 +3,29 @@ import Link from 'next/link';
 
 import { ItemsSubCategoryStyles } from './ItemsSubCategoryStyles';
 
-function Item({ subCategory }) {
 
+export default function ItemsSubCategoty({ subCategory, title }) {
+  return (
+    <ItemsSubCategoryStyles>
+      <h1>{subCategory.category_title}</h1>
 
+      {subCategory && <Item subCategory={subCategory} title={title} />}
+    </ItemsSubCategoryStyles>
+  );
+}
+
+// 
+function Item({ subCategory, title }) {
   return (
     <Link
       href={{
         pathname: '/products/[products]/[product]',
         query: {
-          products: `${subCategory.category_title
+          products: `${title}`,
+          product: `${subCategory.category_title
             .toLowerCase()
             .split(' ')
             .join('-')}`,
-          product: `${subCategory.single_item.item_title}`,
         },
       }}
     >
@@ -31,11 +41,4 @@ function Item({ subCategory }) {
   );
 }
 
-export default function ItemsSubCategoty({ subCategory }) {
-  return (
-    <ItemsSubCategoryStyles>
-      <h1>{subCategory.category_title}</h1>
-      {subCategory && <Item subCategory={subCategory} />}
-    </ItemsSubCategoryStyles>
-  );
-}
+

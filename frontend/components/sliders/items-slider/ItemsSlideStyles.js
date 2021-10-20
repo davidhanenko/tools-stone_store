@@ -23,6 +23,7 @@ const ItemsSlideStyles = styled.div`
   padding: 1rem;
   overflow: none;
 
+
   .item-title {
     position: absolute;
     top: 50%;
