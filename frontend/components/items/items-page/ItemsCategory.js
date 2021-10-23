@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 
-import ItemsSubCategoty from './ItemsSubCategory';
+import ItemsSubCategory from './ItemsSubCategory';
 import { ItemsCategoryStyles } from './ItemsCategoryStyles';
 
 const ITEMS_CATEGORY = gql`
@@ -42,7 +42,7 @@ export default function ItemsCategory({ itemsCategory }) {
       <h3 className='category-title'>{itemsCategory}</h3>
       <div className='category'>
         {product.category.map(subCategory => (
-          <ItemsSubCategoty
+          <ItemsSubCategory
             key={subCategory.id}
             subCategory={subCategory}
             title={productTitle}

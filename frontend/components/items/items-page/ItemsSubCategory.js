@@ -4,18 +4,17 @@ import Link from 'next/link';
 import { ItemsSubCategoryStyles } from './ItemsSubCategoryStyles';
 
 
-export default function ItemsSubCategoty({ subCategory, title }) {
+export default function ItemsSubCategory({ subCategory, title }) {
   return (
     <ItemsSubCategoryStyles>
-      <h1>{subCategory.category_title}</h1>
-
-      {subCategory && <Item subCategory={subCategory} title={title} />}
+      <h3>{subCategory.category_title}</h3>
+      <SubCategoryItemsList subCategory={subCategory} title={title} />
     </ItemsSubCategoryStyles>
   );
 }
 
-// 
-function Item({ subCategory, title }) {
+
+function SubCategoryItemsList({ subCategory, title }) {
   return (
     <Link
       href={{

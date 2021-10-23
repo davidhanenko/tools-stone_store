@@ -1,9 +1,16 @@
 import styled from 'styled-components';
 
 const ItemsSubCategoryStyles = styled.div`
-  background: green;
+  background: #ced8ec;
+  margin: 2rem;
+  padding: 2rem;
 
-  /* flex: 1 1 300px; */
+  h3 {
+    color: black;
+    font-weight: 100;
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
 
   .sub-image {
   }

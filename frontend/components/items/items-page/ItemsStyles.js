@@ -1,16 +1,26 @@
 import styled from 'styled-components';
 
 const ItemsStyles = styled.section`
-  position: relative;
   margin-top: calc(var(--navHeight) + var(--searchHeight));
-  background: lightgray;
   margin-bottom: 10rem;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+
+  .backgroung-img {
+    position: relative;
+    background-image: url(${props => props.img});
+    filter: blur(2px);
+    height: 100vh;
+
+  }
 
   .main-title {
     font-size: 4.5rem;
     text-transform: uppercase;
     font-weight: 400;
     color: darkblue;
+    padding-top: 5rem;
     padding-left: 5rem;
   }
 
@@ -42,8 +52,5 @@ const ItemsStyles = styled.section`
     }
   }
 `;
-
-
-
 
 export { ItemsStyles };

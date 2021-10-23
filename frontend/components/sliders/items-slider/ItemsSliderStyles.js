@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const ItemsSliderStyles = styled.div`
   position: relative;
-  background-color: #f7f7f7;
+  /* background-color: #f7f7f7; */
   width: 100%;
   margin-left: auto;
   margin-right: auto;

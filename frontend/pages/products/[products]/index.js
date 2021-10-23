@@ -3,6 +3,8 @@ import { useQuery } from '@apollo/client';
 
 import Items from '../../../components/items/items-page/Items';
 
+import bg_1 from '../../../public/img/bg_1.jpg'
+
 const ALL_PRODUCTS = gql`
   query ALL_PRODUCTS {
     products {
@@ -36,6 +38,7 @@ export default function ProductsCategoryPage({ query }) {
       itemsCategory={query.products}
       itemsByIndex={itemsByIndex}
       slides={slides}
+      img={bg_1}
     />
   );
 }
