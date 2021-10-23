@@ -25,7 +25,7 @@ const ITEMS_CATEGORY = gql`
 export default function ItemsCategory({ itemsCategory }) {
   const { data, error, loading } = useQuery(ITEMS_CATEGORY, {
     variables: {
-      itemsCategory,
+      itemsCategory : itemsCategory.split('_').join(' '),
     },
   });
 
@@ -39,7 +39,7 @@ export default function ItemsCategory({ itemsCategory }) {
 
   return (
     <ItemsCategoryStyles>
-      <h3 className='category-title'>{itemsCategory}</h3>
+      <h3 className='category-title'>{productTitle}</h3>
       <div className='category'>
         {product.category.map(subCategory => (
           <ItemsSubCategory

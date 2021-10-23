@@ -1,20 +1,14 @@
 import styled from 'styled-components';
 
-const ItemsStyles = styled.section`
+const ItemsStyles = styled.div`
   margin-top: calc(var(--navHeight) + var(--searchHeight));
   margin-bottom: 10rem;
-  position: absolute;
-  top: 0;
-  z-index: 2;
+  position: relative;
+  background: lightblue;
 
-  .backgroung-img {
-    position: relative;
-    background-image: url(${props => props.img});
-    filter: blur(2px);
-    height: 100vh;
-
+  .manu-container {
+    
   }
-
   .main-title {
     font-size: 4.5rem;
     text-transform: uppercase;
@@ -23,14 +17,14 @@ const ItemsStyles = styled.section`
     padding-top: 5rem;
     padding-left: 5rem;
   }
-
+/* 
   .embla__slide {
     position: relative;
     min-width: 25%;
     @media (max-width: 828px) {
       min-width: 50%;
     }
-  }
+  } */
 
   .item-title {
     bottom: 0%;

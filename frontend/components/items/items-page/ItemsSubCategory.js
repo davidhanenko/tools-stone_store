@@ -24,7 +24,7 @@ function SubCategoryItemsList({ subCategory, title }) {
           product: `${subCategory.category_title
             .toLowerCase()
             .split(' ')
-            .join('-')}`,
+            .join('_')}`,
         },
       }}
     >

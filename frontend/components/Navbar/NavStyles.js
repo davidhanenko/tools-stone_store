@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const NavStyles = styled.div`
+const NavStyles = styled.nav`
   grid-area: navbar;
   overflow-x: hidden;
   place-self: center end;
@@ -42,7 +42,6 @@ const NavStyles = styled.div`
   }
   a {
     padding: 0.2rem 1rem;
-
     color: grey;
     position: relative;
     &:hover,

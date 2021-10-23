@@ -16,7 +16,7 @@ import sink_2 from '../../public/img/sink-2.png';
 import tool_1 from '../../public/img/tool-1.png';
 import tool_2 from '../../public/img/tool-2.png';
 
-import BannerSlider from '../sliders/banner-slider/BannerSlider';
+import BannerSlider from '../shared/sliders/banner-slider/BannerSlider';
 import styled from 'styled-components';
 
 import ProductsMainPage from '../items/main-page/Products';

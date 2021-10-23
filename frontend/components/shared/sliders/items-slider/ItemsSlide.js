@@ -1,0 +1,35 @@
+import Image from 'next/image';
+import Link from 'next/link';
+
+import { ItemsSlideStyles, ImageOverlay } from './ItemsSlideStyles';
+
+export default function Slide({ itemsByIndex, index }) {
+  return (
+    <ItemsSlideStyles>
+      <Link
+        href={{
+          pathname: '/products/[products]',
+          query: {
+            products: `${itemsByIndex(index).title.split(' ').join('_')}`,
+          },
+        }}
+        key={itemsByIndex(index).id}
+      >
+        <a>
+          <div className='item'>
+            <h3 className='item-title'>{itemsByIndex(index).title}</h3>
+
+            <ImageOverlay />
+            <Image
+              className='embla__slide__img item-image'
+              src={itemsByIndex(index).category[0].single_item[0].image.url}
+              width={300}
+              height={300}
+              layout='responsive'
+            />
+          </div>
+        </a>
+      </Link>
+    </ItemsSlideStyles>
+  );
+}
