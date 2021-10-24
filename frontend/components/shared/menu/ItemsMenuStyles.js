@@ -7,7 +7,6 @@ const ItemsMenuStyles = styled.nav`
     height: 100px;
     padding-top: 1rem;
     padding-left: 2rem;
-   
   }
   .main-title {
     font-size: 3.5rem;
@@ -46,9 +45,9 @@ const ItemsMenuStyles = styled.nav`
     ${props =>
       !props.btnClicked &&
       ` -webkit-transition: none !important;
-    -moz-transition: none !important;
-    -ms-transition: none !important;
-    -o-transition: none !important;`};
+       -moz-transition: none !important;
+        -ms-transition: none !important;
+        -o-transition: none !important;`};
     @media (max-width: 850px) {
       display: block;
     }

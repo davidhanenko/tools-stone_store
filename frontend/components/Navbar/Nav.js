@@ -35,7 +35,7 @@ export default function Nav() {
     }
   }, [width]);
 
-  const LinkBtn = React.forwardRef(({ onClick, href, title }, ref) => {
+  const LinkBtn = React.forwardRef(({ href, title }, ref) => {
     return (
       <a href={href} onClick={() => closeSideNav()} ref={ref}>
         {title}

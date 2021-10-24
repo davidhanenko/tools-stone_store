@@ -2,8 +2,8 @@ import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 
 import Items from '../../../components/items/items-page/Items';
+import { MenuStateProvider } from '../../../lib/menuState';
 
-import bg_1 from '../../../public/img/bg_1.jpg'
 
 const ALL_PRODUCTS = gql`
   query ALL_PRODUCTS {
@@ -31,9 +31,8 @@ export default function ProductsCategoryPage({ query }) {
   const products = data.products;
 
   return (
-    <Items
-      itemsCategory={query.products}
-      products={products}
-    />
+    <MenuStateProvider>
+      <Items itemsCategory={query.products} products={products} />
+    </MenuStateProvider>
   );
 }
