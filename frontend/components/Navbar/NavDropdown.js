@@ -67,7 +67,12 @@ const NavDropdown = React.forwardRef(function NavDropdown(props, ref) {
             <Link
               href={{
                 pathname: '/products/[product]',
-                query: { product: `${product.product_title.toLowerCase()}` },
+                query: {
+                  product: `${product.product_title
+                    .toLowerCase()
+                    .split(' ')
+                    .join('_')}`,
+                },
               }}
               key={product.id}
               passHref

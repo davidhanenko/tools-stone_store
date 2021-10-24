@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 const MenuLinkStyles = styled.div`
-  padding: 0 2rem 0 2rem;
-
+  padding-right: 2rem;
   a {
     text-decoration: none;
   }
   .link-title {
+    margin-top: 0;
     color: white;
     text-transform: uppercase;
     transition: all 0.3s;
