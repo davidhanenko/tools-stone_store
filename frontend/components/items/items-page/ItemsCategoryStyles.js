@@ -16,4 +16,4 @@ const ItemsCategoryStyles = styled.div`
   }
 `;
 
-export {ItemsCategoryStyles};
+export { ItemsCategoryStyles };

@@ -18,6 +18,8 @@ export default function ItemsMenu({ products }) {
     }
   }, [width]);
 
+
+
   return (
       <ItemsMenuStyles menuOpen={isOpen} btnClicked={btnClicked}>
         <div className='menu-header'>

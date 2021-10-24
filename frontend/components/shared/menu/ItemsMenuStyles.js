@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 const ItemsMenuStyles = styled.nav`
   background: lightblue;
-
+  overflow: hidden;
+  width: 100%;
+  z-index: 1;
   .menu-header {
     height: 100px;
     padding-top: 1rem;
@@ -34,13 +36,14 @@ const ItemsMenuStyles = styled.nav`
     align-items: flex-start;
     background: lightblue;
     display: none;
-    position: fixed;
+    position: absolute;
     width: 300px;
     padding-left: 3rem;
     opacity: 0;
     transform: translateX(-100%);
     transition: all 0.35s;
-    z-index: 4;
+    z-index: 1;
+
     ${props => props.menuOpen && `transform: translateX(0%);opacity:1;`};
     ${props =>
       !props.btnClicked &&

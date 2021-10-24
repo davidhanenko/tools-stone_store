@@ -14,6 +14,9 @@ const MenuLinkStyles = styled.div`
   &:hover .link-title {
     color: blue;
   }
+  .active {
+    color: blue;
+  }
 `;
 
 export { MenuLinkStyles };

@@ -4,7 +4,6 @@ const ItemsStyles = styled.div`
   margin-top: calc(var(--navHeight) + var(--searchHeight));
   margin-bottom: 10rem;
   position: relative;
-
   .menu-container {
     background: lightblue;
     padding-top: 2rem;
