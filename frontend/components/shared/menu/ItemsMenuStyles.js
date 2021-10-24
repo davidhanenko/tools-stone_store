@@ -2,39 +2,62 @@ import styled from 'styled-components';
 
 const ItemsMenuStyles = styled.nav`
   background: lightblue;
-  padding-top: 2rem;
-  padding-left: 2rem;
 
+  .menu-header {
+    height: 100px;
+    padding-top: 1rem;
+    padding-left: 2rem;
+   
+  }
   .main-title {
     font-size: 3.5rem;
     text-transform: uppercase;
     font-weight: 400;
     color: darkblue;
     margin: 0;
-    transition: all 0.35s;
-    transform: translateX(6rem);
+    transition: transform 0.35s;
     @media (max-width: 850px) {
-      transform: translateX(0);
+      transform: translateX(6rem);
     }
   }
   .menu-links {
+    padding-left: 2rem;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     @media (max-width: 850px) {
-      width: 300px;
-      flex-direction: column;
-      align-items: flex-start;
-      transform: translateX(-100%);
-      transition: all 0.35s;
-      ${props => props.menuOpen && `transform: translateX(0%);`};
+      display: none;
+    }
+  }
+
+  .side-menu-links {
+    flex-direction: column;
+    align-items: flex-start;
+    background: lightblue;
+    display: none;
+    position: fixed;
+    width: 300px;
+    padding-left: 3rem;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all 0.35s;
+    z-index: 4;
+    ${props => props.menuOpen && `transform: translateX(0%);opacity:1;`};
+    ${props =>
+      !props.btnClicked &&
+      ` -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -ms-transition: none !important;
+    -o-transition: none !important;`};
+    @media (max-width: 850px) {
+      display: block;
     }
   }
 `;
 
 const MenuButtonStyles = styled.div`
   display: none;
-  transition: all 0.35s;
+  transition: all 0.5s;
   @media (max-width: 850px) {
     display: block;
     position: absolute;
