@@ -13,6 +13,7 @@ import {
 import { useNav } from '../../lib/navState';
 import useWindowDimensions from '../../lib/windowDimensions';
 import { useEffect } from 'react';
+import { formatUrlToRoute } from '../../lib/formatUrl';
 
 const DropdownItem = React.forwardRef(({ href, onClick, item }, ref) => {
   const { closeSideNav } = useNav();
@@ -68,10 +69,7 @@ const NavDropdown = React.forwardRef(function NavDropdown(props, ref) {
               href={{
                 pathname: '/products/[product]',
                 query: {
-                  product: `${product.product_title
-                    .toLowerCase()
-                    .split(' ')
-                    .join('_')}`,
+                  product: `${formatUrlToRoute(product.product_title)}`,
                 },
               }}
               key={product.id}

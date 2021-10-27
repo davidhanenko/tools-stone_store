@@ -2,8 +2,8 @@ import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 
 import Items from '../../../components/items/items-page/Items';
-import { MenuStateProvider } from '../../../lib/menuState';
-
+import MenuLayout from '../../../components/layouts/MenuLayout';
+import MainLayout from '../../../components/layouts/MainLayout';
 
 const ALL_PRODUCTS = gql`
   query ALL_PRODUCTS {
@@ -22,17 +22,20 @@ const ALL_PRODUCTS = gql`
 `;
 
 export default function ProductsCategoryPage({ query }) {
-  
   const { data, error, loading } = useQuery(ALL_PRODUCTS);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  const products = data.products;
+  // const products = data.products;
 
-  return (
-    <MenuStateProvider>
-      <Items itemsCategory={query.products} products={products} />
-    </MenuStateProvider>
-  );
+  return <Items itemsCategory={query.products} />;
 }
+
+ProductsCategoryPage.getLayout = function getLayout(page) {
+  return (
+    <MainLayout>
+      <MenuLayout>{page}</MenuLayout>
+    </MainLayout>
+  );
+};

@@ -17,10 +17,10 @@ function SubCategoryItemsList({ subCategory, title }) {
   return (
     <Link
       href={{
-        pathname: '/products/[products]/[product]',
+        pathname: '/products/[products]/[collection]',
         query: {
           products: `${formatUrlToRoute(title)}`,
-          product: `${formatUrlToRoute(subCategory.category_title)}`,
+          collection: `${formatUrlToRoute(subCategory.category_title)}`,
         },
       }}
     >

@@ -1,14 +1,10 @@
 import { formatUrlToDbName } from '../../../lib/formatUrl';
-import ItemsMenu from '../../shared/menu/ItemsMenu';
 import ItemsCategory from './ItemsCategory';
 import { ItemsStyles } from './ItemsStyles';
 
-export default function Items({ itemsCategory, products }) {
-  
+export default function Items({ itemsCategory }) {
   return (
     <ItemsStyles>
-      <ItemsMenu products={products} />
-
       {itemsCategory && (
         <ItemsCategory itemsCategory={formatUrlToDbName(itemsCategory)} />
       )}

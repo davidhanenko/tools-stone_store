@@ -14,7 +14,7 @@ const ItemsCategoryStyles = styled.div`
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
-    justify-content: center;
+    justify-content: start;
   }
 `;
 
