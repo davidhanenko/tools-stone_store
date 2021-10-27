@@ -1,5 +1,6 @@
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
+import { formatUrlToDbName } from '../../../lib/formatUrl';
 
 import ItemsSubCategory from './ItemsSubCategory';
 import { ItemsCategoryStyles } from './ItemsCategoryStyles';
@@ -25,17 +26,15 @@ const ITEMS_CATEGORY = gql`
 export default function ItemsCategory({ itemsCategory }) {
   const { data, error, loading } = useQuery(ITEMS_CATEGORY, {
     variables: {
-      itemsCategory : itemsCategory.split('_').join(' '),
+      itemsCategory: formatUrlToDbName(itemsCategory),
     },
   });
-
- 
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-   const product = data?.products[0];
-   const productTitle = product?.product_title;
+  const product = data?.products[0];
+  const productTitle = product?.product_title;
 
   return (
     <ItemsCategoryStyles>

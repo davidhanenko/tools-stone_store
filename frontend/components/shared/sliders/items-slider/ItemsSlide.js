@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { formatUrlToRoute } from '../../../../lib/formatUrl';
 
 import { ItemsSlideStyles, ImageOverlay } from './ItemsSlideStyles';
 
@@ -10,7 +11,7 @@ export default function Slide({ itemsByIndex, index }) {
         href={{
           pathname: '/products/[products]',
           query: {
-            products: `${itemsByIndex(index).title.split(' ').join('_')}`,
+            products: `${formatUrlToRoute(itemsByIndex(index).title)}`,
           },
         }}
         key={itemsByIndex(index).id}

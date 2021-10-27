@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const ItemsCategoryStyles = styled.div`
   background: var(--offWhite);
+
   .category-title {
     font-size: 3.5rem;
     text-transform: uppercase;
@@ -9,10 +10,11 @@ const ItemsCategoryStyles = styled.div`
     color: blue;
     padding-left: 5rem;
   }
-
   .category {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
   }
 `;
 

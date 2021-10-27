@@ -114,6 +114,5 @@ const BannerSlider = ({ slides, mediaByIndex }) => {
   );
 };
 
-// `${index}+${selectedIndex === index ? carouselRandomNumber : index}`;
 
 export default BannerSlider;

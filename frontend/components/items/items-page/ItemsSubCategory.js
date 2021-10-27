@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { formatUrlToRoute } from '../../../lib/formatUrl';
 
 import { ItemsSubCategoryStyles } from './ItemsSubCategoryStyles';
-
 
 export default function ItemsSubCategory({ subCategory, title }) {
   return (
@@ -13,18 +13,14 @@ export default function ItemsSubCategory({ subCategory, title }) {
   );
 }
 
-
 function SubCategoryItemsList({ subCategory, title }) {
   return (
     <Link
       href={{
         pathname: '/products/[products]/[product]',
         query: {
-          products: `${title}`,
-          product: `${subCategory.category_title
-            .toLowerCase()
-            .split(' ')
-            .join('_')}`,
+          products: `${formatUrlToRoute(title)}`,
+          product: `${formatUrlToRoute(subCategory.category_title)}`,
         },
       }}
     >
@@ -32,12 +28,10 @@ function SubCategoryItemsList({ subCategory, title }) {
         <Image
           className='sub-image'
           src={subCategory.single_item[0].image.url}
-          width={300}
-          height={300}
+          width={200}
+          height={200}
         />
       </a>
     </Link>
   );
 }
-
-
