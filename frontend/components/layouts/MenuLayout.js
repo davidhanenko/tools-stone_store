@@ -1,10 +1,22 @@
+import PropTypes from 'prop-types';
 import { MenuStateProvider } from '../../lib/menuState';
+import { GlobalStyles } from './GlobalStyles';
+import Header from './partials/Header';
 import ItemsMenu from '../menu/ItemsMenu';
 
 export default function MenuLayout({ children }) {
   return (
-    <MenuStateProvider>
-      <ItemsMenu>{children}</ItemsMenu>
-    </MenuStateProvider>
+    <>
+      <GlobalStyles />
+      <Header />
+      <MenuStateProvider>
+        <ItemsMenu />
+      </MenuStateProvider>
+      {children}
+    </>
   );
 }
+
+MenuLayout.propTypes = {
+  children: PropTypes.any,
+};

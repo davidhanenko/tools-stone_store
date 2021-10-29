@@ -1,12 +1,13 @@
-import { useState, useEffect } from 'react';
+import gql from 'graphql-tag';
+import { useQuery } from '@apollo/client';
+
+import { useEffect } from 'react';
 import { Slant as Hamburger } from 'hamburger-react';
 
 import useWindowDimensions from '../../lib/windowDimensions';
 import MenuLink from './MenuLink';
 import { ItemsMenuStyles, MenuButtonStyles } from './ItemsMenuStyles';
 import { useMenu } from '../../lib/menuState';
-import gql from 'graphql-tag';
-import { useQuery } from '@apollo/client';
 
 const PRODUCTS = gql`
   query PRODUCTS {
@@ -25,12 +26,6 @@ export default function ItemsMenu() {
 
   const { isOpen, setOpen, btnClicked, setBtnClicked, closeMenu } = useMenu();
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
-  const products = data?.products;
-
-  console.log(products);
-
   const { width } = useWindowDimensions();
 
   useEffect(() => {
@@ -38,6 +33,11 @@ export default function ItemsMenu() {
       closeMenu();
     }
   }, [width]);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  const products = data?.products;
 
   return (
     <ItemsMenuStyles menuOpen={isOpen} btnClicked={btnClicked}>

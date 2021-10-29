@@ -22,6 +22,7 @@ const ALL_PRODUCTS = gql`
 `;
 
 export default function ProductsCategoryPage({ query }) {
+  
   const { data, error, loading } = useQuery(ALL_PRODUCTS);
 
   if (loading) return <p>Loading...</p>;
@@ -30,12 +31,6 @@ export default function ProductsCategoryPage({ query }) {
   // const products = data.products;
 
   return <Items itemsCategory={query.products} />;
-}
-
-ProductsCategoryPage.getLayout = function getLayout(page) {
-  return (
-    <MainLayout>
-      <MenuLayout>{page}</MenuLayout>
-    </MainLayout>
-  );
 };
+
+ProductsCategoryPage.layout = 'menu';
