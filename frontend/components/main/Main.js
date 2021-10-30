@@ -19,7 +19,7 @@ import tool_2 from '../../public/img/tool-2.png';
 import BannerSlider from '../shared/sliders/banner-slider/BannerSlider';
 import styled from 'styled-components';
 
-import ProductsMainPage from '../items/main-page/Products';
+import ItemsMainPage from '../items/main-page/ItemsMainPage';
 
 const MainStyles = styled.div``;
 
@@ -70,7 +70,7 @@ export default function Main() {
       <BannerSlider slides={slides} mediaByIndex={mediaByIndex} />
       {/* </Parallax> */}
       {/* <Parallax y={[-20, 20]}> */}
-      <ProductsMainPage />
+      <ItemsMainPage />
 
 
       {/* </Parallax> */}

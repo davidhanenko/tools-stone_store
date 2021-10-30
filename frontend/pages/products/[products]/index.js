@@ -9,10 +9,10 @@ const ALL_PRODUCTS = gql`
   query ALL_PRODUCTS($itemsCategory: String!) {
     products(where: { product_title: $itemsCategory }) {
       product_title
-      category: product_categories {
-        category_title: product_category
+      category: items_categories {
+        category_title: items_category
         id
-        single_item: single_products(limit: 1) {
+        single_item: single_items(limit: 1) {
           item_title
           image {
             url
@@ -35,7 +35,7 @@ export default function ProductsCategoryPage({ query }) {
 
   const products = data.products;
 
-  return <Items itemsCategory={query.products} items={products[0]} />;
+  return <Items items={products[0]} />;
 };
 
 

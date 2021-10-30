@@ -3,12 +3,12 @@ import { useQuery } from '@apollo/client';
 import SubCategoryCollection from '../../../components/items/items-page/SubCategoryCollection';
 import { formatUrlToDbName } from '../../../lib/formatUrl';
 
-const ITEM = gql`
-  query ITEM($item: String!) {
-    category: productCategories(where: { product_category: $item }) {
-      category_title: product_category
+const ITEMS_COLLECTION = gql`
+  query ITEMS_COLLECTION($item: String!) {
+    category: productCategories(where: { items_category: $item }) {
+      category_title: items_category
       id
-      single_item: single_products {
+      single_item: single_items {
         item_title
         price
         description
@@ -21,7 +21,7 @@ const ITEM = gql`
 `;
 
 export default function ProductsPage({ query }) {
-  const { data, error, loading } = useQuery(ITEM, {
+  const { data, error, loading } = useQuery(ITEMS_COLLECTION, {
     variables: {
       item: formatUrlToDbName(query.collection),
     },
