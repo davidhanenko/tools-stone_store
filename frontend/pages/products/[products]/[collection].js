@@ -32,10 +32,7 @@ export default function ProductsPage({ query }) {
 
   return (
     <>
-      <SubCategoryCollection />
-      <SubCategoryCollection />
-      <SubCategoryCollection />
-      <SubCategoryCollection />
+      <SubCategoryCollection collection={query.collection} />
     </>
   );
 }

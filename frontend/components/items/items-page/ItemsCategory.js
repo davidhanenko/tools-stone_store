@@ -5,42 +5,15 @@ import { formatUrlToDbName } from '../../../lib/formatUrl';
 import ItemsSubCategory from './ItemsSubCategory';
 import { ItemsCategoryStyles } from './ItemsCategoryStyles';
 
-const ITEMS_CATEGORY = gql`
-  query ITEMS_CATEGORY($itemsCategory: String!) {
-    products(where: { product_title: $itemsCategory }) {
-      product_title
-      category: product_categories {
-        category_title: product_category
-        id
-        single_item: single_products(limit: 1) {
-          item_title
-          image {
-            url
-          }
-        }
-      }
-    }
-  }
-`;
+export default function ItemsCategory({ items }) {
 
-export default function ItemsCategory({ itemsCategory }) {
-  const { data, error, loading } = useQuery(ITEMS_CATEGORY, {
-    variables: {
-      itemsCategory: formatUrlToDbName(itemsCategory),
-    },
-  });
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
-
-  const product = data?.products[0];
-  const productTitle = product?.product_title;
+  const productTitle = items?.product_title;
 
   return (
     <ItemsCategoryStyles>
       <h3 className='category-title'>{productTitle}</h3>
       <div className='category'>
-        {product.category.map(subCategory => (
+        {items.category.map(subCategory => (
           <ItemsSubCategory
             key={subCategory.id}
             subCategory={subCategory}

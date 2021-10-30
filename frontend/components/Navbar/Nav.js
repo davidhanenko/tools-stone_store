@@ -50,7 +50,7 @@ export default function Nav() {
           <Link href='/' passHref>
             <LinkBtn title={'home'} />
           </Link>
-          <Link href='/test' passHref>
+          <Link href='/about' passHref>
             <LinkBtn title={'about'} />
           </Link>
           <Link href='/products' passHref>
