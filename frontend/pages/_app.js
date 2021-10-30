@@ -13,6 +13,8 @@ Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
+// changr LayoutWrapper to getLayput in production if not find other options
+
 function MyApp({ Component, pageProps, apollo }) {
 
   return (

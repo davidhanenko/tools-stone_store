@@ -4,4 +4,12 @@ export default function MainPage(props) {
   return <Main />;
 }
 
-MainPage.layout = 'default';
+
+export async function getStaticProps(props) {
+  let layout = 'main';
+  return {
+    props: {
+     layout
+    }
+  }
+}

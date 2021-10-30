@@ -1,0 +1,1 @@
+{"ast":null,"code":"import styled from 'styled-components';\nvar ItemsStyles = styled.div.withConfig({\n  displayName: \"ItemsStyles\",\n  componentId: \"sc-8yfl3r-0\"\n})([\"margin-top:calc(var(--navHeight) + var(--searchHeight));margin-bottom:10rem;position:relative;\"]);\nexport { ItemsStyles };","map":null,"metadata":{},"sourceType":"module"}
