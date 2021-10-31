@@ -5,10 +5,11 @@ import { formatUrlToDbName } from '../../../lib/formatUrl';
 
 const ITEMS_COLLECTION = gql`
   query ITEMS_COLLECTION($item: String!) {
-    category: productCategories(where: { items_category: $item }) {
-      category_title: items_category
+    items_category: itemsCategories(where: { category_title: $item }) {
+      category: category_title
       id
-      single_item: single_items {
+      single_items {
+        id
         item_title
         price
         description
@@ -32,7 +33,7 @@ export default function ProductsPage({ query }) {
 
   return (
     <>
-      <SubCategoryCollection collection={query.collection} />
+      <SubCategoryCollection itemsCollection={data?.items_category[0]} />
     </>
   );
 }

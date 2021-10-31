@@ -41,6 +41,100 @@ type UserPermissionsPasswordPayload {
   ok: Boolean!
 }
 
+type ItemsCategory {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  category_title: String
+  published_at: DateTime
+  single_items(sort: String, limit: Int, start: Int, where: JSON): [SingleItem]
+}
+
+type ItemsCategoryConnection {
+  values: [ItemsCategory]
+  groupBy: ItemsCategoryGroupBy
+  aggregate: ItemsCategoryAggregator
+}
+
+type ItemsCategoryAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ItemsCategoryGroupBy {
+  id: [ItemsCategoryConnectionId]
+  created_at: [ItemsCategoryConnectionCreated_at]
+  updated_at: [ItemsCategoryConnectionUpdated_at]
+  category_title: [ItemsCategoryConnectionCategory_title]
+  published_at: [ItemsCategoryConnectionPublished_at]
+}
+
+type ItemsCategoryConnectionId {
+  key: ID
+  connection: ItemsCategoryConnection
+}
+
+type ItemsCategoryConnectionCreated_at {
+  key: DateTime
+  connection: ItemsCategoryConnection
+}
+
+type ItemsCategoryConnectionUpdated_at {
+  key: DateTime
+  connection: ItemsCategoryConnection
+}
+
+type ItemsCategoryConnectionCategory_title {
+  key: String
+  connection: ItemsCategoryConnection
+}
+
+type ItemsCategoryConnectionPublished_at {
+  key: DateTime
+  connection: ItemsCategoryConnection
+}
+
+input ItemsCategoryInput {
+  category_title: String
+  single_items: [ID]
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editItemsCategoryInput {
+  category_title: String
+  single_items: [ID]
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createItemsCategoryInput {
+  data: ItemsCategoryInput
+}
+
+type createItemsCategoryPayload {
+  itemsCategory: ItemsCategory
+}
+
+input updateItemsCategoryInput {
+  where: InputID
+  data: editItemsCategoryInput
+}
+
+type updateItemsCategoryPayload {
+  itemsCategory: ItemsCategory
+}
+
+input deleteItemsCategoryInput {
+  where: InputID
+}
+
+type deleteItemsCategoryPayload {
+  itemsCategory: ItemsCategory
+}
+
 type MainPageSlide {
   id: ID!
   created_at: DateTime!
@@ -175,6 +269,232 @@ input deleteMainPageSlideInput {
 
 type deleteMainPageSlidePayload {
   mainPageSlide: MainPageSlide
+}
+
+type Products {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  product_title: String
+  published_at: DateTime
+  items_categories(sort: String, limit: Int, start: Int, where: JSON): [ItemsCategory]
+}
+
+type ProductsConnection {
+  values: [Products]
+  groupBy: ProductsGroupBy
+  aggregate: ProductsAggregator
+}
+
+type ProductsAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ProductsGroupBy {
+  id: [ProductsConnectionId]
+  created_at: [ProductsConnectionCreated_at]
+  updated_at: [ProductsConnectionUpdated_at]
+  product_title: [ProductsConnectionProduct_title]
+  published_at: [ProductsConnectionPublished_at]
+}
+
+type ProductsConnectionId {
+  key: ID
+  connection: ProductsConnection
+}
+
+type ProductsConnectionCreated_at {
+  key: DateTime
+  connection: ProductsConnection
+}
+
+type ProductsConnectionUpdated_at {
+  key: DateTime
+  connection: ProductsConnection
+}
+
+type ProductsConnectionProduct_title {
+  key: String
+  connection: ProductsConnection
+}
+
+type ProductsConnectionPublished_at {
+  key: DateTime
+  connection: ProductsConnection
+}
+
+input ProductInput {
+  product_title: String
+  items_categories: [ID]
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editProductInput {
+  product_title: String
+  items_categories: [ID]
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createProductInput {
+  data: ProductInput
+}
+
+type createProductPayload {
+  product: Products
+}
+
+input updateProductInput {
+  where: InputID
+  data: editProductInput
+}
+
+type updateProductPayload {
+  product: Products
+}
+
+input deleteProductInput {
+  where: InputID
+}
+
+type deleteProductPayload {
+  product: Products
+}
+
+type SingleItem {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  item_title: String
+  price: Float
+  description: String
+  published_at: DateTime
+  image(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+}
+
+type SingleItemConnection {
+  values: [SingleItem]
+  groupBy: SingleItemGroupBy
+  aggregate: SingleItemAggregator
+}
+
+type SingleItemAggregator {
+  count: Int
+  totalCount: Int
+  sum: SingleItemAggregatorSum
+  avg: SingleItemAggregatorAvg
+  min: SingleItemAggregatorMin
+  max: SingleItemAggregatorMax
+}
+
+type SingleItemAggregatorSum {
+  price: Float
+}
+
+type SingleItemAggregatorAvg {
+  price: Float
+}
+
+type SingleItemAggregatorMin {
+  price: Float
+}
+
+type SingleItemAggregatorMax {
+  price: Float
+}
+
+type SingleItemGroupBy {
+  id: [SingleItemConnectionId]
+  created_at: [SingleItemConnectionCreated_at]
+  updated_at: [SingleItemConnectionUpdated_at]
+  item_title: [SingleItemConnectionItem_title]
+  price: [SingleItemConnectionPrice]
+  description: [SingleItemConnectionDescription]
+  published_at: [SingleItemConnectionPublished_at]
+}
+
+type SingleItemConnectionId {
+  key: ID
+  connection: SingleItemConnection
+}
+
+type SingleItemConnectionCreated_at {
+  key: DateTime
+  connection: SingleItemConnection
+}
+
+type SingleItemConnectionUpdated_at {
+  key: DateTime
+  connection: SingleItemConnection
+}
+
+type SingleItemConnectionItem_title {
+  key: String
+  connection: SingleItemConnection
+}
+
+type SingleItemConnectionPrice {
+  key: Float
+  connection: SingleItemConnection
+}
+
+type SingleItemConnectionDescription {
+  key: String
+  connection: SingleItemConnection
+}
+
+type SingleItemConnectionPublished_at {
+  key: DateTime
+  connection: SingleItemConnection
+}
+
+input SingleItemInput {
+  item_title: String
+  price: Float
+  image: [ID]
+  description: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editSingleItemInput {
+  item_title: String
+  price: Float
+  image: [ID]
+  description: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createSingleItemInput {
+  data: SingleItemInput
+}
+
+type createSingleItemPayload {
+  singleItem: SingleItem
+}
+
+input updateSingleItemInput {
+  where: InputID
+  data: editSingleItemInput
+}
+
+type updateSingleItemPayload {
+  singleItem: SingleItem
+}
+
+input deleteSingleItemInput {
+  where: InputID
+}
+
+type deleteSingleItemPayload {
+  singleItem: SingleItem
 }
 
 type I18NLocale {
@@ -647,7 +967,7 @@ type deleteUserPayload {
   user: UsersPermissionsUser
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | MainPageSlide | MainPageSlideConnection | MainPageSlideAggregator | MainPageSlideGroupBy | MainPageSlideConnectionId | MainPageSlideConnectionCreated_at | MainPageSlideConnectionUpdated_at | MainPageSlideConnectionSlogan | MainPageSlideConnectionDescription | MainPageSlideConnectionBg_image | MainPageSlideConnectionImage_1 | MainPageSlideConnectionImage_2 | MainPageSlideConnectionItem_title | MainPageSlideConnectionPublished_at | createMainPageSlidePayload | updateMainPageSlidePayload | deleteMainPageSlidePayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | ItemsCategory | ItemsCategoryConnection | ItemsCategoryAggregator | ItemsCategoryGroupBy | ItemsCategoryConnectionId | ItemsCategoryConnectionCreated_at | ItemsCategoryConnectionUpdated_at | ItemsCategoryConnectionCategory_title | ItemsCategoryConnectionPublished_at | createItemsCategoryPayload | updateItemsCategoryPayload | deleteItemsCategoryPayload | MainPageSlide | MainPageSlideConnection | MainPageSlideAggregator | MainPageSlideGroupBy | MainPageSlideConnectionId | MainPageSlideConnectionCreated_at | MainPageSlideConnectionUpdated_at | MainPageSlideConnectionSlogan | MainPageSlideConnectionDescription | MainPageSlideConnectionBg_image | MainPageSlideConnectionImage_1 | MainPageSlideConnectionImage_2 | MainPageSlideConnectionItem_title | MainPageSlideConnectionPublished_at | createMainPageSlidePayload | updateMainPageSlidePayload | deleteMainPageSlidePayload | Products | ProductsConnection | ProductsAggregator | ProductsGroupBy | ProductsConnectionId | ProductsConnectionCreated_at | ProductsConnectionUpdated_at | ProductsConnectionProduct_title | ProductsConnectionPublished_at | createProductPayload | updateProductPayload | deleteProductPayload | SingleItem | SingleItemConnection | SingleItemAggregator | SingleItemAggregatorSum | SingleItemAggregatorAvg | SingleItemAggregatorMin | SingleItemAggregatorMax | SingleItemGroupBy | SingleItemConnectionId | SingleItemConnectionCreated_at | SingleItemConnectionUpdated_at | SingleItemConnectionItem_title | SingleItemConnectionPrice | SingleItemConnectionDescription | SingleItemConnectionPublished_at | createSingleItemPayload | updateSingleItemPayload | deleteSingleItemPayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload
 
 input InputID {
   id: ID!
@@ -666,9 +986,18 @@ type AdminUser {
 }
 
 type Query {
+  itemsCategory(id: ID!, publicationState: PublicationState): ItemsCategory
+  itemsCategories(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [ItemsCategory]
+  itemsCategoriesConnection(sort: String, limit: Int, start: Int, where: JSON): ItemsCategoryConnection
   mainPageSlide(id: ID!, publicationState: PublicationState): MainPageSlide
   mainPageSlides(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [MainPageSlide]
   mainPageSlidesConnection(sort: String, limit: Int, start: Int, where: JSON): MainPageSlideConnection
+  product(id: ID!, publicationState: PublicationState): Products
+  products(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Products]
+  productsConnection(sort: String, limit: Int, start: Int, where: JSON): ProductsConnection
+  singleItem(id: ID!, publicationState: PublicationState): SingleItem
+  singleItems(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [SingleItem]
+  singleItemsConnection(sort: String, limit: Int, start: Int, where: JSON): SingleItemConnection
   files(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UploadFile]
   filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
   role(id: ID!, publicationState: PublicationState): UsersPermissionsRole
@@ -685,9 +1014,18 @@ type Query {
 }
 
 type Mutation {
+  createItemsCategory(input: createItemsCategoryInput): createItemsCategoryPayload
+  updateItemsCategory(input: updateItemsCategoryInput): updateItemsCategoryPayload
+  deleteItemsCategory(input: deleteItemsCategoryInput): deleteItemsCategoryPayload
   createMainPageSlide(input: createMainPageSlideInput): createMainPageSlidePayload
   updateMainPageSlide(input: updateMainPageSlideInput): updateMainPageSlidePayload
   deleteMainPageSlide(input: deleteMainPageSlideInput): deleteMainPageSlidePayload
+  createProduct(input: createProductInput): createProductPayload
+  updateProduct(input: updateProductInput): updateProductPayload
+  deleteProduct(input: deleteProductInput): deleteProductPayload
+  createSingleItem(input: createSingleItemInput): createSingleItemPayload
+  updateSingleItem(input: updateSingleItemInput): updateSingleItemPayload
+  deleteSingleItem(input: deleteSingleItemInput): deleteSingleItemPayload
 
   """Delete one file"""
   deleteFile(input: deleteFileInput): deleteFilePayload

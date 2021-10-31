@@ -27,7 +27,7 @@ function SubCategoryItemsList({ subCategory, title }) {
       <a>
         <Image
           className='sub-image'
-          src={subCategory.single_item[0].image.url}
+          src={subCategory.single_item[0].image[0].url}
           width={200}
           height={200}
         />

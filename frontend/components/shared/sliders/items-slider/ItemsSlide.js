@@ -4,7 +4,8 @@ import { formatUrlToRoute } from '../../../../lib/formatUrl';
 
 import { ItemsSlideStyles, ImageOverlay } from './ItemsSlideStyles';
 
-export default function Slide({ itemsByIndex, index }) {
+export default function Slide({ itemsByIndex, index }) 
+{
   return (
     <ItemsSlideStyles>
       <Link
@@ -23,7 +24,7 @@ export default function Slide({ itemsByIndex, index }) {
             <ImageOverlay />
             <Image
               className='embla__slide__img item-image'
-              src={itemsByIndex(index).category[0].single_item[0].image.url}
+              src={itemsByIndex(index)?.category[0]?.single_item[0]?.image[0].url}
               width={300}
               height={300}
               layout='responsive'

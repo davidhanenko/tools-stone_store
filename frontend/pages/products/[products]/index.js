@@ -10,7 +10,7 @@ const ALL_PRODUCTS = gql`
     products(where: { product_title: $itemsCategory }) {
       product_title
       category: items_categories {
-        category_title: items_category
+        category_title: category_title
         id
         single_item: single_items(limit: 1) {
           item_title

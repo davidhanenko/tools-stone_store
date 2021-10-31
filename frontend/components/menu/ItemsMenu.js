@@ -15,7 +15,7 @@ const PRODUCTS = gql`
       id
       title: product_title
       items_categories {
-        category: items_category
+        category: category_title
       }
     }
   }

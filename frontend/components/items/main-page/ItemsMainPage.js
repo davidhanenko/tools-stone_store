@@ -11,7 +11,7 @@ const PRODUCTS = gql`
       id
       title: product_title
       category: items_categories(limit: 1) {
-        single_item: single_items(limit: 1) {
+        single_item: single_items {
           image {
             url
           }
@@ -32,12 +32,12 @@ export default function ItemsMainPage({}) {
   const slides = Array.from(Array(SLIDE_COUNT).keys());
 
   // func from Embla Carousel docs
-  const itemsByIndex = index => data?.products[index % data?.products.length];
+  const itemsByIndex = index => data?.products[index % data?.products?.length];
 
   return (
     <ItemsMainPageStyles>
       <h2>Products</h2>
-      <ItemsSlider slides={slides} itemsByIndex={itemsByIndex} />
+      {data && <ItemsSlider slides={slides} itemsByIndex={itemsByIndex} />}
     </ItemsMainPageStyles>
   );
 }
