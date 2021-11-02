@@ -7,6 +7,7 @@ import { useMenu } from '../../context/menuState';
 import useWindowDimensions from '../../lib/windowDimensions';
 
 import MenuLink from './MenuLink';
+import MenuTree from './MenuTree';
 import { ItemsMenuStyles, MenuButtonStyles } from './ItemsMenuStyles';
 
 const PRODUCTS = gql`
@@ -40,34 +41,37 @@ export default function ItemsMenu() {
   const products = data?.products;
 
   return (
-    <ItemsMenuStyles menuOpen={isOpen} btnClicked={btnClicked}>
-      <div className='menu-header'>
-        <MenuButtonStyles onClick={() => setBtnClicked(true)}>
-          <Hamburger
-            hideOutline={false}
-            label='Show menu'
-            toggled={isOpen}
-            toggle={setOpen}
-          />
-        </MenuButtonStyles>
+    <>
+      <ItemsMenuStyles menuOpen={isOpen} btnClicked={btnClicked}>
+        <div className='menu-header'>
+          <MenuButtonStyles onClick={() => setBtnClicked(true)}>
+            <Hamburger
+              hideOutline={false}
+              label='Show menu'
+              toggled={isOpen}
+              toggle={setOpen}
+            />
+          </MenuButtonStyles>
 
-        <h3 className='main-title'>Products</h3>
-      </div>
-      <div className='menu-links'>
-        {products?.map(product => (
-          <MenuLink product={product} key={product.id} />
-        ))}
-      </div>
+          <h3 className='main-title'>Products</h3>
+        </div>
+        <div className='menu-links'>
+          {products?.map(product => (
+            <MenuLink product={product} key={product.id} />
+          ))}
+        </div>
 
-      <div className='side-menu-links '>
-        {products?.map(product => (
-          <MenuLink
-            product={product}
-            key={product.id}
-            onClick={() => setOpen(false)}
-          />
-        ))}
-      </div>
-    </ItemsMenuStyles>
+        <div className='side-menu-links '>
+          {products?.map(product => (
+            <MenuLink
+              product={product}
+              key={product.id}
+              onClick={() => setOpen(false)}
+            />
+          ))}
+        </div>
+      </ItemsMenuStyles>
+      <MenuTree />
+    </>
   );
 }

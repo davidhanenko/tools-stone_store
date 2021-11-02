@@ -4,8 +4,8 @@ import { useQuery } from '@apollo/client';
 import { formatUrlToDbName } from '../../../../helpers/formatUrl';
 import SingleItem from '../../../../components/items/items-page/SingleItem';
 
-const ITEMS_COLLECTION = gql`
-  query ITEMS_COLLECTION($item: String!) {
+const SINGLE_ITEM = gql`
+  query SINGLE_ITEMS($item: String!) {
     single_item: singleItems(where: { item_title: $item }) {
       id
       item_title
@@ -19,16 +19,16 @@ const ITEMS_COLLECTION = gql`
 `;
 
 export default function ProductsPage({ query }) {
-  const { data, error, loading } = useQuery(ITEMS_COLLECTION, {
+  const { data, error, loading } = useQuery(SINGLE_ITEM, {
     variables: {
-      item: formatUrlToDbName(query.item),
+      item: formatUrlToDbName(query.single),
     },
   });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  const singleItem =  data.single_item[0];
+  const singleItem =  data?.single_item[0];
   
   return (
       <SingleItem singleItem={singleItem} />

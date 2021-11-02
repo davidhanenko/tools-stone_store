@@ -1,11 +1,13 @@
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
-import SubCategoryCollection from '../../../../components/items/items-page/SubCategoryCollection';
+
 import { formatUrlToDbName } from '../../../../helpers/formatUrl';
 
+import SubCategoryCollection from '../../../../components/items/items-page/SubCategoryCollection';
+
 const ITEMS_COLLECTION = gql`
-  query ITEMS_COLLECTION($item: String!) {
-    items_category: itemsCategories(where: { category_title: $item }) {
+  query ITEMS_COLLECTION($collection: String!) {
+    items_category: itemsCategories(where: { category_title: $collection }) {
       category: category_title
       id
       single_items {
@@ -24,7 +26,7 @@ const ITEMS_COLLECTION = gql`
 export default function ProductsPage({ query }) {
   const { data, error, loading } = useQuery(ITEMS_COLLECTION, {
     variables: {
-      item: formatUrlToDbName(query.collection),
+      collection: formatUrlToDbName(query.collection),
     },
   });
 

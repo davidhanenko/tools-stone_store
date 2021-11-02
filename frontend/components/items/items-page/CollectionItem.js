@@ -10,11 +10,11 @@ export default function CollectionItem({ item, product, collection }) {
     <CollectionItemStyles>
       <Link
         href={{
-          pathname: '/products/[product]/[collection]/[item]',
+          pathname: '/products/[product]/[collection]/[single]',
           query: {
             product: `${product}`,
             collection: `${collection}`,
-            item: `${formatUrlToRoute(item.item_title)}`,
+            single: `${formatUrlToRoute(item.item_title)}`,
           },
         }}
       >
