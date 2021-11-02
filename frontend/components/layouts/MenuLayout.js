@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import { MenuStateProvider } from '../../lib/menuState';
+import { MenuStateProvider } from '../../context/menuState';
+
 import { GlobalStyles } from './GlobalStyles';
 import Header from './partials/Header';
 import ItemsMenu from '../menu/ItemsMenu';

@@ -1,25 +1,25 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { formatUrlToRoute } from '../../../lib/formatUrl';
+import { formatUrlToRoute } from '../../../helpers/formatUrl';
 
 import { ItemsSubCategoryStyles } from './ItemsSubCategoryStyles';
 
-export default function ItemsSubCategory({ subCategory, title }) {
+export default function ItemsSubCategory({ subCategory, productTitle }) {
   return (
     <ItemsSubCategoryStyles>
       <h3>{subCategory.category_title}</h3>
-      <SubCategoryItemsList subCategory={subCategory} title={title} />
+      <SubCategoryItemsList subCategory={subCategory} productTitle={productTitle} />
     </ItemsSubCategoryStyles>
   );
 }
 
-function SubCategoryItemsList({ subCategory, title }) {
+function SubCategoryItemsList({ subCategory, productTitle }) {
   return (
     <Link
       href={{
         pathname: '/products/[products]/[collection]',
         query: {
-          products: `${formatUrlToRoute(title)}`,
+          products: `${formatUrlToRoute(productTitle)}`,
           collection: `${formatUrlToRoute(subCategory.category_title)}`,
         },
       }}

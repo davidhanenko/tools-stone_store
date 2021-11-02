@@ -1,19 +1,18 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-// import { useQuery } from '@apollo/client';
-// import gql from 'graphql-tag';
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { MdExpandMore, MdExpandLess } from 'react-icons/md';
+
+import { useNav } from '../../context/navState';
+import useWindowDimensions from '../../lib/windowDimensions';
+import { formatUrlToRoute } from '../../helpers/formatUrl';
+
 import {
   DropdownBtnStyles,
   DropdownItemStyles,
   DropdownMenuStyles,
   NavDropdownStyles,
 } from './NavDropdownStyles';
-import { useNav } from '../../lib/navState';
-import useWindowDimensions from '../../lib/windowDimensions';
-import { useEffect } from 'react';
-import { formatUrlToRoute } from '../../lib/formatUrl';
 
 const DropdownItem = React.forwardRef(({ href, onClick, item }, ref) => {
   const { closeSideNav } = useNav();
@@ -42,9 +41,13 @@ const NavDropdown = React.forwardRef(function NavDropdown(props, ref) {
   };
 
   useEffect(() => {
+    let isMounted = true;
     if (width >= 850) {
       setDropdownOpen(false);
     }
+    return () => {
+      isMounted = false;
+    };
   }, [width]);
 
   return (

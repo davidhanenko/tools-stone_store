@@ -1,13 +1,13 @@
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
-
 import { useEffect } from 'react';
 import { Slant as Hamburger } from 'hamburger-react';
 
+import { useMenu } from '../../context/menuState';
 import useWindowDimensions from '../../lib/windowDimensions';
+
 import MenuLink from './MenuLink';
 import { ItemsMenuStyles, MenuButtonStyles } from './ItemsMenuStyles';
-import { useMenu } from '../../lib/menuState';
 
 const PRODUCTS = gql`
   query PRODUCTS {

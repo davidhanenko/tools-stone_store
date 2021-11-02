@@ -3,6 +3,7 @@ import { useEmblaCarousel } from 'embla-carousel/react';
 import { DotButton, PrevButton, NextButton } from '../SliderButtons';
 import { useRecursiveTimeout } from '../../../../lib/useRecursiveTimeout';
 import BannerSliderStyles from './BannerSliderStyles';
+
 import Slide from './Slide';
 
 const AUTOPLAY_INTERVAL = 4000;

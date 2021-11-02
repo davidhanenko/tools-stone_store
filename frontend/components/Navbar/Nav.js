@@ -3,11 +3,12 @@ import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 import Link from 'next/link';
 import Hamburger from 'hamburger-react';
-import { useNav } from '../../lib/navState';
+
+import { useNav } from '../../context/navState';
+import useWindowDimensions from '../../lib/windowDimensions';
 
 import NavDropdown from './NavDropdown';
 import { NavStyles, NavButtonStyles } from './NavStyles';
-import useWindowDimensions from '../../lib/windowDimensions';
 import Search from './Search';
 
 const PRODUCTS = gql`
@@ -22,17 +23,21 @@ const PRODUCTS = gql`
 export default function Nav() {
   const { data, error, loading } = useQuery(PRODUCTS);
 
-   if (loading) return <p>Loading...</p>;
-   if (error) return <p>Error: {error.message}</p>;
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
   const { navOpen, toggleNav, closeSideNav, navBtnClick, setNavBtnClick } =
     useNav();
   const { width } = useWindowDimensions();
 
   useEffect(() => {
+    let isMounted = true;
     if (width >= 850) {
       closeSideNav();
     }
+    return () => {
+      isMounted = false;
+    };
   }, [width]);
 
   const LinkBtn = React.forwardRef(({ href, title }, ref) => {
@@ -42,7 +47,7 @@ export default function Nav() {
       </a>
     );
   });
- 
+
   return (
     <>
       <NavStyles open={navOpen} btnClick={navBtnClick} width={width}>

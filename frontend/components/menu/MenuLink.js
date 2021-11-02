@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { formatUrlToRoute } from '../../lib/formatUrl';
 
-import { useMenu } from '../../lib/menuState';
+import { useMenu } from '../../context/menuState';
+import { formatUrlToRoute } from '../../helpers/formatUrl';
+
 import { MenuLinkStyles } from './MenuLinkStyles';
 
 export default function MenuLink({ product }) {

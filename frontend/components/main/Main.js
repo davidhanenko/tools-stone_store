@@ -1,9 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
-import { useQuery } from '@apollo/client';
-import { Parallax } from 'react-scroll-parallax';
-import Product from '../items/Product';
-import gql from 'graphql-tag';
 import Head from 'next/head';
+import { Parallax } from 'react-scroll-parallax';
 
 import bg_1 from '../../public/img/bg_1.jpg';
 import bg_2 from '../../public/img/bg_2.jpg';
@@ -17,14 +13,10 @@ import tool_1 from '../../public/img/tool-1.png';
 import tool_2 from '../../public/img/tool-2.png';
 
 import BannerSlider from '../shared/sliders/banner-slider/BannerSlider';
-import styled from 'styled-components';
-
 import ItemsMainPage from '../items/main-page/ItemsMainPage';
-
-const MainStyles = styled.div``;
+import {MainStyles} from './MainStyles';
 
 const SLIDE_COUNT = 3;
-
 const slides = Array.from(Array(SLIDE_COUNT).keys());
 
 export default function Main() {

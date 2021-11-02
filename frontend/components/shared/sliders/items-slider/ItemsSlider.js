@@ -2,9 +2,10 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { PrevButton, NextButton } from '../SliderButtons';
 import { useEmblaCarousel } from 'embla-carousel/react';
 import ItemsSliderStyles from './ItemsSliderStyles';
-import ItemsSlide from './ItemsSlide';
 
 import useWindowDimensions from '../../../../lib/windowDimensions';
+
+import ItemsSlide from './ItemsSlide';
 
 const ItemsSlider = ({ slides, itemsByIndex }) => {
   const [viewportRef, embla] = useEmblaCarousel({

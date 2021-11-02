@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { NavStateProvider } from '../../../lib/navState';
+import { NavStateProvider } from '../../../context/navState';
 import Nav from '../../navbar/Nav';
 import { HeaderStyles, Logo} from './HeaderStyles';
 

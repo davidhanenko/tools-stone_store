@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+
 import { SlideStyles } from './SlideStyles';
 
 export default function Silde({

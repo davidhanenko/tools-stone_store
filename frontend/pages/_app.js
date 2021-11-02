@@ -1,9 +1,10 @@
 import Router from 'next/router';
-import { ApolloProvider } from '@apollo/client';
 import NProgress from 'nprogress';
+import { ApolloProvider } from '@apollo/client';
 import { ScrollProvider } from '../lib/useScroll';
 import { ParallaxProvider } from 'react-scroll-parallax';
-import '../components/styles/nprogress.css';
+
+import '../styles/nprogress.css';
 
 import withData from '../lib/withData';
 

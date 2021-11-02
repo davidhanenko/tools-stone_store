@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { formatUrlToRoute } from '../../../../lib/formatUrl';
+import { formatUrlToRoute } from '../../../../helpers/formatUrl';
 
 import { ItemsSlideStyles, ImageOverlay } from './ItemsSlideStyles';
 

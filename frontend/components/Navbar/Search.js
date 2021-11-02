@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-import { SearchStyles } from './SearchStyles';
 import { MdSearch } from 'react-icons/md';
+
 import { useScroll } from '../../lib/useScroll';
+
+import { SearchStyles } from './SearchStyles';
 
 export default function Search({ offset }) {
   const [isScroll, setIsScroll] = useState(false);

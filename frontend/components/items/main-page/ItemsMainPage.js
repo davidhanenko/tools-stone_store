@@ -2,7 +2,6 @@ import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 
 import ItemsSlider from '../../shared/sliders/items-slider/ItemsSlider';
-
 import { ItemsMainPageStyles } from './ItemsStyles';
 
 const PRODUCTS = gql`

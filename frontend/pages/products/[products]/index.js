@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 
 import Items from '../../../components/items/items-page/Items';
-import { formatUrlToDbName } from '../../../lib/formatUrl';
+import { formatUrlToDbName } from '../../../helpers/formatUrl';
 
 
 const ALL_PRODUCTS = gql`
@@ -10,7 +10,7 @@ const ALL_PRODUCTS = gql`
     products(where: { product_title: $itemsCategory }) {
       product_title
       category: items_categories {
-        category_title: category_title
+        category_title
         id
         single_item: single_items(limit: 1) {
           item_title
