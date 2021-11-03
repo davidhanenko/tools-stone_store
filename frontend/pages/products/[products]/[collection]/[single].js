@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 
 import { formatUrlToDbName } from '../../../../helpers/formatUrl';
-import SingleItem from '../../../../components/items/items-page/SingleItem';
+import SingleItem from '../../../../components/items/items-page/single-item/SingleItem';
 
 const SINGLE_ITEM = gql`
   query SINGLE_ITEMS($item: String!) {

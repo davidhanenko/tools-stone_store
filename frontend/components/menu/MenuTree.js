@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { formatUrlToDbName } from '../../helpers/formatUrl';
 
-import { MenuTreeStyles } from './MenuTreeStyles';
+import { MenuTreeStyles, TreeNodeStyles } from './MenuTreeStyles';
 
 export default function MenuTree() {
   const router = useRouter();
@@ -22,10 +22,10 @@ export default function MenuTree() {
 
 function TreeNode({ node, route }) {
   return (
-    <li>
+    <TreeNodeStyles>
       <Link href={`/${route}`}>
         <a>{formatUrlToDbName(node)}</a>
       </Link>
-    </li>
+    </TreeNodeStyles>
   );
 }

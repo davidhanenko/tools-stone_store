@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 
 import { formatUrlToDbName } from '../../../../helpers/formatUrl';
 
-import SubCategoryCollection from '../../../../components/items/items-page/SubCategoryCollection';
+import SubCategoryCollection from '../../../../components/items/items-page/sub-category-collection/SubCategoryCollection';
 
 const ITEMS_COLLECTION = gql`
   query ITEMS_COLLECTION($collection: String!) {

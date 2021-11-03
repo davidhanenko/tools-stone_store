@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 
-import Items from '../../../components/items/items-page/Items';
+import ItemsByCategory from '../../../components/items/items-page/items-by-category/ItemsByCategory';
 import { formatUrlToDbName } from '../../../helpers/formatUrl';
 
 
@@ -35,7 +35,7 @@ export default function ProductsCategoryPage({ query }) {
 
   const products = data.products;
 
-  return <Items items={products[0]} />;
+  return <ItemsByCategory items={products[0]} />;
 };
 
 
