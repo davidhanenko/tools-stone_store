@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+ import styled from 'styled-components';
 
 const ItemsSubCategoryStyles = styled.div`
   background: #ced8ec;

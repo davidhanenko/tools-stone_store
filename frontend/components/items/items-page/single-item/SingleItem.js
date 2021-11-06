@@ -1,10 +1,16 @@
 import Image from 'next/image';
+import Head from 'next/head';
+
+import capitalizeStr from '../../../../helpers/capitalizeStr';
 
 import { ItemDescriptionStyles, ItemImageStyles, SingleItemStyles } from './SingleItemStyles';
 
 export default function SingleItem({ singleItem }) {
   return (
     <SingleItemStyles>
+      <Head>
+        <title>{capitalizeStr(singleItem.item_title)} - A2Z</title>
+      </Head>
       <ItemImageStyles>
         <Image src={singleItem.image[0].url} width={400} height={400} />
       </ItemImageStyles>
