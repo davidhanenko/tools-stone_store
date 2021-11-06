@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 const ItemsMenuStyles = styled.div`
-
   margin-top: calc(var(--navHeight) + var(--searchHeight));
-
   background: lightblue;
-  overflow: hidden;
+
   width: 100%;
   z-index: 1;
+  @media (max-width: 850px) {
+    overflow-x: hidden;
+  }
   .menu-header {
     position: relative;
     height: 100px;

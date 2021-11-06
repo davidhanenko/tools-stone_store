@@ -61,7 +61,7 @@ export default function ItemsMenu() {
           ))}
         </div>
 
-        <div className='side-menu-links '>
+        <div className='side-menu-links'>
           {products?.map(product => (
             <MenuLink
               product={product}
@@ -71,6 +71,7 @@ export default function ItemsMenu() {
           ))}
         </div>
       </ItemsMenuStyles>
+
       <MenuTree />
     </>
   );

@@ -29,20 +29,10 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/products.js"
     ],
-    "/products/[products]": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/products/[products].js"
-    ],
     "/products/[products]/[collection]": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/products/[products]/[collection].js"
-    ],
-    "/products/[products]/[collection]/[single]": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/products/[products]/[collection]/[single].js"
     ]
   },
   "ampFirstPages": []

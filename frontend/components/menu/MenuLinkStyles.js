@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const MenuLinkStyles = styled.div`
+  position: relative;
   padding-right: 2rem;
   a {
     text-decoration: none;

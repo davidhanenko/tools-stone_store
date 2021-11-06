@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 
 import { useMenu } from '../../context/menuState';
 import { formatUrlToRoute } from '../../helpers/formatUrl';
+import MenuDropdown from './MenuDropdown';
+import { MenuDropdownBtnStyles } from './MenuDropdownStyles';
 
 import { MenuLinkStyles } from './MenuLinkStyles';
 
@@ -32,6 +34,10 @@ export default function MenuLink({ product }) {
           </p>
         </a>
       </Link>
+      <MenuDropdown
+        item={product.title}
+        categories={product.items_categories}
+      />
     </MenuLinkStyles>
   );
 }
