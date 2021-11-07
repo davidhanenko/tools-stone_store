@@ -31,15 +31,15 @@ const DropdownBtnStyles = styled.button`
 
 const DropdownMenuStyles = styled.ul`
   background: var(--lightGrey);
-  opacity: 1;
+  opacity: 0;
+  display: none;
   z-index: 2;
   @media (min-width: 850px) {
     opacity: 0;
     background: var(--offWhite);
-    /* border: 1px solid var(--lightGrey); */
     min-height: 15rem;
     position: fixed;
-    width: 50rem;
+    width: 40rem;
     left: 5rem;
     margin: 0;
     padding: 1rem;
@@ -48,6 +48,7 @@ const DropdownMenuStyles = styled.ul`
     transition: all 300ms;
     ${props => props.dropdownOpen && `opacity: 1;`}
   }
+  ${props => props.dropdownOpen && `opacity: 1; display: block;`}
 `;
 
 const DropdownItemStyles = styled.li`

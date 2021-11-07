@@ -29,7 +29,7 @@ const DropdownItem = React.forwardRef(({ href, onClick, menuItem }, ref) => {
 
 const MenuDropdown = React.forwardRef(function MenuDropdown(props, ref) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const { isOpen } = useMenu();
+  const { isOpen, setOpen } = useMenu();
   const { width } = useWindowDimensions();
 
   const router = useRouter();
@@ -47,7 +47,7 @@ const MenuDropdown = React.forwardRef(function MenuDropdown(props, ref) {
   useEffect(() => {
     let isMounted = true;
     if (width >= 850) {
-      setDropdownOpen(false);
+      setOpen(false);
     }
     return () => {
       isMounted = false;
