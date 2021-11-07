@@ -7,13 +7,14 @@ const ItemsSubCategoryStyles = styled.div`
   @media (max-width: 850px) {
     flex: 1 1;
   }
+  h4 {
+    color: black;
+    font-weight: 100;
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
 `;
 
-const ItemHeaderStyles = styled.h4`
-  color: black;
-  font-weight: 100;
-  font-size: 2rem;
-  text-transform: uppercase;
-`;
 
-export { ItemsSubCategoryStyles, ItemHeaderStyles };
+
+export { ItemsSubCategoryStyles};

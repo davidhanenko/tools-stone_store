@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { MdExpandMore, MdExpandLess } from 'react-icons/md';
 
@@ -16,7 +17,7 @@ import {
 
 const DropdownItem = React.forwardRef(({ href, onClick, menuItem }, ref) => {
   const { closeMenu } = useMenu();
-  
+
   return (
     <DropdownItemStyles>
       <a href={href} onClick={() => closeMenu()} ref={ref}>
@@ -30,6 +31,8 @@ const MenuDropdown = React.forwardRef(function MenuDropdown(props, ref) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { isOpen } = useMenu();
   const { width } = useWindowDimensions();
+
+  const router = useRouter();
 
   const showDropdown = () => setDropdownOpen(!dropdownOpen);
 
@@ -55,7 +58,16 @@ const MenuDropdown = React.forwardRef(function MenuDropdown(props, ref) {
     <DropdownStyles onMouseOver={mouseEnter} onMouseLeave={mouseLeave}>
       <div className='dropdown-btns-group'>
         <a href={props.href} ref={ref}>
-          {props.title}
+          <span
+            className={
+              formatUrlToRoute(router.asPath.split('/').slice(-1).join('')) ===
+              formatUrlToRoute(props.item)
+                ? 'active link-title'
+                : 'link-title'
+            }
+          >
+            {props.item}
+          </span>
         </a>
         <DropdownBtnStyles
           type='button'
@@ -66,25 +78,23 @@ const MenuDropdown = React.forwardRef(function MenuDropdown(props, ref) {
         </DropdownBtnStyles>
       </div>
 
-      {dropdownOpen && (
-        <DropdownMenuStyles>
-          {props?.categories?.map(category => (
-            <Link
-              href={{
-                pathname: '/products/[products]/[collection]',
-                query: {
-                  products: `${formatUrlToRoute(props.item)}`,
-                  collection: `${formatUrlToRoute(category.category)}`,
-                },
-              }}
-              key={category.id}
-              passHref
-            >
-              <DropdownItem menuItem={category?.category} />
-            </Link>
-          ))}
-        </DropdownMenuStyles>
-      )}
+      <DropdownMenuStyles dropdownOpen={dropdownOpen}>
+        {props?.categories?.map(category => (
+          <Link
+            href={{
+              pathname: '/products/[products]/[collection]',
+              query: {
+                products: `${formatUrlToRoute(props.item)}`,
+                collection: `${formatUrlToRoute(category.category)}`,
+              },
+            }}
+            key={category.id}
+            passHref
+          >
+            <DropdownItem menuItem={category?.category} />
+          </Link>
+        ))}
+      </DropdownMenuStyles>
     </DropdownStyles>
   );
 });

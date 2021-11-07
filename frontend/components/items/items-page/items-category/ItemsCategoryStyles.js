@@ -3,6 +3,16 @@ import styled from 'styled-components';
 const ItemsCategoryStyles = styled.div`
   background: var(--offWhite);
 
+  h3 {
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: blue;
+    padding-left: 5rem;
+    @media (max-width: 850px) {
+      font-size: 2.5rem;
+    }
+  }
   .category-container {
     display: flex;
     flex-wrap: wrap;
@@ -13,15 +23,5 @@ const ItemsCategoryStyles = styled.div`
   }
 `;
 
-const CategoryTitleStyles = styled.h3`
-  font-size: 3.5rem;
-  text-transform: uppercase;
-  font-weight: 300;
-  color: blue;
-  padding-left: 5rem;
-  @media (max-width: 850px) {
-    font-size: 2.5rem;
-  }
-`;
 
-export { ItemsCategoryStyles, CategoryTitleStyles };
+export { ItemsCategoryStyles};

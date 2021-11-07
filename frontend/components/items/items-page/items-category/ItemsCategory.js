@@ -4,7 +4,6 @@ import capitalizeStr from '../../../../helpers/capitalizeStr';
 
 import ItemsSubCategory from '../items-sub-category/ItemsSubCategory';
 import {
-  CategoryTitleStyles,
   ItemsCategoryStyles,
 } from './ItemsCategoryStyles';
 
@@ -16,7 +15,7 @@ export default function ItemsCategory({ items }) {
       <Head>
         <title>{capitalizeStr(productTitle)} - A2Z</title>
       </Head>
-      <CategoryTitleStyles>{productTitle}</CategoryTitleStyles>
+      <h3>{productTitle}</h3>
       <div className='category-container'>
         {items.category.map(subCategory => (
           <ItemsSubCategory

@@ -6,6 +6,7 @@ const LocalStateProvider = LocalStateContext.Provider;
 function MenuStateProvider({ children }) {
   const [isOpen, setOpen] = useState(false);
   const [btnClicked, setBtnClicked] = useState(false);
+  const [isActive, setIsActive] = useState('');
 
   function closeMenu() {
     setOpen(false);
@@ -19,6 +20,8 @@ function MenuStateProvider({ children }) {
         btnClicked,
         setBtnClicked,
         closeMenu,
+        isActive,
+        setIsActive,
       }}
     >
       {children}

@@ -3,9 +3,9 @@ import styled from 'styled-components';
 const ItemsMenuStyles = styled.div`
   margin-top: calc(var(--navHeight) + var(--searchHeight));
   background: lightblue;
-
   width: 100%;
   z-index: 1;
+  padding-bottom: 2rem;
   @media (max-width: 850px) {
     overflow-x: hidden;
   }

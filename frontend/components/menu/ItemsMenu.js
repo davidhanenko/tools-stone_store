@@ -16,6 +16,7 @@ const PRODUCTS = gql`
       id
       title: product_title
       items_categories {
+        id
         category: category_title
       }
     }
@@ -25,7 +26,15 @@ const PRODUCTS = gql`
 export default function ItemsMenu() {
   const { data, error, loading } = useQuery(PRODUCTS);
 
-  const { isOpen, setOpen, btnClicked, setBtnClicked, closeMenu } = useMenu();
+  const {
+    isOpen,
+    setOpen,
+    btnClicked,
+    setBtnClicked,
+    closeMenu,
+    isActive,
+    setIsActive,
+  } = useMenu();
 
   const { width } = useWindowDimensions();
 
@@ -34,6 +43,7 @@ export default function ItemsMenu() {
       closeMenu();
     }
   }, [width]);
+
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
@@ -57,7 +67,10 @@ export default function ItemsMenu() {
         </div>
         <div className='menu-links'>
           {products?.map(product => (
-            <MenuLink product={product} key={product.id} />
+            <MenuLink
+              product={product}
+              key={product.id}
+            />
           ))}
         </div>
 
@@ -66,7 +79,9 @@ export default function ItemsMenu() {
             <MenuLink
               product={product}
               key={product.id}
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                setOpen(false);
+              }}
             />
           ))}
         </div>

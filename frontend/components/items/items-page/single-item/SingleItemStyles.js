@@ -7,20 +7,19 @@ const SingleItemStyles = styled.div`
   position: relative;
   left: 5rem;
 
-   @media (max-width: 720px) {
+  @media (max-width: 720px) {
     flex-direction: column;
   }
+  .item-image-container {
+    text-transform: uppercase;
+    flex: 1 1 0;
+  }
 
+  .item-description-container {
+    text-transform: uppercase;
+    flex: 1 1 0;
+  }
 `;
 
-const ItemImageStyles = styled.div`
-  text-transform: uppercase;
-  flex: 1 1 0;
-`;
 
-const ItemDescriptionStyles = styled.div`
-  text-transform: uppercase;
-  flex: 1 1 0;
-`;
-
-export { SingleItemStyles, ItemImageStyles, ItemDescriptionStyles };
+export { SingleItemStyles };

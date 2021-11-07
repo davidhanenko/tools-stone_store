@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const DropdownStyles = styled.div`
   position: relative;
   align-self: center;
+  display: inline-block;
   .dropdown-btns-group {
     @media (max-width: 850px) {
       display: flex;
@@ -16,12 +17,11 @@ const DropdownBtnStyles = styled.button`
   border: none;
   background: transparent;
   cursor: pointer;
+  display: none;
   @media (max-width: 850px) {
-    position:relative;
-    left: 70%;
-    align-items: center;
-    align-self: center;
-    top: -4rem;
+    display: block;
+    position: fixed;
+    right: 1rem;
   }
   svg {
     color: grey;
@@ -29,22 +29,24 @@ const DropdownBtnStyles = styled.button`
   }
 `;
 
-const DropdownMenuStyles = styled.div`
+const DropdownMenuStyles = styled.ul`
   background: var(--lightGrey);
-  padding-left: 2rem;
-  transition: opacity 2s;
   opacity: 1;
   z-index: 2;
   @media (min-width: 850px) {
+    opacity: 0;
     background: var(--offWhite);
-    border: 1px solid var(--lightGrey);
-    position: absolute;
-    top: 60%;
-    width: 33rem;
-    margin-left: -5rem;
+    /* border: 1px solid var(--lightGrey); */
+    min-height: 15rem;
+    position: fixed;
+    width: 50rem;
+    left: 5rem;
+    margin: 0;
     padding: 1rem;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    transition: all 300ms;
+    ${props => props.dropdownOpen && `opacity: 1;`}
   }
 `;
 
@@ -53,7 +55,7 @@ const DropdownItemStyles = styled.li`
   text-transform: capitalize;
   cursor: pointer;
   line-height: 1.5rem;
-  padding: 0.5rem;
+  padding: 2rem;
   a {
     text-decoration: none;
     color: grey;
