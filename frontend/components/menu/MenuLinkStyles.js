@@ -10,6 +10,7 @@ const MenuLinkStyles = styled.div`
     margin-top: 0;
     color: white;
     text-transform: uppercase;
+    font-weight: 300;
     transition: all 0.3s;
   }
   &:hover .link-title {

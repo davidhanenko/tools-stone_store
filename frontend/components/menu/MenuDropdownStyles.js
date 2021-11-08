@@ -30,33 +30,35 @@ const DropdownBtnStyles = styled.button`
 `;
 
 const DropdownMenuStyles = styled.ul`
-  background: var(--lightGrey);
+  background: #c1e2ec;
   opacity: 0;
   display: none;
   z-index: 2;
+  padding: 2rem;
+  ${props => props.dropdownOpen && `opacity: 1; display: block;`}
   @media (min-width: 850px) {
-    opacity: 0;
-    background: var(--offWhite);
+    background: #c1e2ec;
     min-height: 15rem;
     position: fixed;
     width: 40rem;
-    left: 5rem;
+    left: 3rem;
     margin: 0;
-    padding: 1rem;
+    padding: 2rem;
+    opacity: 0;
+    visibility: hidden;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    transition: all 300ms;
-    ${props => props.dropdownOpen && `opacity: 1;`}
+    transition: all 0.5s;
+    ${props => props.dropdownOpen && `opacity: 1; visibility: visible;`}
   }
-  ${props => props.dropdownOpen && `opacity: 1; display: block;`}
 `;
 
 const DropdownItemStyles = styled.li`
   list-style: none;
   text-transform: capitalize;
   cursor: pointer;
-  line-height: 1.5rem;
-  padding: 2rem;
+  line-height: 0.5rem;
+  padding: 1rem;
   a {
     text-decoration: none;
     color: grey;
