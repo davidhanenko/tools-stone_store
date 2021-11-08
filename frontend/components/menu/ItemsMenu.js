@@ -31,10 +31,9 @@ export default function ItemsMenu() {
     setOpen,
     btnClicked,
     setBtnClicked,
-    closeMenu,
-    isActive,
-    setIsActive,
+    closeMenu
   } = useMenu();
+
 
   const { width } = useWindowDimensions();
 

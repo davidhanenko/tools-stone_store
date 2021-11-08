@@ -4,12 +4,20 @@ import Link from 'next/link';
 import { formatUrlToDbName } from '../../helpers/formatUrl';
 
 import { MenuTreeStyles, TreeNodeStyles } from './MenuTreeStyles';
+import { useMenu } from '../../context/menuState';
+import { useEffect } from 'react/cjs/react.development';
 
 export default function MenuTree() {
+  const { isActive, setIsActive } = useMenu();
+
   const router = useRouter();
   const routesArr = router.asPath.split('/').slice(1);
 
-  const getRoute = (r, i) => r.slice(0, i+1).join('/');
+  const getRoute = (r, i) => r.slice(0, i + 1).join('/');
+
+  useEffect(() => {
+    setIsActive(routesArr[1]);
+  }, [routesArr]);
 
   return (
     <MenuTreeStyles>

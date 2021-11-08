@@ -57,17 +57,17 @@ const MenuDropdown = React.forwardRef(function MenuDropdown(props, ref) {
   return (
     <DropdownStyles onMouseOver={mouseEnter} onMouseLeave={mouseLeave}>
       <div className='dropdown-btns-group'>
-        <a href={props.href} ref={ref}>
-          <span
-            className={
-              formatUrlToRoute(router.asPath.split('/').slice(-1).join('')) ===
-              formatUrlToRoute(props.item)
-                ? 'active link-title'
-                : 'link-title'
-            }
-          >
-            {props.item}
-          </span>
+        <a
+          href={props.href}
+          ref={ref}
+          className={
+            formatUrlToRoute(router.asPath.split('/')[2]) ==
+            formatUrlToRoute(props.item)
+              ? 'active link-title'
+              : 'link-title'
+          }
+        >
+          {props.item}
         </a>
         <DropdownBtnStyles
           type='button'
