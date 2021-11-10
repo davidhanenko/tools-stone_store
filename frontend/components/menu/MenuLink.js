@@ -14,8 +14,8 @@ export default function MenuLink({ menuItem }) {
     <MenuLinkStyles>
       <Link
         href={{
-          pathname: '/products/[products]',
-          query: { products: `${formatUrlToRoute(menuItem.title)}` },
+          pathname: '/products/[items]',
+          query: { items: `${formatUrlToRoute(menuItem.title)}` },
         }}
         passHref
       >

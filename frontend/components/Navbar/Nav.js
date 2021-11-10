@@ -13,9 +13,13 @@ import Search from './Search';
 
 const PRODUCTS = gql`
   query PRODUCTS1 {
-    products {
+    services {
+      service
       id
-      product_title
+      items {
+        id
+        title
+      }
     }
   }
 `;
@@ -25,6 +29,8 @@ export default function Nav() {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
+
+  const services = data?.services;
 
   const { navOpen, toggleNav, closeSideNav, navBtnClick, setNavBtnClick } =
     useNav();
@@ -58,7 +64,12 @@ export default function Nav() {
           <Link href='/about' passHref>
             <LinkBtn title={'about'} />
           </Link>
-          <Link href='/products' passHref>
+          {services.map(service => (
+            <Link key={service.id} href={`/${service.service}`} passHref>
+              <NavDropdown title={service.service} items={service.items} />
+            </Link>
+          ))}
+          {/* <Link href='/products' passHref>
             <NavDropdown title='products' products={data?.products} />
           </Link>
           <Link href='/tools' passHref>
@@ -66,7 +77,7 @@ export default function Nav() {
           </Link>
           <Link href='/sinks' passHref>
             <NavDropdown title='sinks' />
-          </Link>
+          </Link> */}
           <Link href='/gallery' passHref>
             <LinkBtn title={'gallery'} />
           </Link>

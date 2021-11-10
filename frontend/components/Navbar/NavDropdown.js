@@ -14,16 +14,18 @@ import {
   NavDropdownStyles,
 } from './NavDropdownStyles';
 
-const DropdownItem = React.forwardRef(({ href, onClick, item }, ref) => {
-  const { closeSideNav } = useNav();
-  return (
-    <DropdownItemStyles>
-      <a href={href} onClick={() => closeSideNav()} ref={ref}>
-        {item}
-      </a>
-    </DropdownItemStyles>
-  );
-});
+const DropdownItem = React.forwardRef(
+  ({ href, onClick, dropDownItem }, ref) => {
+    const { closeSideNav } = useNav();
+    return (
+      <DropdownItemStyles>
+        <a href={href} onClick={() => closeSideNav()} ref={ref}>
+          {dropDownItem}
+        </a>
+      </DropdownItemStyles>
+    );
+  }
+);
 
 const NavDropdown = React.forwardRef(function NavDropdown(props, ref) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -67,21 +69,21 @@ const NavDropdown = React.forwardRef(function NavDropdown(props, ref) {
 
       {dropdownOpen && (
         <DropdownMenuStyles>
-          {props?.products?.map(product => (
+          {props?.items?.map(item => (
             <Link
               href={{
-                pathname: '/products/[product]',
+                pathname: `/products/[items]`,
                 query: {
-                  product: `${formatUrlToRoute(product.product_title)}`,
+                  items: `${formatUrlToRoute(item.title)}`,
                 },
               }}
-              key={product.id}
+              key={item.id}
               passHref
             >
               {/* <DropdownItemStyles>
               <a>{product.product_title.toLowerCase()}</a>
               </DropdownItemStyles> */}
-              <DropdownItem item={product?.product_title} />
+              <DropdownItem dropDownItem={item?.title} />
             </Link>
           ))}
         </DropdownMenuStyles>
