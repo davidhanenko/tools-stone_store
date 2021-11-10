@@ -9,7 +9,7 @@ const PRODUCTS = gql`
     services(where: { service: $service }) {
       items {
         id
-        title: items
+        title
         category: items_categories(limit: 1) {
           single_item: single_items {
             image {

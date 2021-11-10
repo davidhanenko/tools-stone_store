@@ -1,6 +1,7 @@
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { Slant as Hamburger } from 'hamburger-react';
 
 import { useMenu } from '../../context/menuState';
@@ -10,30 +11,32 @@ import MenuLink from './MenuLink';
 import MenuTree from './MenuTree';
 import { ItemsMenuStyles, MenuButtonStyles } from './ItemsMenuStyles';
 
-const PRODUCTS = gql`
-  query PRODUCTS {
-    products {
-      id
-      title: product_title
-      items_categories {
+const SERVICE_MENU_QUERY = gql`
+  query SERVICE_MENU_QUERY($service: String!) {
+    services(where: { service: $service }) {
+      items {
         id
-        category: category_title
+        title
+        items_categories {
+          id
+          category: category_title
+        }
       }
     }
   }
 `;
 
-export default function ItemsMenu() {
-  const { data, error, loading } = useQuery(PRODUCTS);
+export default function ItemsMenu({}) {
+  const router = useRouter();
+  const service = router.asPath.split('/')[1];
 
-  const {
-    isOpen,
-    setOpen,
-    btnClicked,
-    setBtnClicked,
-    closeMenu
-  } = useMenu();
+  const { data, error, loading } = useQuery(SERVICE_MENU_QUERY, {
+    variables: {
+      service: service,
+    },
+  });
 
+  const { isOpen, setOpen, btnClicked, setBtnClicked, closeMenu } = useMenu();
 
   const { width } = useWindowDimensions();
 
@@ -43,11 +46,10 @@ export default function ItemsMenu() {
     }
   }, [width]);
 
-
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  const products = data?.products;
+  const menuItems = data?.services[0].items;
 
   return (
     <>
@@ -62,22 +64,19 @@ export default function ItemsMenu() {
             />
           </MenuButtonStyles>
 
-          <h3 className='main-title'>Products</h3>
+          <h3 className='main-title'>{service}</h3>
         </div>
         <div className='menu-links'>
-          {products?.map(product => (
-            <MenuLink
-              product={product}
-              key={product.id}
-            />
+          {menuItems?.map(menuItem => (
+            <MenuLink menuItem={menuItem} key={menuItem.id} />
           ))}
         </div>
 
         <div className='side-menu-links'>
-          {products?.map(product => (
+          {menuItems?.map(menuItem => (
             <MenuLink
-              product={product}
-              key={product.id}
+              menuItem={menuItem}
+              key={menuItem.id}
               onClick={() => {
                 setOpen(false);
               }}

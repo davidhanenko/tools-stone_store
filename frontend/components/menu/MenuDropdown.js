@@ -15,13 +15,13 @@ import {
   DropdownMenuStyles,
 } from './MenuDropdownStyles';
 
-const DropdownItem = React.forwardRef(({ href, onClick, menuItem }, ref) => {
+const DropdownItem = React.forwardRef(({ href, onClick, item }, ref) => {
   const { closeMenu } = useMenu();
 
   return (
     <DropdownItemStyles>
       <a href={href} onClick={() => closeMenu()} ref={ref}>
-        {menuItem}
+        {item}
       </a>
     </DropdownItemStyles>
   );
@@ -62,12 +62,12 @@ const MenuDropdown = React.forwardRef(function MenuDropdown(props, ref) {
           ref={ref}
           className={
             formatUrlToRoute(router.asPath.split('/')[2]) ==
-            formatUrlToRoute(props.item)
+            formatUrlToRoute(props.dropDownMenuitem)
               ? 'active link-title'
               : 'link-title'
           }
         >
-          {props.item}
+          {props.dropDownMenuitem}
         </a>
         <DropdownBtnStyles
           type='button'
@@ -84,14 +84,14 @@ const MenuDropdown = React.forwardRef(function MenuDropdown(props, ref) {
             href={{
               pathname: '/products/[products]/[collection]',
               query: {
-                products: `${formatUrlToRoute(props.item)}`,
+                products: `${formatUrlToRoute(props.dropDownMenuitem)}`,
                 collection: `${formatUrlToRoute(category.category)}`,
               },
             }}
             key={category.id}
             passHref
           >
-            <DropdownItem menuItem={category?.category} />
+            <DropdownItem item={category?.category} />
           </Link>
         ))}
       </DropdownMenuStyles>

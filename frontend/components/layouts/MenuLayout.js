@@ -6,6 +6,7 @@ import Header from './partials/Header';
 import ItemsMenu from '../menu/ItemsMenu';
 
 export default function MenuLayout({ children }) {
+
   return (
     <>
       <GlobalStyles />

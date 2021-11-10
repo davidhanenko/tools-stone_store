@@ -5,7 +5,6 @@ import { formatUrlToRoute } from '../../../../helpers/formatUrl';
 import { ItemsSlideStyles, ImageOverlay } from './ItemsSlideStyles';
 
 export default function Slide({ itemsByIndex, index }) {
-  console.log(itemsByIndex(index));
   return (
     <ItemsSlideStyles>
       <Link

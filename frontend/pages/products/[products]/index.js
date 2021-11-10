@@ -38,7 +38,6 @@ export default function ProductsCategoryPage({ query }) {
   if (error) return <p>Error: {error.message}</p>;
   
   const items = data.services[0].items[0];
-  console.log(items);
 
   return <ItemsByCategory items={items} />;
 }

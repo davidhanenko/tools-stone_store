@@ -6,7 +6,7 @@ import { formatUrlToRoute } from '../../helpers/formatUrl';
 import MenuDropdown from './MenuDropdown';
 import { MenuLinkStyles } from './MenuLinkStyles';
 
-export default function MenuLink({ product }) {
+export default function MenuLink({ menuItem }) {
  
 
 
@@ -15,13 +15,13 @@ export default function MenuLink({ product }) {
       <Link
         href={{
           pathname: '/products/[products]',
-          query: { products: `${formatUrlToRoute(product.title)}` },
+          query: { products: `${formatUrlToRoute(menuItem.title)}` },
         }}
         passHref
       >
         <MenuDropdown
-          item={product.title}
-          categories={product.items_categories}
+          dropDownMenuitem={menuItem.title}
+          categories={menuItem.items_categories}
         />
       </Link>
     </MenuLinkStyles>
