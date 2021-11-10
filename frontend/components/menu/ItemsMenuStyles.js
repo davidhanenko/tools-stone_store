@@ -58,6 +58,7 @@ const ItemsMenuStyles = styled.div`
         -o-transition: none !important;`};
     @media (max-width: 850px) {
       display: block;
+      padding-bottom: 3rem;
     }
   }
 `;

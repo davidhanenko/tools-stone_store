@@ -2,13 +2,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { formatUrlToRoute } from '../../../../helpers/formatUrl';
 
-export default function SubCategoryListItem({ subCategory, productTitle }) {
+export default function SubCategoryListItem({ subCategory, itemsTitle }) {
   return (
     <Link
       href={{
         pathname: '/products/[products]/[collection]',
         query: {
-          products: `${formatUrlToRoute(productTitle)}`,
+          products: `${formatUrlToRoute(itemsTitle)}`,
           collection: `${formatUrlToRoute(subCategory.category_title)}`,
         },
       }}

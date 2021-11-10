@@ -8,20 +8,20 @@ import {
 } from './ItemsCategoryStyles';
 
 export default function ItemsCategory({ items }) {
-  const productTitle = items?.product_title;
+  const title = items?.title;
 
   return (
     <ItemsCategoryStyles>
       <Head>
-        <title>{capitalizeStr(productTitle)} - A2Z</title>
+        <title>{capitalizeStr(title)} - A2Z</title>
       </Head>
-      <h3>{productTitle}</h3>
+      <h3>{title}</h3>
       <div className='category-container'>
         {items.category.map(subCategory => (
           <ItemsSubCategory
             key={subCategory.id}
             subCategory={subCategory}
-            productTitle={productTitle}
+            itemsTitle={title}
           />
         ))}
       </div>

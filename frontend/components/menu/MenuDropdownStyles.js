@@ -7,6 +7,8 @@ const DropdownStyles = styled.div`
   .dropdown-btns-group {
     @media (max-width: 850px) {
       display: flex;
+      padding-top: 0.2rem;
+      padding-bottom: 0.2rem;
     }
   }
 `;
@@ -30,12 +32,15 @@ const DropdownBtnStyles = styled.button`
 `;
 
 const DropdownMenuStyles = styled.ul`
-  background: #c1e2ec;
+  margin: 0;
   opacity: 0;
-  display: none;
   z-index: 2;
-  padding: 2rem;
-  ${props => props.dropdownOpen && `opacity: 1; display: block;`}
+  padding: 1rem;
+  display: none;
+  visibility: hidden;
+  transition: visibility 1s;
+  ${props =>
+    props.dropdownOpen && `opacity: 1; visibility: visible;display: block;`}
   @media (min-width: 850px) {
     background: #c1e2ec;
     min-height: 15rem;
@@ -57,16 +62,16 @@ const DropdownItemStyles = styled.li`
   list-style: none;
   text-transform: capitalize;
   cursor: pointer;
-  line-height: 0.5rem;
+  line-height: 0.7rem;
   padding: 1rem;
   a {
     text-decoration: none;
-    color: grey;
+    color: white;
     font-size: 1.5rem;
+    transition: all 250ms;
     &:hover {
       text-decoration: none;
       color: var(--black);
-      transition: 250ms;
     }
   }
 `;
