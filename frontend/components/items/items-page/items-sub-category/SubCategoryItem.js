@@ -6,9 +6,9 @@ export default function SubCategoryListItem({ subCategory, itemsTitle }) {
   return (
     <Link
       href={{
-        pathname: '/products/[products]/[collection]',
+        pathname: '/products/[items]/[collection]',
         query: {
-          products: `${formatUrlToRoute(itemsTitle)}`,
+          items: `${formatUrlToRoute(itemsTitle)}`,
           collection: `${formatUrlToRoute(subCategory.category_title)}`,
         },
       }}
@@ -19,6 +19,7 @@ export default function SubCategoryListItem({ subCategory, itemsTitle }) {
           src={subCategory.single_item[0].image[0].url}
           width={200}
           height={200}
+          alt={subCategory.single_item[0].item_title}
         />
       </a>
     </Link>

@@ -10,7 +10,7 @@ import {
 
 export default function SubCategoryCollection({
   itemsCollection,
-  product,
+  items,
   collection,
 }) {
   return (
@@ -24,7 +24,7 @@ export default function SubCategoryCollection({
           <CollectionItem
             key={item.id}
             item={item}
-            product={product}
+            items={items}
             collection={collection}
           />
         ))}

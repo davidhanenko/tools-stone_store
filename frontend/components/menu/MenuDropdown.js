@@ -82,9 +82,9 @@ const MenuDropdown = React.forwardRef(function MenuDropdown(props, ref) {
         {props?.categories?.map(category => (
           <Link
             href={{
-              pathname: '/products/[products]/[collection]',
+              pathname: '/products/[items]/[collection]',
               query: {
-                products: `${formatUrlToRoute(props.dropDownMenuitem)}`,
+                items: `${formatUrlToRoute(props.dropDownMenuitem)}`,
                 collection: `${formatUrlToRoute(category.category)}`,
               },
             }}

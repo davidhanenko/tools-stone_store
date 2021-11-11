@@ -4,7 +4,5 @@
   "/_error": "pages/_error.js",
   "/products/[products]": "pages/products/[products].js",
   "/products/[products]/[collection]": "pages/products/[products]/[collection].js",
-  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
-  "/products/[products]/[collection]/[single]": "pages/products/[products]/[collection]/[single].js",
-  "/products": "pages/products.js"
+  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js"
 }

@@ -5,14 +5,14 @@ import { formatUrlToRoute } from '../../../../../helpers/formatUrl';
 
 import { CollectionItemStyles, CollectionItemTitleStyles } from './CollectionItemStyles';
 
-export default function CollectionItem({ item, product, collection }) {
+export default function CollectionItem({ item, items, collection }) {
   return (
     <CollectionItemStyles>
       <Link
         href={{
-          pathname: '/products/[product]/[collection]/[single]',
+          pathname: '/products/[item]/[collection]/[single]',
           query: {
-            product: `${product}`,
+            items: `${items}`,
             collection: `${collection}`,
             single: `${formatUrlToRoute(item.item_title)}`,
           },

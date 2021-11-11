@@ -35,7 +35,7 @@ export default function ProductsPage({ query }) {
 
   return (
     <>
-      <SubCategoryCollection itemsCollection={data?.items_category[0]} product={query.products} collection={query.collection}/>
+      <SubCategoryCollection itemsCollection={data?.items_category[0]} items={query.products} collection={query.collection}/>
     </>
   );
 }
