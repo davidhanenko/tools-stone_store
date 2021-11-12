@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const MenuTreeStyles = styled.ul`
   background: lightgray;
   margin: 0;
-  padding: 0.7rem 2rem;
+  padding: 0.7rem 3rem;
 `;
 
 const TreeNodeStyles = styled.li`

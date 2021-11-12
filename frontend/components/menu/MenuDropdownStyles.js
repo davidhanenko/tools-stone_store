@@ -51,10 +51,11 @@ const DropdownMenuStyles = styled.ul`
     padding: 2rem;
     opacity: 0;
     visibility: hidden;
-    display: grid;
+    display: none;
     grid-template-columns: 1fr 1fr;
     transition: all 0.5s;
-    ${props => props.dropdownOpen && `opacity: 1; visibility: visible;`}
+    ${props =>
+      props.dropdownOpen && `opacity: 1; visibility: visible; display: grid;`}
   }
 `;
 

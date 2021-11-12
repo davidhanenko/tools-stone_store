@@ -50,7 +50,7 @@ export default function ItemsMenu({}) {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  const menuItems = data?.services[0].items;
+  const menuItems = data?.services[0]?.items;
 
   return (
     <>

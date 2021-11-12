@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const MenuLinkStyles = styled.div`
   position: relative;
-  padding-right: 2rem;
+  margin-right: 3rem;
   a {
     text-decoration: none;
   }
@@ -18,6 +18,7 @@ const MenuLinkStyles = styled.div`
   }
   .active {
     color: blue;
+    pointer-events: none;
   }
 `;
 

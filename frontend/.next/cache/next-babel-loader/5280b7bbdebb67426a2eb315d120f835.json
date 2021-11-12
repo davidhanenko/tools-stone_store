@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { jsx as _jsx } from \"react/jsx-runtime\";\nimport ItemsByCategory from '../../components/items/items-page/items-by-category/ItemsByCategory';\nexport default function ProductsPage() {\n  return /*#__PURE__*/_jsx(\"h1\", {\n    children: \"Products by default\"\n  });\n}","map":null,"metadata":{},"sourceType":"module"}

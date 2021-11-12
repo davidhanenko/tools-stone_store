@@ -15,21 +15,32 @@ import {
   DropdownMenuStyles,
 } from './MenuDropdownStyles';
 
-const DropdownItem = React.forwardRef(({ href, onClick, item }, ref) => {
-  const { closeMenu } = useMenu();
+const DropdownItem = React.forwardRef(
+  ({ href, onClick, item, setDropdownOpen }, ref) => {
+    const { closeMenu } = useMenu();
 
-  return (
-    <DropdownItemStyles>
-      <a href={href} onClick={() => closeMenu()} ref={ref}>
-        {item}
-      </a>
-    </DropdownItemStyles>
-  );
-});
+    return (
+      <DropdownItemStyles>
+        <a
+          href={href}
+          onClick={() => {
+            closeMenu();
+            setDropdownOpen(false)
+          }}
+          ref={ref}
+        >
+          {item}
+        </a>
+      </DropdownItemStyles>
+    );
+  }
+);
 
 const MenuDropdown = React.forwardRef(function MenuDropdown(props, ref) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
   const { isOpen, setOpen } = useMenu();
+
   const { width } = useWindowDimensions();
 
   const router = useRouter();
@@ -91,7 +102,10 @@ const MenuDropdown = React.forwardRef(function MenuDropdown(props, ref) {
             key={category.id}
             passHref
           >
-            <DropdownItem item={category?.category} />
+            <DropdownItem
+              item={category?.category}
+               setDropdownOpen={setDropdownOpen}
+            />
           </Link>
         ))}
       </DropdownMenuStyles>

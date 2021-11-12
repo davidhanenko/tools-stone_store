@@ -4,10 +4,12 @@ const LocalStateContext = createContext();
 const LocalStateProvider = LocalStateContext.Provider;
 
 function MenuStateProvider({ children }) {
-  const [isOpen, setOpen] = useState(false);
-  const [btnClicked, setBtnClicked] = useState(false);
-  const [isActive, setIsActive] = useState('');
 
+  // state for side menu
+  const [isOpen, setOpen] = useState(false);
+  // state to track if side menu hamburger btn been clicked
+  const [btnClicked, setBtnClicked] = useState(false);
+ 
   function closeMenu() {
     setOpen(false);
   }
@@ -19,9 +21,7 @@ function MenuStateProvider({ children }) {
         setOpen,
         btnClicked,
         setBtnClicked,
-        closeMenu,
-        isActive,
-        setIsActive,
+        closeMenu
       }}
     >
       {children}

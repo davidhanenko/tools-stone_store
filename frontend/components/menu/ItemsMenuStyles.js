@@ -27,7 +27,7 @@ const ItemsMenuStyles = styled.div`
     }
   }
   .menu-links {
-    padding-left: 2rem;
+    padding-left: 3rem;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
