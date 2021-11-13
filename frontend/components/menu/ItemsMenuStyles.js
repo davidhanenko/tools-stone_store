@@ -6,15 +6,15 @@ const ItemsMenuStyles = styled.div`
   width: 100%;
   z-index: 1;
   padding-bottom: 2rem;
-
+  /* position: relative; */
   @media (max-width: 850px) {
     overflow-x: hidden;
   }
   .menu-header {
-    position: relative;
     height: 100px;
     padding-top: 1rem;
     padding-left: 2rem;
+    position: relative;
   }
   .main-title {
     font-size: 3.5rem;
@@ -48,9 +48,8 @@ const ItemsMenuStyles = styled.div`
     opacity: 0;
     transform: translateX(-100%);
     transition: all 0.35s;
-    z-index: 1;
-
-    ${props => props.menuOpen && `transform: translateX(0%);opacity:1;`};
+    z-index: 3;
+    ${props => props.menuOpen && `transform: translateX(0%); opacity:1;`};
     ${props =>
       !props.btnClicked &&
       ` -webkit-transition: none !important;

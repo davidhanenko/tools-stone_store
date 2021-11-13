@@ -9,7 +9,6 @@ import { MenuLinkStyles } from './MenuLinkStyles';
 export default function MenuLink({ menuItem }) {
  
 
-
   return (
     <MenuLinkStyles>
       <Link

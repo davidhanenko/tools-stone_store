@@ -34,11 +34,11 @@ const NavDropdown = React.forwardRef(function NavDropdown(props, ref) {
 
   const showDropdown = () => setDropdownOpen(!dropdownOpen);
 
-  const mouseEnter = () => {
+  const handleMouseEnter = () => {
     !navOpen && setDropdownOpen(true);
   };
 
-  const mouseLeave = () => {
+  const handleMouseLeave = () => {
     !navOpen && setDropdownOpen(false);
   };
 
@@ -53,7 +53,7 @@ const NavDropdown = React.forwardRef(function NavDropdown(props, ref) {
   }, [width]);
 
   return (
-    <NavDropdownStyles onMouseOver={mouseEnter} onMouseLeave={mouseLeave}>
+    <NavDropdownStyles onMouseOver={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className='dropdown-btns-group'>
         <a href={props.href} ref={ref}>
           {props.title}

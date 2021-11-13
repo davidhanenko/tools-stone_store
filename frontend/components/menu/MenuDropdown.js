@@ -25,7 +25,7 @@ const DropdownItem = React.forwardRef(
           href={href}
           onClick={() => {
             closeMenu();
-            setDropdownOpen(false)
+            setDropdownOpen(false);
           }}
           ref={ref}
         >
@@ -47,13 +47,14 @@ const MenuDropdown = React.forwardRef(function MenuDropdown(props, ref) {
 
   const showDropdown = () => setDropdownOpen(!dropdownOpen);
 
-  const mouseEnter = () => {
+  const handleMouseEnter = () => {
     !isOpen && setDropdownOpen(true);
   };
 
-  const mouseLeave = () => {
+  const handleMouseLeave = () => {
     !isOpen && setDropdownOpen(false);
   };
+
 
   useEffect(() => {
     let isMounted = true;
@@ -66,7 +67,10 @@ const MenuDropdown = React.forwardRef(function MenuDropdown(props, ref) {
   }, [width]);
 
   return (
-    <DropdownStyles onMouseOver={mouseEnter} onMouseLeave={mouseLeave}>
+    <DropdownStyles
+      onMouseOver={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className='dropdown-btns-group'>
         <a
           href={props.href}
@@ -104,7 +108,7 @@ const MenuDropdown = React.forwardRef(function MenuDropdown(props, ref) {
           >
             <DropdownItem
               item={category?.category}
-               setDropdownOpen={setDropdownOpen}
+              setDropdownOpen={setDropdownOpen}
             />
           </Link>
         ))}
