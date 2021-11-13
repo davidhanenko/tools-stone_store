@@ -6,6 +6,7 @@ const ItemsMenuStyles = styled.div`
   width: 100%;
   z-index: 1;
   padding-bottom: 2rem;
+
   @media (max-width: 850px) {
     overflow-x: hidden;
   }

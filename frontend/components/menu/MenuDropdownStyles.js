@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const DropdownStyles = styled.div`
-  position: relative;
   align-self: center;
   display: inline-block;
+
   .dropdown-btns-group {
     @media (max-width: 850px) {
       display: flex;
@@ -23,7 +23,7 @@ const DropdownBtnStyles = styled.button`
   @media (max-width: 850px) {
     display: block;
     position: fixed;
-    right: 1rem;
+    right: 2rem;
   }
   svg {
     color: grey;
@@ -38,14 +38,14 @@ const DropdownMenuStyles = styled.ul`
   padding: 1rem;
   display: none;
   visibility: hidden;
-  transition: visibility 1s;
+
   ${props =>
     props.dropdownOpen && `opacity: 1; visibility: visible;display: block;`}
   @media (min-width: 850px) {
     background: #c1e2ec;
     min-height: 15rem;
-    position: fixed;
-    width: 40rem;
+    position: absolute;
+    width: 50rem;
     left: 3rem;
     margin: 0;
     padding: 2rem;
