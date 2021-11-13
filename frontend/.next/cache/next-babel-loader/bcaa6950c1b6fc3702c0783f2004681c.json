@@ -1,1 +1,0 @@
-{"ast":null,"code":"function formatUrlToDbName(str) {\n  return str.toLowerCase().split('_').join(' ');\n}\n\nfunction formatUrlToRoute(str) {\n  str = str.toLowerCase().split('%20').join('_');\n  return str.split(' ').join('_');\n}\n\nexport { formatUrlToDbName, formatUrlToRoute };","map":null,"metadata":{},"sourceType":"module"}

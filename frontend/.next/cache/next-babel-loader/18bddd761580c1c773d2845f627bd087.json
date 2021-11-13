@@ -1,1 +1,0 @@
-{"ast":null,"code":"import styled from 'styled-components';\nvar MainStyles = styled.main.withConfig({\n  displayName: \"MainStyles\",\n  componentId: \"sc-gxo5wc-0\"\n})([\"\"]);\nexport { MainStyles };","map":null,"metadata":{},"sourceType":"module"}

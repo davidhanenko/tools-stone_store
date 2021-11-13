@@ -1,13 +1,18 @@
 import styled from 'styled-components';
 
-const CollectionItemStyles = styled.section`
-  padding: 3rem;
-`;
-
-const CollectionItemTitleStyles = styled.h4`
-  text-transform: uppercase;
-  color: lightblue;
+const CollectionItemStyles = styled.div`
+  background: #ced8ec;
+  padding: 2rem;
   text-align: center;
+
+  a {
+    text-decoration: none;
+  }
+
+  .collection-item-title {
+    text-transform: uppercase;
+    color: blue;
+  }
 `;
 
-export { CollectionItemStyles, CollectionItemTitleStyles };
+export { CollectionItemStyles };

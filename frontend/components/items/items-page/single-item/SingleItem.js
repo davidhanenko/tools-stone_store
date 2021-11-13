@@ -12,7 +12,12 @@ export default function SingleItem({ singleItem }) {
         <title>{capitalizeStr(singleItem.item_title)} - A2Z</title>
       </Head>
       <div className='item-image-container'>
-        <Image src={singleItem.image[0].url} width={400} height={400} />
+        <Image
+          src={singleItem.image[0].url}
+          width={400}
+          height={400}
+          layout='responsive'
+        />
       </div>
       <div className='item-description-container'>
         <h5>{singleItem.item_title}</h5>

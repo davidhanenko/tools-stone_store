@@ -3,14 +3,14 @@ import Link from 'next/link';
 
 import { formatUrlToRoute } from '../../../../../helpers/formatUrl';
 
-import { CollectionItemStyles, CollectionItemTitleStyles } from './CollectionItemStyles';
+import { CollectionItemStyles } from './CollectionItemStyles';
 
 export default function CollectionItem({ item, items, collection }) {
   return (
     <CollectionItemStyles>
       <Link
         href={{
-          pathname: '/products/[item]/[collection]/[single]',
+          pathname: '/products/[items]/[collection]/[single]',
           query: {
             items: `${items}`,
             collection: `${collection}`,
@@ -19,10 +19,13 @@ export default function CollectionItem({ item, items, collection }) {
         }}
       >
         <a>
-          <Image src={item.image[0].url} width={200} height={200} />
-          <CollectionItemTitleStyles>
-            {item.item_title}
-          </CollectionItemTitleStyles>
+          <Image
+            src={item.image[0].url}
+            width={200}
+            height={200}
+            alt={item.item_title}
+          />
+          <h4 className='collection-item-title'>{item.item_title}</h4>
         </a>
       </Link>
     </CollectionItemStyles>

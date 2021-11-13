@@ -2,15 +2,14 @@
 
 const ItemsSubCategoryStyles = styled.div`
   background: #ced8ec;
-  margin: 2rem;
   padding: 2rem;
+  text-align: center;
   @media (max-width: 850px) {
-    flex: 1 1;
   }
   h4 {
     color: black;
     font-weight: 100;
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-transform: uppercase;
   }
 `;

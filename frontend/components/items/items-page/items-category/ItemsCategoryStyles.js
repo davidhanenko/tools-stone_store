@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const ItemsCategoryStyles = styled.div`
   background: var(--offWhite);
+  padding: 2rem 3rem 4rem 3rem;
 
   h3 {
     font-size: 3.5rem;
@@ -14,14 +15,14 @@ const ItemsCategoryStyles = styled.div`
     }
   }
   .category-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    justify-content: start;
-    @media (max-width: 850px) {
+    display: grid;
+    grid-gap: 2rem;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    @media (max-width: 500px) {
+      grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
     }
   }
 `;
 
-
-export { ItemsCategoryStyles};
+export { ItemsCategoryStyles };

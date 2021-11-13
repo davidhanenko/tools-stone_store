@@ -1,1 +1,0 @@
-{"ast":null,"code":"export default function capitalizeStr(str) {\n  return str[0].toUpperCase() + str.slice(1);\n}","map":null,"metadata":{},"sourceType":"module"}

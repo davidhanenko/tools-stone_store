@@ -18,7 +18,6 @@ const MenuLinkStyles = styled.div`
   }
   .active {
     color: blue;
-    pointer-events: none;
   }
 `;
 

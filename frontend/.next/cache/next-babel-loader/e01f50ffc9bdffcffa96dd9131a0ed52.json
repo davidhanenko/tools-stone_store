@@ -1,1 +1,0 @@
-{"ast":null,"code":"import { jsx as _jsx } from \"react/jsx-runtime\";\nimport Head from 'next/head';\nexport var __N_SSG = true;\nexport default function AboutPage(props) {\n  return /*#__PURE__*/_jsx(\"h1\", {\n    children: \"About Page\"\n  });\n}","map":null,"metadata":{},"sourceType":"module"}

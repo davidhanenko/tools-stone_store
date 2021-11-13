@@ -3,10 +3,7 @@ import Head from 'next/head';
 import capitalizeStr from '../../../../helpers/capitalizeStr';
 
 import CollectionItem from './collection-item/CollectionItem';
-import {
-  CollectionTitleStyled,
-  SubCategoryCollectionStyles,
-} from './SubCategoryCollectionStyles';
+import { SubCategoryCollectionStyles } from './SubCategoryCollectionStyles';
 
 export default function SubCategoryCollection({
   itemsCollection,
@@ -18,7 +15,7 @@ export default function SubCategoryCollection({
       <Head>
         <title>{capitalizeStr(itemsCollection.category)} - A2Z</title>
       </Head>
-      <CollectionTitleStyled>{itemsCollection.category}</CollectionTitleStyled>
+      <h3 className='collection-title'>{itemsCollection.category}</h3>
       <div className='collection-container'>
         {itemsCollection.single_items.map(item => (
           <CollectionItem

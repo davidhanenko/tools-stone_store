@@ -1,5 +1,5 @@
 import { ItemsSubCategoryStyles } from './ItemsSubCategoryStyles';
-import SubCategoryItem from './SubCategoryItem';
+import SubCategoryItem from './subcategory-item/SubCategoryItem';
 
 export default function ItemsSubCategory({ subCategory, itemsTitle }) {
   return (

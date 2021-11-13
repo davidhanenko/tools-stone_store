@@ -1,1 +1,0 @@
-{"ast":null,"code":"import styled from 'styled-components';\nconst ItemsByCategoryStyles = styled.div.withConfig({\n  displayName: \"ItemsByCategoryStyles\",\n  componentId: \"sc-1wdpr69-0\"\n})([\"margin-top:calc(var(--navHeight) + var(--searchHeight));margin-bottom:10rem;position:relative;\"]);\nexport { ItemsByCategoryStyles };","map":null,"metadata":{},"sourceType":"module"}
