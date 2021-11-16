@@ -38,7 +38,6 @@ const DropdownMenuStyles = styled.ul`
   padding: 1rem;
   display: none;
   visibility: hidden;
-
   ${props =>
     props.dropdownOpen && `opacity: 1; visibility: visible;display: block;`}
   @media (min-width: 850px) {
@@ -51,11 +50,11 @@ const DropdownMenuStyles = styled.ul`
     padding: 2rem;
     opacity: 0;
     visibility: hidden;
-    display: none;
     grid-template-columns: 1fr 1fr;
-    transition: all 0.5s;
+    transition: all 0.35s;
+    display: none;
     ${props =>
-      props.dropdownOpen && `opacity: 1; visibility: visible; display: grid;`}
+      props.dropdownOpen && `display: grid; opacity: 1; visibility: visible; `}
   }
 `;
 

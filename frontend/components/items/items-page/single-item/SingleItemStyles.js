@@ -17,8 +17,23 @@ const SingleItemStyles = styled.div`
   }
 
   .item-description-container {
-    text-transform: uppercase;
-     flex: 1;
+    flex: 1;
+    .single-item-title {
+      font-size: 3rem;
+      text-align: center;
+      text-transform: uppercase;
+      color: blue;
+    }
+    .single-item-price {
+      font-size: 2rem;
+      text-align: end;
+      padding-right: 10rem;
+    }
+    .single-item-description {
+      font-size: 1.5rem;
+      font-weight: 100;
+      padding-left: 5rem;
+    }
   }
 `;
 

@@ -19,7 +19,7 @@ const NavStyles = styled.nav`
     @media (max-width: 850px) {
       position: fixed;
       gap: 0;
-      top: var(--searchHeight);
+      top: 0;
       right: 0;
       width: 40%;
       min-width: 250px;

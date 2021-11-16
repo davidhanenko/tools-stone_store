@@ -20,8 +20,10 @@ export default function SingleItem({ singleItem }) {
         />
       </div>
       <div className='item-description-container'>
-        <h5>{singleItem.item_title}</h5>
-        <h6>${singleItem.price}</h6>
+        <h5 className='single-item-title'>{singleItem.item_title}</h5>
+        <h6 className='single-item-price'>${singleItem.price}</h6>
+        <h6>Sizes</h6>
+        <p className='single-item-description'>{singleItem.description}</p>
       </div>
     </SingleItemStyles>
   );

@@ -48,7 +48,7 @@ const ItemsMenuStyles = styled.div`
     opacity: 0;
     transform: translateX(-100%);
     transition: all 0.35s;
-    z-index: 3;
+    z-index: 1;
     ${props => props.menuOpen && `transform: translateX(0%); opacity:1;`};
     ${props =>
       !props.btnClicked &&
