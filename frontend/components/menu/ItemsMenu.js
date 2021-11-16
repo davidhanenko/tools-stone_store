@@ -44,6 +44,7 @@ export default function ItemsMenu({}) {
 
   const { width } = useWindowDimensions();
 
+  // close side menu on click outside
   useEffect(() => {
     //  click outside side menu handler
     const handleClickOutside = event => {
@@ -53,7 +54,6 @@ export default function ItemsMenu({}) {
         !sideMenuRef.current.contains(event.target)
       ) {
         setOpen(false);
-        console.log('render');
       }
     };
 
@@ -68,9 +68,13 @@ export default function ItemsMenu({}) {
 
   // close side menu if width is more than 850px
   useEffect(() => {
+    let isMounted = true;
     if (width >= 850) {
       closeMenu();
     }
+    return () => {
+      isMounted = false;
+    };
   }, [width]);
 
   if (loading) return <p>Loading...</p>;

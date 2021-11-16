@@ -31,12 +31,13 @@ const NavStyles = styled.nav`
         `grid-auto-flow: row; transform: translate(0, var(--navHeight)); transition: all 0.35s;`};
       ${props =>
         !props.open &&
-        props.width <= 850 && 
+        props.width <= 850 &&
         `grid-auto-flow: row; transform: translateX(100%); transition: 0.35s;`};
       @media (pointer: coarse) {
         ${props =>
           !props.open &&
-          props.btnClick && `grid-auto-flow: row; transform: translateX(100%); transition: 0.35s;`};
+          props.btnClick &&
+          `grid-auto-flow: row; transform: translateX(100%); transition: 0.35s;`};
       }
     }
   }
@@ -56,10 +57,15 @@ const NavStyles = styled.nav`
       border-bottom: 1px solid var(--lightGrey);
     }
   }
+  *:focus {
+    outline: none !important;
+  }
 `;
 
-const NavButtonStyles = styled.div`
+const NavButtonStyles = styled.button`
   display: none;
+  border: none;
+  background: transparent;
   @media (max-width: 850px) {
     display: block;
     position: absolute;

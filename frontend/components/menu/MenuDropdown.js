@@ -55,11 +55,11 @@ const MenuDropdown = React.forwardRef(function MenuDropdown(props, ref) {
     !isOpen && setDropdownOpen(false);
   };
 
-
+  // close dropdown if width more than 850px
   useEffect(() => {
     let isMounted = true;
     if (width >= 850) {
-      setOpen(false);
+      setDropdownOpen(false);
     }
     return () => {
       isMounted = false;

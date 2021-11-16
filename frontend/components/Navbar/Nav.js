@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 import Link from 'next/link';
@@ -30,12 +30,38 @@ export default function Nav() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
+  // services to spread in nav
   const services = data?.services;
+
+const navRef = useRef();
 
   const { navOpen, toggleNav, closeSideNav, navBtnClick, setNavBtnClick } =
     useNav();
+
   const { width } = useWindowDimensions();
 
+  // close toggled nav on click outside
+  useEffect(() => {
+    //  click outside nav handler
+    const handleClickOutside = event => {
+      if (
+        navOpen &&
+        !navRef.current.contains(event.target)
+      ) {
+        closeSideNav();
+      }
+    };
+
+    //  click outside nav listener
+    document.addEventListener('mousedown', handleClickOutside);
+
+    // cleanup the event listener
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [navOpen]);
+
+  // close nav when width more than 850px
   useEffect(() => {
     let isMounted = true;
     if (width >= 850) {
@@ -56,7 +82,7 @@ export default function Nav() {
 
   return (
     <>
-      <NavStyles open={navOpen} btnClick={navBtnClick} width={width}>
+      <NavStyles open={navOpen} btnClick={navBtnClick} width={width} ref={navRef}>
         <div className='nav-links'>
           <Link href='/' passHref>
             <LinkBtn title={'home'} />
@@ -69,15 +95,6 @@ export default function Nav() {
               <NavDropdown title={service.service} items={service.items} />
             </Link>
           ))}
-          {/* <Link href='/products' passHref>
-            <NavDropdown title='products' products={data?.products} />
-          </Link>
-          <Link href='/tools' passHref>
-            <NavDropdown title='tools' />
-          </Link>
-          <Link href='/sinks' passHref>
-            <NavDropdown title='sinks' />
-          </Link> */}
           <Link href='/gallery' passHref>
             <LinkBtn title={'gallery'} />
           </Link>
