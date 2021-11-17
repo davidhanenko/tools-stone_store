@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useRouter } from 'next/router';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 import Link from 'next/link';
@@ -10,6 +11,7 @@ import useWindowDimensions from '../../lib/windowDimensions';
 import NavDropdown from './NavDropdown';
 import { NavStyles, NavButtonStyles } from './NavStyles';
 import Search from './Search';
+import { formatUrlToRoute } from '../../helpers/formatUrl';
 
 const PRODUCTS = gql`
   query PRODUCTS1 {
@@ -72,6 +74,9 @@ const navRef = useRef();
     };
   }, [width]);
 
+ const router = useRouter();
+
+
   const LinkBtn = React.forwardRef(({ href, title }, ref) => {
     return (
       <a href={href} onClick={() => closeSideNav()} ref={ref}>
@@ -80,11 +85,26 @@ const navRef = useRef();
     );
   });
 
+  
   return (
     <>
-      <NavStyles open={navOpen} btnClick={navBtnClick} width={width} ref={navRef}>
+      <NavStyles
+        open={navOpen}
+        btnClick={navBtnClick}
+        width={width}
+        ref={navRef}
+      >
         <div className='nav-links'>
-          <Link href='/' passHref>
+          <Link
+            href='/'
+            passHref
+            className={
+              !router.asPath.split('/')[1] ||
+              formatUrlToRoute(router.asPath.split('/')[1]) == ''
+                ? 'active-link'
+                : ''
+            }
+          >
             <LinkBtn title={'home'} />
           </Link>
           <Link href='/about' passHref>

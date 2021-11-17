@@ -9,6 +9,8 @@ const GlobalStyles = createGlobalStyle`
     --dark: #323545;
     --gray: #e6e8f4;
     --offWhite: #ededed;
+    
+    --navBorder: #536ade20;
 
     --maxWidth: 1400px;
     --minWidth: 850px;

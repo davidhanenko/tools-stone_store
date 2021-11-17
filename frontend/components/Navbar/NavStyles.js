@@ -14,6 +14,7 @@ const NavStyles = styled.nav`
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: max-content;
+    min-width: 250px;
     gap: 0.5rem;
     place-self: center end;
     @media (max-width: 850px) {
@@ -44,23 +45,26 @@ const NavStyles = styled.nav`
   }
   a {
     padding: 0.2rem 1rem;
-    color: grey;
+    color: var(--darkBlue);
     position: relative;
+    transition: all 250ms;
     &:hover,
     &:focus {
       text-decoration: none;
-      color: var(--black);
-      transition: 250ms;
+      color: var(--blue);
     }
     @media (max-width: 850px) {
-      padding-left: 3rem;
-      width: 200px;
-      border-bottom: 1px solid var(--blue);
-      
+      margin-left: 2rem;
+      min-width: 200px;
+      border-bottom: 1px solid var(--navBorder);
     }
   }
   *:focus {
     outline: none !important;
+  }
+
+  .active-link {
+    color: red;
   }
 `;
 
