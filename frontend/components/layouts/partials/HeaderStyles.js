@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const HeaderStyles = styled.header`
-  background: var(--offWhite);
+  background: var(--gray);
   margin: 0;
   padding: 0;
   max-height: var(--navHeight);
@@ -36,7 +36,7 @@ const Logo = styled.h1`
   z-index: 2;
   transform: skew(-7deg);
   a {
-    color: blue;
+    color: var(--blue);
     text-transform: uppercase;
     text-decoration: none;
     padding: 0.5rem 1rem;

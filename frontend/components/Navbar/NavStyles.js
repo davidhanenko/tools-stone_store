@@ -23,9 +23,10 @@ const NavStyles = styled.nav`
       right: 0;
       width: 40%;
       min-width: 250px;
-      background: var(--offWhite);
+      background: var(--gray);
       transform: translateX(100%);
       z-index: 2;
+      padding-bottom: 2rem;
       ${props =>
         props.open &&
         `grid-auto-flow: row; transform: translate(0, var(--navHeight)); transition: all 0.35s;`};
@@ -54,7 +55,8 @@ const NavStyles = styled.nav`
     @media (max-width: 850px) {
       padding-left: 3rem;
       width: 200px;
-      border-bottom: 1px solid var(--lightGrey);
+      border-bottom: 1px solid var(--blue);
+      
     }
   }
   *:focus {

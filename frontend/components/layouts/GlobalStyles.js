@@ -1,23 +1,17 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
-  /* @font-face {
-    font-family: radnika_next;
-    src: url('/static/radnikanext-medium-webfont.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-  } */
+
   html {
-    --red: #ff0000;
-    --black: #393939;
-    --grey: #3A3A3A;
-    --gray: var(--grey);
-    --lightGrey: #e1e1e1;
-    --lightGray: var(--lightGrey);
+    --blue: #536ade;
+    --lightBlue: #b1bbec;
+    --darkBlue: #3c457d;
+    --dark: #323545;
+    --gray: #e6e8f4;
     --offWhite: #ededed;
-    --maxWidth: 1920px;
-    --contentWidth: 1200px;
-    --midWidth: 850px;
+
+    --maxWidth: 1400px;
+    --minWidth: 850px;
     --navHeight: 90px;
     --searchHeight: 3rem;
     --bs: 0 12px 24px 0 rgba(0,0,0,0.09);
@@ -35,15 +29,12 @@ const GlobalStyles = createGlobalStyle`
     font-size: 1.5rem;
     line-height: 2;
     scroll-behavior: smooth;
+    background: var(--offWhite);
   }
   a {
     text-decoration: none;
-    color: var(--black);
-  }
-  a:hover {
-    text-decoration: underline;
   }
  
 `;
 
-export {GlobalStyles};
+export { GlobalStyles };

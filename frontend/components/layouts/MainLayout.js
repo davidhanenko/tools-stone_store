@@ -3,16 +3,17 @@ import styled from 'styled-components';
 import { GlobalStyles } from './GlobalStyles';
 import Header from './partials/Header';
 
-// const InnerStyles = styled.div`
-//   margin: 0 auto;
-// `;
+const InnerStyles = styled.div`
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+`;
 
 export default function MainLayout({ children }) {
   return (
     <>
       <GlobalStyles />
       <Header />
-      {children}
+      <InnerStyles>{children}</InnerStyles>
     </>
   );
 }
