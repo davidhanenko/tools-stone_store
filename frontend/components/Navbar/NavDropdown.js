@@ -53,7 +53,10 @@ const NavDropdown = React.forwardRef(function NavDropdown(props, ref) {
   }, [width]);
 
   return (
-    <NavDropdownStyles onMouseOver={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <NavDropdownStyles
+      onMouseOver={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className='dropdown-btns-group'>
         <a href={props.href} ref={ref}>
           {props.title}
@@ -68,7 +71,7 @@ const NavDropdown = React.forwardRef(function NavDropdown(props, ref) {
       </div>
 
       {dropdownOpen && (
-        <DropdownMenuStyles>
+        <DropdownMenuStyles isDropdownOpen={dropdownOpen}>
           {props?.items?.map(item => (
             <Link
               href={{
@@ -80,9 +83,6 @@ const NavDropdown = React.forwardRef(function NavDropdown(props, ref) {
               key={item.id}
               passHref
             >
-              {/* <DropdownItemStyles>
-              <a>{product.product_title.toLowerCase()}</a>
-              </DropdownItemStyles> */}
               <DropdownItem dropDownItem={item?.title} />
             </Link>
           ))}

@@ -7,6 +7,7 @@ const NavStyles = styled.nav`
   text-transform: uppercase;
 
   .nav-links {
+    font-size: 1.8rem;
     margin: 0;
     padding: 0;
     position: relative;

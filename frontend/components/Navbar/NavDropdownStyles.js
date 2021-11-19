@@ -8,7 +8,7 @@ const NavDropdownStyles = styled.div`
       display: flex;
     }
   }
-  `;
+`;
 
 const DropdownBtnStyles = styled.button`
   padding: 0;
@@ -24,25 +24,26 @@ const DropdownBtnStyles = styled.button`
     color: var(--darkBlue);
     transform: scale(2);
   }
-  `;
+`;
 
 const DropdownMenuStyles = styled.ul`
   background: var(--gray);
   padding-left: 2rem;
   z-index: 2;
+
   @media (min-width: 850px) {
     background: var(--gray);
     border: 1px solid var(--navBorder);
     position: fixed;
     top: 6rem;
     right: 2rem;
-    width: 38rem;
+    width: 42rem;
     margin: 0 0 0 -5rem;
     padding: 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
   }
-  `;
+`;
 
 const DropdownItemStyles = styled.li`
   list-style: none;
@@ -51,12 +52,12 @@ const DropdownItemStyles = styled.li`
   padding: 0.5rem;
   line-height: 2rem;
   font-weight: 300;
-
   @media (max-width: 850px) {
     line-height: 1.7rem;
-    width: 200px;
+    a {
+      display: block;
+    }
   }
- 
 `;
 
 export {

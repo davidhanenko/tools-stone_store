@@ -101,13 +101,13 @@ const navRef = useRef();
             className={
               !router.asPath.split('/')[1] ||
               formatUrlToRoute(router.asPath.split('/')[1]) == ''
-                ? 'active-link'
-                : ''
+                ? 'active-link link-item'
+                : 'link-item'
             }
           >
             <LinkBtn title={'home'} />
           </Link>
-          <Link href='/about' passHref>
+          <Link href='/about' className='link-item' passHref>
             <LinkBtn title={'about'} />
           </Link>
           {services.map(service => (

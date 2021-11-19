@@ -67,7 +67,7 @@ const DropdownItemStyles = styled.li`
   a {
     text-decoration: none;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     transition: all 250ms;
     &:hover {
       text-decoration: none;
