@@ -6,11 +6,6 @@ const ItemsByCategoryStyles = styled.div`
   margin-bottom: 10rem;
   position: relative;
 
-  /* .menu-container {
-    background: lightblue;
-    padding-top: 2rem;
-    padding-left: 2rem;
-  } */
 `;
 
 export { ItemsByCategoryStyles };

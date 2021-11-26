@@ -66,7 +66,7 @@ const NavStyles = styled.nav`
 
   .active-link {
     color: var(--blue);
-    pointer-events: none;
+    /* pointer-events: none; */
   }
 `;
 

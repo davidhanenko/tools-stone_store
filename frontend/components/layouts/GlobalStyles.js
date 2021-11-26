@@ -32,6 +32,7 @@ const GlobalStyles = createGlobalStyle`
     line-height: 2;
     scroll-behavior: smooth;
     background: var(--offWhite);
+ 
   }
   a {
     text-decoration: none;

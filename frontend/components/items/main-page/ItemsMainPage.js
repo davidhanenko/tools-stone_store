@@ -2,28 +2,29 @@ import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 
 import ItemsSlider from '../../shared/sliders/items-slider/ItemsSlider';
-import { ItemsMainPageStyles } from './ItemsStyles';
+import { ItemsMainPageStyles } from './ItemsMainPageStyles';
 
-const PRODUCTS = gql`
-  query PRODUCTS($service: String) {
-    services(where: { service: $service }) {
-      items {
-        id
-        title
-        category: items_categories(limit: 1) {
-          single_item: single_items {
-            image {
-              url
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+ const PRODUCTS_MAIN_PAGE_QUERY = gql`
+   query PRODUCTS_MAIN_PAGE_QUERY($service: String) {
+     services(where: { service: $service }) {
+       items {
+         id
+         title
+         category: items_categories(limit: 1) {
+           single_item: single_items(limit: 1) {
+             image {
+               url
+             }
+           }
+         }
+       }
+     }
+   }
+ `;
 
 export default function ItemsMainPage({}) {
-  const { data, error, loading } = useQuery(PRODUCTS, {
+  
+  const { data, error, loading } = useQuery(PRODUCTS_MAIN_PAGE_QUERY, {
     variables: {
       service: 'products',
     },
