@@ -65,7 +65,8 @@ const NavStyles = styled.nav`
   }
 
   .active-link {
-    color: red;
+    color: var(--blue);
+    pointer-events: none;
   }
 `;
 

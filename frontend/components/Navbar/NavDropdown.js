@@ -1,5 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { MdExpandMore, MdExpandLess } from 'react-icons/md';
 
@@ -14,13 +14,19 @@ import {
   NavDropdownStyles,
 } from './NavDropdownStyles';
 
+// navbar dropdown item
 const DropdownItem = React.forwardRef(
-  ({ href, onClick, dropDownItem }, ref) => {
+  ({ href, onClick, dropdownItem }, ref) => {
     const { closeSideNav } = useNav();
+
     return (
       <DropdownItemStyles>
-        <a href={href} onClick={() => closeSideNav()} ref={ref}>
-          {dropDownItem}
+        <a
+          href={href}
+          onClick={() => closeSideNav()}
+          ref={ref}
+        >
+          {dropdownItem}
         </a>
       </DropdownItemStyles>
     );
@@ -31,6 +37,8 @@ const NavDropdown = React.forwardRef(function NavDropdown(props, ref) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { navOpen } = useNav();
   const { width } = useWindowDimensions();
+
+ const router = useRouter();
 
   const showDropdown = () => setDropdownOpen(!dropdownOpen);
 
@@ -58,7 +66,15 @@ const NavDropdown = React.forwardRef(function NavDropdown(props, ref) {
       onMouseLeave={handleMouseLeave}
     >
       <div className='dropdown-btns-group'>
-        <a href={props.href} ref={ref}>
+        <a
+          href={props.href}
+          ref={ref}
+          className={
+            router.asPath.split('/')[1] == props.title
+              ? 'active-link link-item'
+              : 'link-item'
+          }
+        >
           {props.title}
         </a>
         <DropdownBtnStyles
@@ -83,7 +99,7 @@ const NavDropdown = React.forwardRef(function NavDropdown(props, ref) {
               key={item.id}
               passHref
             >
-              <DropdownItem dropDownItem={item?.title} />
+              <DropdownItem dropdownItem={item?.title} />
             </Link>
           ))}
         </DropdownMenuStyles>

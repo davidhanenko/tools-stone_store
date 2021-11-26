@@ -14,7 +14,7 @@ import Search from './Search';
 import { formatUrlToRoute } from '../../helpers/formatUrl';
 
 const PRODUCTS = gql`
-  query PRODUCTS1 {
+query PRODUCTS {
     services {
       service
       id
@@ -35,7 +35,7 @@ export default function Nav() {
   // services to spread in nav
   const services = data?.services;
 
-const navRef = useRef();
+  const navRef = useRef();
 
   const { navOpen, toggleNav, closeSideNav, navBtnClick, setNavBtnClick } =
     useNav();
@@ -46,10 +46,7 @@ const navRef = useRef();
   useEffect(() => {
     //  click outside nav handler
     const handleClickOutside = event => {
-      if (
-        navOpen &&
-        !navRef.current.contains(event.target)
-      ) {
+      if (navOpen && !navRef.current.contains(event.target)) {
         closeSideNav();
       }
     };
@@ -74,18 +71,27 @@ const navRef = useRef();
     };
   }, [width]);
 
- const router = useRouter();
+  const router = useRouter();
 
-
-  const LinkBtn = React.forwardRef(({ href, title }, ref) => {
+// link button
+  const LinkBtn = React.forwardRef(({ href, title, page }, ref) => {
     return (
-      <a href={href} onClick={() => closeSideNav()} ref={ref}>
+      <a
+        href={href}
+        onClick={() => closeSideNav()}
+        ref={ref}
+        className={
+         router.asPath.split('/')[1] === page
+            ? 'active-link link-item'
+            : 'link-item'
+        }
+      >
         {title}
       </a>
     );
   });
 
-  
+
   return (
     <>
       <NavStyles
@@ -98,28 +104,28 @@ const navRef = useRef();
           <Link
             href='/'
             passHref
-            className={
-              !router.asPath.split('/')[1] ||
-              formatUrlToRoute(router.asPath.split('/')[1]) == ''
-                ? 'active-link link-item'
-                : 'link-item'
-            }
           >
-            <LinkBtn title={'home'} />
+            <LinkBtn title={'home'} page={''} />
           </Link>
-          <Link href='/about' className='link-item' passHref>
-            <LinkBtn title={'about'} />
+          <Link
+            href='/about'
+            className='link-item'
+            passHref
+          >
+            <LinkBtn title={'about'} page={'about'} />
           </Link>
+
           {services.map(service => (
             <Link key={service.id} href={`/${service.service}`} passHref>
               <NavDropdown title={service.service} items={service.items} />
             </Link>
           ))}
+
           <Link href='/gallery' passHref>
-            <LinkBtn title={'gallery'} />
+            <LinkBtn title={'gallery'} page={'gallery'} />
           </Link>
           <Link href='/contacts' passHref>
-            <LinkBtn title={'contacts'} />
+            <LinkBtn title={'contacts'} page={'contacts'} />
           </Link>
         </div>
         <NavButtonStyles onClick={() => setNavBtnClick(true)}>

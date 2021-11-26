@@ -89,7 +89,7 @@ export default function ItemsMenu({}) {
           <MenuButtonStyles ref={btnRef} onClick={() => setBtnClicked(true)}>
             <Hamburger
               hideOutline={false}
-              label='Show menu'
+              label='show menu'
               toggled={isOpen}
               toggle={setOpen}
             />
