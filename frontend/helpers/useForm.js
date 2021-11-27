@@ -17,7 +17,7 @@ export default function useForm(initial = {}) {
     if (type === 'number') {
       value = parseInt(value);
     }
-
+    
     // for files input
     if (type === 'file') {
       [value] = e.target.files;

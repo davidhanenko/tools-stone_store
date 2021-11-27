@@ -31,21 +31,49 @@ const SingleItemStyles = styled.div`
       text-align: start;
       text-transform: uppercase;
       color: var(--dark);
+      margin: 0 0 1rem 0;
     }
     .single-item-price {
       font-size: 2rem;
       font-weight: 400;
       text-align: end;
-      padding-right: 10rem;
+      padding-right: 2rem;
       color: var(--blue);
+      margin: 2rem 0;
     }
+    .available-sizes {
+      font-size: 2rem;
+      color: var(--dark);
+      font-weight: 300;
+      margin: 0;
+    }
+    .size-input {
+      font-size: 1.5rem;
+      margin: 0.5rem 0.5rem 2rem 0.5rem;
+      padding: 1rem 2rem;
+      border: none;
+      background: var(--gray);
+      transition: all 0.3s;
+      cursor: pointer;
+      &:hover {
+        background: var(--navBorder);
+      }
+    }
+
+    hr {
+      height: 1px;
+      border: none;
+      background-color: #ccc;
+    }
+
     .single-item-description {
+      margin-top: 5rem;
       font-size: 1.5rem;
       font-weight: 300;
     }
     @media (max-width: 720px) {
       max-width: 100%;
-      padding: 0 5rem 5rem 5rem;
+      padding: 4rem 2rem 5rem 2rem;
     }
   }
 `;
