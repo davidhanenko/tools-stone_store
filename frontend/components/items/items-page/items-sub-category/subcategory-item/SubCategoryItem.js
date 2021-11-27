@@ -23,7 +23,6 @@ export default function SubCategoryListItem({ subCategory, itemsTitle }) {
             src={subCategory.single_item[0].image[0].url}
             width={200}
             height={200}
-            // layout='intrinsic'
             alt={subCategory.single_item[0].item_title}
           />
         </a>

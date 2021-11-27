@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const ItemsStyles = styled.div`
-  /* max-width: 1000px; */
   padding: 2rem;
   justify-content: center;
   display: grid;
@@ -10,7 +9,20 @@ const ItemsStyles = styled.div`
   @media (max-width: 500px) {
     grid-template-columns: repeat(auto-fill, minmax(200px, 300px));
   }
+ 
+
+  .service-item-title {
+    position: absolute;
+    text-transform: uppercase;
+    color: var(--blue);
+    font-size: 3rem;
+    font-weight: 400;
+    z-index: 3;
+    margin: 0 auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 `;
-  
 
 export { ItemsStyles };

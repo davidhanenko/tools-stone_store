@@ -37,5 +37,5 @@ export default function ProductsPage({}) {
 
   const allProducts = data?.services[0].items;
 
-  return <Items allServiceItems={allProducts} />;
+  return <Items allServiceItems={allProducts} service={'products'} />;
 }
