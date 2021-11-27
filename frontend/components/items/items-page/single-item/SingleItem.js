@@ -14,12 +14,10 @@ export default function SingleItem({ singleItem }) {
   // show price according to size of item(if apply)
   const handlePrice = e => {
     // find index of choosen size
-    let sizeIndex = sizePrice.findIndex(el => el.size.trim() == e.target.value);
+    let sizeIndex = sizePrice.findIndex(el => el.size == e.target.value);
     // use index to display proper price
     setIndex(sizeIndex);
   };
-
-
 
   return (
     <SingleItemStyles>
@@ -34,17 +32,23 @@ export default function SingleItem({ singleItem }) {
           layout='responsive'
         />
       </div>
+
       <div className='item-description-container'>
         <h5 className='single-item-title'>{singleItem.item_title}</h5>
+
         <hr />
-        <h6 className='single-item-price'>${sizePrice[index]?.price || singleItem.price}</h6>
+        {/* show price related to size or single price */}
+        <h6 className='single-item-price'>
+          ${sizePrice[index]?.price || singleItem.price}
+        </h6>
 
         <h6 className='available-sizes'>Available sizes:</h6>
-        {singleItem.size_prices?.map(size => (
+
+        {singleItem.size_prices?.map((size, i) => (
           <input
-            className='size-input'
-            type='button'
             key={size.id}
+            className={i === index ? 'size-input-btn active-size-btn' : 'size-input-btn'}
+            type='button'
             onClick={handlePrice}
             value={size.size}
           />

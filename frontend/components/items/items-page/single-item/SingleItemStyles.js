@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
 const SingleItemStyles = styled.div`
-  margin-top: 8rem;
+  margin: 8rem 0;
   display: flex;
   flex-wrap: wrap;
-  left: 5rem;
   @media (max-width: 720px) {
     flex-direction: column;
   }
@@ -22,7 +21,7 @@ const SingleItemStyles = styled.div`
 
   .item-description-container {
     max-width: 50%;
-    padding-right: 15rem;
+    padding: 0 5rem 0 1rem;
     flex: 1 1 0;
 
     .single-item-title {
@@ -47,7 +46,7 @@ const SingleItemStyles = styled.div`
       font-weight: 300;
       margin: 0;
     }
-    .size-input {
+    .size-input-btn {
       font-size: 1.5rem;
       margin: 0.5rem 0.5rem 2rem 0.5rem;
       padding: 1rem 2rem;
@@ -58,6 +57,9 @@ const SingleItemStyles = styled.div`
       &:hover {
         background: var(--navBorder);
       }
+    }
+    .active-size-btn {
+      background: var(--navBorder);
     }
 
     hr {

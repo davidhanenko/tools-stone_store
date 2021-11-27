@@ -35,6 +35,9 @@
     },
     "size": {
       "type": "string"
+    },
+    "size_prices": {
+      "collection": "size-price"
     }
   }
 }
