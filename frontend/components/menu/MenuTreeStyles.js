@@ -25,7 +25,7 @@ const TreeNodeStyles = styled.li`
     }
   }
   &:before {
-    content: ' > ';
+    content: ' / ';
     padding: 0 .2rem;
   }
   &:first-of-type {

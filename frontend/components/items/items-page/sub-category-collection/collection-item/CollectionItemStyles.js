@@ -12,6 +12,7 @@ const CollectionItemStyles = styled.div`
   .collection-item-title {
     text-transform: uppercase;
     color: blue;
+    font-weight: 300;
   }
 `;
 

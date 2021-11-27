@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Head from 'next/head';
+import ReactMarkdown from 'react-markdown';
 
 import capitalizeStr from '../../../../helpers/capitalizeStr';
 
@@ -14,8 +15,8 @@ export default function SingleItem({ singleItem }) {
       <div className='item-image-container'>
         <Image
           src={singleItem.image[0].url}
-          width={400}
-          height={400}
+          width={300}
+          height={300}
           layout='responsive'
         />
       </div>
@@ -23,7 +24,9 @@ export default function SingleItem({ singleItem }) {
         <h5 className='single-item-title'>{singleItem.item_title}</h5>
         <h6 className='single-item-price'>${singleItem.price}</h6>
         <h6>Sizes</h6>
-        <p className='single-item-description'>{singleItem.description}</p>
+        <ReactMarkdown className='single-item-description'>
+          {singleItem.description}
+        </ReactMarkdown>
       </div>
     </SingleItemStyles>
   );

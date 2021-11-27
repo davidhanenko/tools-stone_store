@@ -19,7 +19,7 @@ export default function Item({ serviceItems, service }) {
           <h4 className='service-item-title'>{serviceItems.title}</h4>
           <ImageOverlay />
           {serviceItems.category.map(item => (
-            <div key={item.id} className='item-image'>
+            <div key={item.id} className='service-item-image'>
               <Image
                 src={item.single_item[0].image[0].url}
                 width={100}

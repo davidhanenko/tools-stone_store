@@ -16,7 +16,7 @@ const ItemsStyles = styled.div`
     text-transform: uppercase;
     color: var(--blue);
     font-size: 3rem;
-    font-weight: 400;
+    font-weight: 300;
     z-index: 3;
     margin: 0 auto;
     left: 50%;
